@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Enhanced background with multiple gradients -->
+  <defs>
+    <!-- Main background gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e" />
+      <stop offset="50%" stop-color="#311b92" />
+      <stop offset="100%" stop-color="#4a148c" />
+    </linearGradient>
+    
+    <!-- Glow effects -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Enhanced glow for title -->
+    <filter id="title-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur1" />
+      <feComposite in="SourceGraphic" in2="blur1" operator="over" />
+      <feGaussianBlur stdDeviation="6" result="blur2" />
+      <feComposite in="SourceGraphic" in2="blur2" operator="over" />
+    </filter>
+    
+    <!-- Pattern for blackboard texture -->
+    <pattern id="blackboard-texture" patternUnits="userSpaceOnUse" width="100" height="100">
+      <rect width="100" height="100" fill="#0a0a0a" />
+      <rect width="100" height="1" fill="#222" opacity="0.3" />
+      <rect width="1" height="100" fill="#222" opacity="0.3" />
+    </pattern>
+    
+    <!-- Animation for connection lines -->
+    <animate id="dashOffset" attributeName="stroke-dashoffset" from="0" to="20" dur="1s" repeatCount="indefinite" />
+  </defs>
+  
+  <!-- Background with subtle pattern -->
+  <rect width="800" height="300" rx="15" fill="url(#bg-gradient)" />
+  <rect width="800" height="300" rx="15" fill="url(#bg-gradient)" opacity="0.7" />
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="30" fill="#7c4dff" opacity="0.2" />
+  <circle cx="750" cy="250" r="40" fill="#7c4dff" opacity="0.2" />
+  <circle cx="700" cy="50" r="20" fill="#7c4dff" opacity="0.2" />
+  <circle cx="100" cy="250" r="25" fill="#7c4dff" opacity="0.2" />
+  
+  <!-- Blackboard frame with texture -->
+  <rect x="50" y="50" width="700" height="200" rx="5" fill="url(#blackboard-texture)" stroke="#555" stroke-width="3" />
+  
+  <!-- Iframe representation with enhanced styling -->
+  <rect x="80" y="80" width="300" height="140" rx="5" fill="#f5f5f5" stroke="#333" stroke-width="2">
+    <!-- Add subtle shadow to iframe -->
+    <animate attributeName="opacity" values="0.95;1;0.95" dur="3s" repeatCount="indefinite" />
+  </rect>
+  
+  <!-- Mathematical symbols and formulas inside iframe with enhanced styling -->
+  <text x="120" y="120" font-family="'Courier New', monospace" font-size="14" fill="#333" font-weight="bold">∫ f(x) dx = F(x) + C</text>
+  <text x="120" y="150" font-family="'Courier New', monospace" font-size="14" fill="#333" font-weight="bold">y = mx + b</text>
+  <text x="120" y="180" font-family="'Courier New', monospace" font-size="14" fill="#333" font-weight="bold">∑(n=1 to ∞) 1/n²</text>
+  
+  <!-- Documentation representation with enhanced styling -->
+  <rect x="420" y="80" width="300" height="140" rx="5" fill="#e3f2fd" stroke="#333" stroke-width="2">
+    <!-- Add subtle animation to documentation panel -->
+    <animate attributeName="opacity" values="0.95;1;0.95" dur="4s" repeatCount="indefinite" />
+  </rect>
+  
+  <text x="440" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Component Documentation</text>
+  <line x1="440" y1="120" x2="700" y2="120" stroke="#333" stroke-width="1" />
+  <text x="440" y="140" font-family="Arial, sans-serif" font-size="13" fill="#333">• Integration Guide</text>
+  <text x="440" y="160" font-family="Arial, sans-serif" font-size="13" fill="#333">• API Reference</text>
+  <text x="440" y="180" font-family="Arial, sans-serif" font-size="13" fill="#333">• Usage Examples</text>
+  
+  <!-- Enhanced connection lines between iframe and documentation with animation -->
+  <path d="M380 130 C400 130, 400 130, 420 130" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  <path d="M380 150 C400 150, 400 150, 420 150" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  <path d="M380 170 C400 170, 400 170, 420 170" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- Code snippet in iframe -->
+  <rect x="100" y="100" width="260" height="100" rx="3" fill="#f8f9fa" stroke="#ddd" stroke-width="1" />
+  <text x="110" y="115" font-family="'Courier New', monospace" font-size="10" fill="#666">&lt;iframe src="component.html" width="100%" height="500px"&gt;</text>
+  <text x="110" y="130" font-family="'Courier New', monospace" font-size="10" fill="#666">  &lt;p&gt;Your browser does not support iframes&lt;/p&gt;</text>
+  <text x="110" y="145" font-family="'Courier New', monospace" font-size="10" fill="#666">&lt;/iframe&gt;</text>
+  
+  <!-- Enhanced title with better glow effect -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#title-glow)">Blackboard Content Hub</text>
+  
+  <!-- Decorative icons -->
+  <circle cx="700" cy="35" r="15" fill="#7c4dff" opacity="0.8" />
+  <circle cx="100" cy="35" r="15" fill="#7c4dff" opacity="0.8" />
+  
+  <!-- Subtitle -->
+  <text x="400" y="270" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" opacity="0.9">Interactive Educational Components for Blackboard LMS</text>
+</svg>

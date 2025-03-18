@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Zee's Flatland Message</title>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            max-height: 100vh;
+        }
+        
+        header {
+            background-color: #4a148c;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #7c43bd;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 60px);
+        }
+        
+        .applet-container {
+            flex-grow: 1;
+            min-width: 60%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .info-panel {
+            width: 30%;
+            min-width: 300px;
+            background-color: white;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            background-color: #f1f1f1;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s;
+        }
+        
+        .tab-button.active {
+            background-color: #7c43bd;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .status-panel {
+            background-color: #f1f7fe;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 4px solid #4a90e2;
+        }
+        
+        .solution-point {
+            color: #7c43bd;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: #4a148c;
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            color: #7c43bd;
+            font-size: 1.1rem;
+            margin: 15px 0 8px 0;
+        }
+        
+        p {
+            line-height: 1.5;
+        }
+        
+        .formula {
+            font-family: "Times New Roman", Times, serif;
+            background: #f9f9f9;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #ddd;
+        }
+        
+        .toggle-panel {
+            position: absolute;
+            right: 20px;
+            top: 70px;
+            background-color: #7c43bd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .info-panel {
+                width: 100%;
+                height: 40%;
+                min-width: unset;
+            }
+            
+            .applet-container {
+                height: 60%;
+            }
+            
+            .toggle-panel {
+                display: flex;
+            }
+            
+            .info-panel.hidden {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dr. Zee's Message in Flatland</h1>
+            <div class="controls">
+                <button id="resetBtn" style="background: #e6e6e6; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Reset</button>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="applet-container" id="ggb-element"></div>
+            
+            <button class="toggle-panel" id="togglePanel">
+                <span id="toggleIcon">❯</span>
+            </button>
+            
+            <div class="info-panel" id="infoPanel">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="problem">Problem</button>
+                    <button class="tab-button" data-tab="solution">Solution</button>
+                    <button class="tab-button" data-tab="guide">Guide</button>
+                </div>
+                
+                <div class="tab-content active" id="problem">
+                    <h2>The Message Problem</h2>
+                    <p>Dr. Zee, the illustrious scientist, and his talented assistant are exploring Flatland in their two-dimensional vehicle.</p>
+                    
+                    <p>"Of course we need to send a message to the square," lamented Dr. Zee. "But the swivel mechanism on our antenna is stuck, and the antenna is pointed straight ahead. We cannot turn it at all."</p>
+                    
+                    <p>"What course have you plotted, sir?" asked his assistant.</p>
+                    
+                    <p>"Using the gravitational pull of a black point," continued Dr. Zee, "we are traveling from left to right along the parabolic curve given by the equation y = x² - 5x + 6, and the square's house is located at the point (0, 4). Perhaps we could send the message at the instant that our ship is pointed exactly toward the point (0, 4). But how can we know when that will happen?"</p>
+                    
+                    <div class="status-panel" id="statusPanel">
+                        <h3>Current Status</h3>
+                        <p id="shipPosition">Ship position: x = 2.000, y = 0.000</p>
+                        <p id="tangentSlope">Tangent slope: 0.000</p>
+                        <p id="lineToHouseSlope">Line to house slope: 0.000</p>
+                        <p id="feedback">Move the ship along the parabola...</p>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="solution">
+                    <h2>Mathematical Solution</h2>
+                    
+                    <h3>Step 1: Identify the Problem</h3>
+                    <div class="step">
+                        <p>The ship travels along the parabola y = x² - 5x + 6. The ship is "pointed" in the direction of the tangent to the curve at its current position.</p>
+                        <p>The house is at point (0, 4). We need to find where the ship will be pointed exactly toward the house.</p>
+                    </div>
+                    
+                    <h3>Step 2: Find the Derivative</h3>
+                    <div class="step">
+                        <p>The derivative of f(x) = x² - 5x + 6 is:</p>
+                        <div class="formula">f'(x) = 2x - 5</div>
+                        <p>This gives us the slope of the tangent line at any point on the parabola.</p>
+                    </div>
+                    
+                    <h3>Step 3: Calculate the Slope to the House</h3>
+                    <div class="step">
+                        <p>From any point (a, f(a)) on the parabola to the house at (0, 4):</p>
+                        <div class="formula">slope = (4 - f(a))/(0 - a) = (4 - (a² - 5a + 6))/(-a)</div>
+                        <p>Simplifying: slope = (4 - a² + 5a - 6)/(-a) = (-a² + 5a - 2)/(-a)</p>
+                    </div>
+                    
+                    <h3>Step 4: Find Where Slopes Are Equal</h3>
+                    <div class="step">
+                        <p>For the ship to point toward the house, these slopes must be equal:</p>
+                        <div class="formula">f'(a) = slope to house</div>
+                        <div class="formula">2a - 5 = (-a² + 5a - 2)/(-a)</div>
+                        <div class="formula">2a - 5 = a - 5 + 2/a</div>
+                        <div class="formula">a - 0 = 2/a</div>
+                        <div class="formula">a² = 2</div>
+                        <div class="formula">a = ±√2</div>
+                        <p>Since we're traveling left to right, a = √2 ≈ 1.414</p>
+                    </div>
+                    
+                    <h3>The Answer</h3>
+                    <p>The ship will point exactly toward the house when x = <span class="solution-point">√2 ≈ 1.414</span></p>
+                    <p>At this point, y = (√2)² - 5(√2) + 6 = <span class="solution-point">2 - 5√2 + 6 ≈ 0.929</span></p>
+                </div>
+                
+                <div class="tab-content" id="guide">
+                    <h2>Interactive Guide</h2>
+                    
+                    <h3>How to Use This Applet</h3>
+                    <p>This interactive visualization demonstrates the "Message Problem" from Flatland:</p>
+                    
+                    <ul>
+                        <li><b>Green Point (Ship)</b>: Drag this point along the blue parabola to move Dr. Zee's ship</li>
+                        <li><b>Red Point (House)</b>: This is the location of the square's house at (0, 4)</li>
+                        <li><b>Green Line</b>: The tangent line showing the direction the ship is pointing</li>
+                        <li><b>Red Line</b>: The line connecting the ship to the house</li>
+                        <li><b>Purple Point</b>: The exact solution where the message should be sent (x = √2)</li>
+                    </ul>
+                    
+                    <h3>Learning Tasks</h3>
+                    <p>Try these activities to deepen your understanding:</p>
+                    
+                    <ol>
+                        <li>Move the ship and observe how the tangent line changes direction</li>
+                        <li>Notice when the tangent line points toward or away from the house</li>
+                        <li>Find the position where the tangent slope equals the slope of the line to the house</li>
+                        <li>Verify the solution by checking that x ≈ 1.414 (√2)</li>
+                    </ol>
+                    
+                    <h3>Mathematical Connection</h3>
+                    <p>This problem demonstrates an application of derivatives in finding the position where a curve's tangent passes through a specific point.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize GeoGebra parameters
+        const parameters = {
+            "id": "ggb1",
+            "width": window.innerWidth,
+            "height": window.innerHeight,
+            "showMenuBar": false,
+            "showAlgebraInput": false,
+            "showToolBar": false,
+            "showResetIcon": false,
+            "enableLabelDrags": false,
+            "enableShiftDragZoom": true,
+            "enableRightClick": false,
+            "showFullscreenButton": false,
+            "useBrowserForJS": false,
+            "allowStyleBar": false,
+            "appletOnLoad": function(api) {
+                window.ggbApplet = api;
+                initConstruction();
+                setupEventHandlers();
+            }
+        };
+
+        // Initialize the applet with responsive size
+        const resizeApplet = function() {
+            const container = document.getElementById('ggb-element');
+            if (window.ggbApplet) {
+                window.ggbApplet.setWidth(container.clientWidth);
+                window.ggbApplet.setHeight(container.clientHeight);
+            }
+        };
+
+        // Create the GeoGebra applet
+        const ggb = new GGBApplet(parameters, true);
+        window.addEventListener("load", function() {
+            ggb.inject('ggb-element');
+            window.addEventListener('resize', resizeApplet);
+        });
+
+        // Set up the construction
+        function initConstruction() {
+            // Set coordinate system
+            ggbApplet.setCoordSystem(-2, 7, -1, 9);
+            ggbApplet.setAxisLabels(1, "x", "y", "");
+            ggbApplet.setGridVisible(true);
+            
+            // Define the parabola f(x) = x² - 5x + 6
+            ggbApplet.evalCommand("f(x) = x^2 - 5x + 6");
+            ggbApplet.setLabelVisible("f", true);
+            ggbApplet.setColor("f", 0, 0, 255);
+            ggbApplet.setLineThickness("f", 3);
+            
+            // Create the square's house at (0, 4)
+            ggbApplet.evalCommand("House = (0, 4)");
+            ggbApplet.setLabelVisible("House", true);
+            ggbApplet.setPointSize("House", 6);
+            ggbApplet.setColor("House", 255, 0, 0);
+            
+            // Create a point on the parabola that can be moved
+            ggbApplet.evalCommand("Ship = Point(f)");
+            ggbApplet.setCoords("Ship", 2, f(2));
+            ggbApplet.setLabelVisible("Ship", true);
+            ggbApplet.setPointStyle("Ship", 0);
+            ggbApplet.setPointSize("Ship", 6);
+            ggbApplet.setColor("Ship", 0, 128, 0);
+            
+            // Create a tangent line at the point
+            ggbApplet.evalCommand("tangent = Tangent(Ship, f)");
+            ggbApplet.setColor("tangent", 0, 128, 0);
+            ggbApplet.setLineThickness("tangent", 2);
+            
+            // Create a line from the ship to the house
+            ggbApplet.evalCommand("lineToHouse = Line(Ship, House)");
+            ggbApplet.setColor("lineToHouse", 255, 0, 0);
+            ggbApplet.setLineThickness("lineToHouse", 2);
+            
+            // Create the solution point where the message should be sent
+            ggbApplet.evalCommand("sqrt2 = sqrt(2)");
+            ggbApplet.evalCommand("SolutionPoint = (sqrt2, f(sqrt2))");
+            ggbApplet.setLabelVisible("SolutionPoint", true);
+            ggbApplet.setPointSize("SolutionPoint", 6);
+            ggbApplet.setPointStyle("SolutionPoint", 0);
+            ggbApplet.setColor("SolutionPoint", 128, 0, 128);
+            
+            // Add a vector to represent antenna direction
+            ggbApplet.evalCommand("tangentVec = Vector((1, 2x(Ship) - 5), Ship)");
+            ggbApplet.setColor("tangentVec", 0, 128, 0);
+            ggbApplet.setLineThickness("tangentVec", 3);
+            
+            // Visual enhancements
+            ggbApplet.evalCommand("SetVisibleInView(tangent, 1, false)"); // Hide full tangent line
+            ggbApplet.evalCommand("shipIcon = Polygon({Ship + (-0.2, 0.1), Ship + (0.2, 0.1), Ship + (0, -0.2)})");
+            ggbApplet.setColor("shipIcon", 0, 128, 0);
+            ggbApplet.setFilling("shipIcon", 0.7);
+            
+            // House icon
+            ggbApplet.evalCommand("houseIcon = Polygon({House + (-0.2, -0.2), House + (0.2, -0.2), House + (0.2, 0.2), House + (0, 0.3), House + (-0.2, 0.2)})");
+            ggbApplet.setColor("houseIcon", 255, 0, 0);
+            ggbApplet.setFilling("houseIcon", 0.7);
+            
+            // Register update listener for dynamic feedback
+            ggbApplet.registerObjectUpdateListener("Ship", updateConstruction);
+            
+            updateConstruction();
+        }
+
+        // Helper function to calculate f(x)
+        function f(x) {
+            return x*x - 5*x + 6;
+        }
+
+        // Update construction whenever the ship moves
+        function updateConstruction() {
+            if (!window.ggbApplet) return;
+            
+            try {
+                const shipX = ggbApplet.getXcoord("Ship");
+                const shipY = ggbApplet.getYcoord("Ship");
+                
+                // Update antenna vector
+                ggbApplet.evalCommand("tangentVec = Vector((1, 2*x(Ship) - 5), Ship)");
+                
+                // Update ship icon
+                ggbApplet.evalCommand("SetValue(shipIcon, {Ship + (-0.2, 0.1), Ship + (0.2, 0.1), Ship + (0, -0.2)})");
+                
+                // Get slopes
+                const tangentSlope = ggbApplet.getValue("Slope(tangent)");
+                const lineToHouseSlope = ggbApplet.getValue("Slope(lineToHouse)");
+                
+                // Update the status panel
+                document.getElementById("shipPosition").textContent = `Ship position: x = ${shipX.toFixed(3)}, y = ${shipY.toFixed(3)}`;
+                document.getElementById("tangentSlope").textContent = `Tangent slope (ship direction): ${tangentSlope.toFixed(3)}`;
+                document.getElementById("lineToHouseSlope").textContent = `Line to house slope: ${lineToHouseSlope.toFixed(3)}`;
+                
+                // Check if ship is close to the solution
+                const sqrt2 = Math.sqrt(2);
+                let feedbackMsg = "Move the ship along the parabola...";
+                
+                if (Math.abs(shipX - sqrt2) < 0.02) {
+                    feedbackMsg = "Perfect! Message sent to the square's house!";
+                    ggbApplet.setColor("Ship", 128, 0, 128);
+                    ggbApplet.setColor("shipIcon", 128, 0, 128);
+                    // Create a visual beam effect
+                    ggbApplet.evalCommand("beam = Ray(Ship, House)");
+                    ggbApplet.setColor("beam", 255, 215, 0);
+                    ggbApplet.setLineThickness("beam", 5);
+                    ggbApplet.setLineStyle("beam", 1);
+                } else if (Math.abs(shipX - sqrt2) < 0.1) {
+                    feedbackMsg = "Getting close to the solution! Almost there...";
+                    ggbApplet.setColor("Ship", 128, 0, 128);
+                    ggbApplet.setColor("shipIcon", 128, 0, 128);
+                    // Remove beam if it exists
+                    if (ggbApplet.exists("beam")) {
+                        ggbApplet.deleteObject("beam");
+                    }
+                } else {
+                    ggbApplet.setColor("Ship", 0, 128, 0);
+                    ggbApplet.setColor("shipIcon", 0, 128, 0);
+                    // Remove beam if it exists
+                    if (ggbApplet.exists("beam")) {
+                        ggbApplet.deleteObject("beam");
+                    }
+                    
+                    // Compare the slopes for guidance
+                    const slopeDifference = Math.abs(tangentSlope - lineToHouseSlope);
+                    if (slopeDifference < 2) {
+                        feedbackMsg = "Getting warmer! Look for where the tangent points toward the house.";
+                    }
+                }
+                
+                document.getElementById("feedback").textContent = feedbackMsg;
+                
+            } catch (e) {
+                console.error("Error in updateConstruction:", e);
+            }
+        }
+
+        // Set up tab switching and other event handlers
+        function setupEventHandlers() {
+            // Tab switching
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.getAttribute('data-tab');
+                    
+                    // Update active button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Update active content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabName) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Toggle panel on mobile
+            const toggleBtn = document.getElementById('togglePanel');
+            const infoPanel = document.getElementById('infoPanel');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    infoPanel.classList.toggle('hidden');
+                    toggleIcon.textContent = infoPanel.classList.contains('hidden') ? '❮' : '❯';
+                });
+            }
+            
+            // Reset button
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                if (window.ggbApplet) {
+                    ggbApplet.setCoords("Ship", 2, f(2));
+                    if (ggbApplet.exists("beam")) {
+                        ggbApplet.deleteObject("beam");
+                    }
+                    updateConstruction();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

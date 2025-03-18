@@ -1,0 +1,73 @@
+# Jekyll configuration for Blackboard Content Hub Documentation
+title: Blackboard Content Hub
+description: Documentation for creating, managing, and embedding interactive educational content
+baseurl: "/blackboard-content-hub" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol, e.g. http://example.com
+
+# Theme settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Navigation
+header_pages:
+  - user-guide/index.md
+  - developer-guide/index.md
+  - api-reference/index.md
+  - examples/index.md
+  - troubleshooting/index.md
+
+# Collections for different documentation sections
+collections:
+  user_guide:
+    output: true
+    permalink: /user-guide/:path/
+  developer_guide:
+    output: true
+    permalink: /developer-guide/:path/
+  api_reference:
+    output: true
+    permalink: /api-reference/:path/
+  examples:
+    output: true
+    permalink: /examples/:path/
+  troubleshooting:
+    output: true
+    permalink: /troubleshooting/:path/
+
+# Default front matter for files in collections
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+  - scope:
+      path: "user-guide"
+    values:
+      category: "User Guide"
+  - scope:
+      path: "developer-guide"
+    values:
+      category: "Developer Guide"
+  - scope:
+      path: "api-reference"
+    values:
+      category: "API Reference"
+  - scope:
+      path: "examples"
+    values:
+      category: "Examples"
+  - scope:
+      path: "troubleshooting"
+    values:
+      category: "Troubleshooting"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore

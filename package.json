@@ -1,0 +1,15 @@
+{
+  "name": "blackboard-content-hub",
+  "version": "1.0.0",
+  "description": "Interactive content for Blackboard LMS",
+  "scripts": {
+    "start": "jekyll serve --source docs",
+    "build": "node build/build.js",
+    "deploy": "gh-pages -d dist",
+    "new:component": "node tools/create-component.js",
+    "new:course": "node tools/create-course.js"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}

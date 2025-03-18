@@ -1,0 +1,116 @@
+[
+  {
+    "id": "binary-search-visualization",
+    "title": "Binary Search Visualization",
+    "category": "general",
+    "type": "shared",
+    "description": "Interactive visualization of the binary search algorithm with step-by-step execution and explanation.",
+    "url": "/blackboard-content-hub/shared/components/binary-search-visualization.html",
+    "documentationUrl": "/blackboard-content-hub/examples/binary-search-visualization.html",
+    "tags": ["algorithm", "visualization", "computer science"]
+  },
+  {
+    "id": "molecule-viewer",
+    "title": "3D Molecule Viewer",
+    "category": "general",
+    "type": "shared",
+    "description": "Interactive 3D viewer for molecular structures with rotation, zoom, and different rendering modes.",
+    "url": "/blackboard-content-hub/shared/components/molecule-viewer.html",
+    "documentationUrl": "/blackboard-content-hub/examples/molecule-viewer.html",
+    "tags": ["chemistry", "3D", "visualization"]
+  },
+  {
+    "id": "statistical-hypothesis-testing",
+    "title": "Statistical Hypothesis Testing",
+    "category": "research",
+    "type": "shared",
+    "description": "Interactive demonstration of statistical hypothesis testing with various test types and visualizations.",
+    "url": "/blackboard-content-hub/shared/components/statistical-hypothesis-testing.html",
+    "documentationUrl": "/blackboard-content-hub/examples/statistical-hypothesis-testing.html",
+    "tags": ["statistics", "data analysis", "visualization"]
+  },
+  {
+    "id": "research-data-explorer",
+    "title": "Research Data Explorer",
+    "category": "research",
+    "type": "shared",
+    "description": "Tool for exploring and visualizing research datasets with filtering and statistical analysis capabilities.",
+    "url": "/blackboard-content-hub/shared/components/research-data-explorer.html",
+    "documentationUrl": "/blackboard-content-hub/examples/research-data-explorer.html",
+    "tags": ["research", "data analysis", "visualization"]
+  },
+  {
+    "id": "calculus-derivative-explorer",
+    "title": "Calculus Derivative Explorer",
+    "category": "courses",
+    "courseId": "math-a251",
+    "type": "course-specific",
+    "description": "Interactive tool for exploring derivatives of functions with visual representation and step-by-step solutions.",
+    "url": "/blackboard-content-hub/courses/math-a251/calculus-derivative-explorer.html",
+    "documentationUrl": "/blackboard-content-hub/examples/calculus-derivative-explorer.html",
+    "tags": ["mathematics", "calculus", "visualization"]
+  },
+  {
+    "id": "integral-visualization",
+    "title": "Integral Visualization Tool",
+    "category": "courses",
+    "courseId": "math-a252",
+    "type": "course-specific",
+    "description": "Visual exploration of definite and indefinite integrals with geometric interpretation.",
+    "url": "/blackboard-content-hub/courses/math-a252/integral-visualization.html",
+    "documentationUrl": "/blackboard-content-hub/examples/integral-visualization.html",
+    "tags": ["mathematics", "calculus", "visualization"]
+  },
+  {
+    "id": "statistical-distributions",
+    "title": "Statistical Distributions Explorer",
+    "category": "courses",
+    "courseId": "stat-a253",
+    "type": "course-specific",
+    "description": "Interactive visualization of common statistical distributions with parameter adjustments.",
+    "url": "/blackboard-content-hub/courses/stat-a253/statistical-distributions.html",
+    "documentationUrl": "/blackboard-content-hub/examples/statistical-distributions.html",
+    "tags": ["statistics", "probability", "visualization"]
+  },
+  {
+    "id": "regression-analysis",
+    "title": "Regression Analysis Tool",
+    "category": "courses",
+    "courseId": "stat-a253",
+    "type": "course-specific",
+    "description": "Interactive tool for performing and visualizing different types of regression analyses.",
+    "url": "/blackboard-content-hub/courses/stat-a253/regression-analysis.html",
+    "documentationUrl": "/blackboard-content-hub/examples/regression-analysis.html",
+    "tags": ["statistics", "data analysis", "regression"]
+  },
+  {
+    "id": "interactive-periodic-table",
+    "title": "Interactive Periodic Table",
+    "category": "general",
+    "type": "shared",
+    "description": "Comprehensive interactive periodic table with detailed element information and sorting capabilities.",
+    "url": "/blackboard-content-hub/shared/components/interactive-periodic-table.html",
+    "documentationUrl": "/blackboard-content-hub/examples/interactive-periodic-table.html",
+    "tags": ["chemistry", "reference", "visualization"]
+  },
+  {
+    "id": "citation-generator",
+    "title": "Citation Generator",
+    "category": "research",
+    "type": "shared",
+    "description": "Tool for generating properly formatted citations in various academic styles.",
+    "url": "/blackboard-content-hub/shared/components/citation-generator.html",
+    "documentationUrl": "/blackboard-content-hub/examples/citation-generator.html",
+    "tags": ["research", "writing", "academic"]
+  },
+  {
+    "id": "flatland-message",
+    "title": "Flatland Message",
+    "category": "general",
+    "type": "shared",
+    "description": "Interactive messaging component for the Flatland educational environment.",
+    "url": "/blackboard-content-hub/shared/components/flatland-message.html",
+    "documentationUrl": "/blackboard-content-hub/examples/flatland-message.html",
+    "tags": ["communication", "education", "interactive"]
+  }
+]

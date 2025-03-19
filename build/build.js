@@ -122,7 +122,8 @@ if (fs.existsSync(assetsDir)) {
     fs.mkdirSync(distAssetsDir, { recursive: true });
   }
   
-  ['images', 'fonts', 'documents'].forEach(assetType => {
+  // Updated to include css and js folders
+  ['images', 'fonts', 'documents', 'css', 'js'].forEach(assetType => {
     const assetTypeDir = path.join(assetsDir, assetType);
     const distAssetTypeDir = path.join(distAssetsDir, assetType);
     
@@ -131,15 +132,25 @@ if (fs.existsSync(assetsDir)) {
         fs.mkdirSync(distAssetTypeDir, { recursive: true });
       }
       
-      fs.readdirSync(assetTypeDir).forEach(file => {
-        const srcPath = path.join(assetTypeDir, file);
-        const destPath = path.join(distAssetTypeDir, file);
-        
-        if (fs.statSync(srcPath).isFile()) {
-          fs.copyFileSync(srcPath, destPath);
-          console.log(`Copied: ${file} to assets/${assetType}`);
-        }
-      });
+      // Handle subdirectories (like banner folder in images)
+      const copyFilesRecursively = (srcDir, destDir) => {
+        fs.readdirSync(srcDir).forEach(item => {
+          const srcPath = path.join(srcDir, item);
+          const destPath = path.join(destDir, item);
+          
+          if (fs.statSync(srcPath).isDirectory()) {
+            if (!fs.existsSync(destPath)) {
+              fs.mkdirSync(destPath, { recursive: true });
+            }
+            copyFilesRecursively(srcPath, destPath);
+          } else {
+            fs.copyFileSync(srcPath, destPath);
+            console.log(`Copied: ${srcPath.replace(rootDir, '')} to ${destPath.replace(rootDir, '')}`);
+          }
+        });
+      };
+      
+      copyFilesRecursively(assetTypeDir, distAssetTypeDir);
     }
   });
 }
@@ -163,15 +174,25 @@ if (fs.existsSync(sharedDir)) {
         fs.mkdirSync(distSharedTypeDir, { recursive: true });
       }
       
-      fs.readdirSync(sharedTypeDir).forEach(file => {
-        const srcPath = path.join(sharedTypeDir, file);
-        const destPath = path.join(distSharedTypeDir, file);
-        
-        if (fs.statSync(srcPath).isFile()) {
-          fs.copyFileSync(srcPath, destPath);
-          console.log(`Copied: ${file} to shared/${sharedType}`);
-        }
-      });
+      // Handle subdirectories
+      const copyFilesRecursively = (srcDir, destDir) => {
+        fs.readdirSync(srcDir).forEach(item => {
+          const srcPath = path.join(srcDir, item);
+          const destPath = path.join(destDir, item);
+          
+          if (fs.statSync(srcPath).isDirectory()) {
+            if (!fs.existsSync(destPath)) {
+              fs.mkdirSync(destPath, { recursive: true });
+            }
+            copyFilesRecursively(srcPath, destPath);
+          } else {
+            fs.copyFileSync(srcPath, destPath);
+            console.log(`Copied: ${srcPath.replace(rootDir, '')} to ${destPath.replace(rootDir, '')}`);
+          }
+        });
+      };
+      
+      copyFilesRecursively(sharedTypeDir, distSharedTypeDir);
     }
   });
 }

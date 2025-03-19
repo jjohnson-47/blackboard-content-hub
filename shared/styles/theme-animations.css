@@ -1,0 +1,287 @@
+/**
+ * Theme Animation Styles - "Nascent Digital Dawn"
+ * 
+ * This file contains animation definitions, keyframes, and
+ * transition effects used throughout the theme.
+ */
+
+/* Import variables */
+@import 'theme-variables.css';
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-medium) ease-in-out;
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--transition-medium) ease-out;
+}
+
+/* Staggered Fade In for Lists */
+.stagger-fade-in > * {
+  opacity: 0;
+  animation: fadeIn var(--transition-medium) ease-in-out forwards;
+}
+
+.stagger-fade-in > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-fade-in > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-fade-in > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-fade-in > *:nth-child(6) { animation-delay: 0.6s; }
+.stagger-fade-in > *:nth-child(7) { animation-delay: 0.7s; }
+.stagger-fade-in > *:nth-child(8) { animation-delay: 0.8s; }
+.stagger-fade-in > *:nth-child(9) { animation-delay: 0.9s; }
+.stagger-fade-in > *:nth-child(10) { animation-delay: 1s; }
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+  }
+}
+
+.glow {
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Text Glow Animation */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 0, 127, 0.8), 0 0 5px rgba(255, 0, 127, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+  }
+}
+
+.text-glow {
+  animation: textGlow 2s infinite ease-in-out;
+}
+
+/* Float Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float {
+  animation: float 4s infinite ease-in-out;
+}
+
+/* Ember Particle Animations */
+/* These are adapted from the banner animation */
+@keyframes emberFloat1 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(3px, -6px); }
+  75% { transform: translate(1px, -9px); }
+  100% { transform: translate(5px, -8px); }
+}
+
+@keyframes emberFloat2 {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-4px, -3px); }
+  66% { transform: translate(-2px, -7px); }
+  100% { transform: translate(-7px, -5px); }
+}
+
+@keyframes emberFloat3 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -5px); }
+  50% { transform: translate(4px, -8px); }
+  75% { transform: translate(2px, -12px); }
+  100% { transform: translate(3px, -10px); }
+}
+
+@keyframes emberPulse1 {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  25% { opacity: 0.7; transform: scale(1.1); }
+  50% { opacity: 1; transform: scale(1.3); }
+  75% { opacity: 0.6; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(0.8); }
+}
+
+@keyframes emberPulse2 {
+  0% { opacity: 0.2; transform: scale(0.7); }
+  30% { opacity: 0.5; transform: scale(0.9); }
+  60% { opacity: 0.9; transform: scale(1.2); }
+  80% { opacity: 0.6; transform: scale(1.0); }
+  100% { opacity: 0.2; transform: scale(0.7); }
+}
+
+@keyframes emberPulse3 {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  20% { opacity: 0.7; transform: scale(1.1); }
+  40% { opacity: 1; transform: scale(1.4); }
+  60% { opacity: 0.8; transform: scale(1.2); }
+  80% { opacity: 0.5; transform: scale(1.0); }
+  100% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.ember-float-1 {
+  animation: emberFloat1 3s infinite alternate, emberPulse1 2s infinite;
+}
+
+.ember-float-2 {
+  animation: emberFloat2 4s infinite alternate, emberPulse2 2.5s infinite;
+}
+
+.ember-float-3 {
+  animation: emberFloat3 3.5s infinite alternate, emberPulse3 1.8s infinite;
+}
+
+/* Page Transition Animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+
+/* Loading Animation */
+@keyframes loadingDots {
+  0%, 80%, 100% { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  40% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading-dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-electric-magenta);
+  margin: 0 3px;
+}
+
+.loading-dots span:nth-child(1) {
+  animation: loadingDots 1.4s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(2) {
+  animation: loadingDots 1.4s infinite ease-in-out 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation: loadingDots 1.4s infinite ease-in-out 0.4s;
+}
+
+/* Shimmer Loading Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-in-up,
+  .stagger-fade-in > *,
+  .pulse,
+  .glow,
+  .text-glow,
+  .float,
+  .ember-float-1,
+  .ember-float-2,
+  .ember-float-3,
+  .page-enter-active,
+  .page-exit-active,
+  .loading-dots span,
+  .shimmer-loading {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

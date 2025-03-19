@@ -1,0 +1,246 @@
+/**
+ * Banner Animation Styles - "Nascent Digital Dawn" Theme
+ * 
+ * Styles for the animated banner with ember particles and
+ * transitioning wireframe landscape images.
+ */
+
+/* Banner Container */
+.banner-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-deep-indigo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Banner sizes */
+.banner-size-hero {
+  height: var(--banner-height-desktop);
+}
+
+.banner-size-medium {
+  height: var(--banner-height-tablet);
+}
+
+.banner-size-small {
+  height: var(--banner-height-mobile);
+}
+
+/* Image Container */
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.banner-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.banner-image.active {
+  opacity: 0.7; /* Slightly transparent to let the background color show through */
+}
+
+/* SVG Overlay */
+.svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks to pass through */
+  z-index: 2; /* Ensure overlay is above images */
+}
+
+/* Title Overlay */
+.banner-title-overlay {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 var(--space-xl);
+  max-width: 800px;
+}
+
+.banner-title {
+  font-family: var(--font-headline);
+  font-size: var(--font-size-4xl);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+.banner-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  color: var(--color-white);
+  margin-bottom: 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Ember Animation Base Styles */
+.ember {
+  fill: var(--color-electric-magenta); /* Use theme color */
+  filter: url(#ember-glow);
+  opacity: 0.8;
+  mix-blend-mode: lighten; /* Better blending with background */
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Ember Animation Groups */
+.ember-group-1 {
+  animation: emberFloat1 3s infinite alternate, emberPulse1 2s infinite;
+}
+
+.ember-group-2 {
+  animation: emberFloat2 4s infinite alternate, emberPulse2 2.5s infinite;
+}
+
+.ember-group-3 {
+  animation: emberFloat3 3.5s infinite alternate, emberPulse3 1.8s infinite;
+}
+
+/* Floating Animations */
+@keyframes emberFloat1 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(3px, -6px); }
+  75% { transform: translate(1px, -9px); }
+  100% { transform: translate(5px, -8px); }
+}
+
+@keyframes emberFloat2 {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-4px, -3px); }
+  66% { transform: translate(-2px, -7px); }
+  100% { transform: translate(-7px, -5px); }
+}
+
+@keyframes emberFloat3 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -5px); }
+  50% { transform: translate(4px, -8px); }
+  75% { transform: translate(2px, -12px); }
+  100% { transform: translate(3px, -10px); }
+}
+
+/* Pulsing/Flickering Animations */
+@keyframes emberPulse1 {
+  0% { opacity: 0.3; r: 2; }
+  25% { opacity: 0.7; r: 2.8; }
+  50% { opacity: 1; r: 3.5; }
+  75% { opacity: 0.6; r: 3; }
+  100% { opacity: 0.3; r: 2; }
+}
+
+@keyframes emberPulse2 {
+  0% { opacity: 0.2; r: 1.5; }
+  30% { opacity: 0.5; r: 2; }
+  60% { opacity: 0.9; r: 3; }
+  80% { opacity: 0.6; r: 2.5; }
+  100% { opacity: 0.2; r: 1.5; }
+}
+
+@keyframes emberPulse3 {
+  0% { opacity: 0.4; r: 2.5; }
+  20% { opacity: 0.7; r: 3; }
+  40% { opacity: 1; r: 4; }
+  60% { opacity: 0.8; r: 3.5; }
+  80% { opacity: 0.5; r: 3; }
+  100% { opacity: 0.4; r: 2.5; }
+}
+
+/* Fade In Up Animation for Title/Subtitle */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .banner-size-hero {
+    height: var(--banner-height-tablet);
+  }
+  
+  .banner-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .banner-subtitle {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-size-hero {
+    height: var(--banner-height-tablet);
+  }
+  
+  .banner-size-medium {
+    height: calc(var(--banner-height-tablet) * 0.8);
+  }
+  
+  .banner-title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-size-hero {
+    height: var(--banner-height-mobile);
+  }
+  
+  .banner-size-medium {
+    height: var(--banner-height-mobile);
+  }
+  
+  .banner-size-small {
+    height: calc(var(--banner-height-mobile) * 0.7);
+  }
+  
+  .banner-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .banner-subtitle {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .ember-group-1,
+  .ember-group-2,
+  .ember-group-3 {
+    animation: none !important;
+  }
+  
+  .banner-image {
+    transition: opacity 0.1s linear;
+  }
+  
+  .banner-title,
+  .banner-subtitle {
+    animation: none !important;
+  }
+}

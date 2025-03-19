@@ -1,0 +1,201 @@
+---
+layout: default
+---
+
+<div class="iframe-detail">
+  <div class="iframe-detail-header">
+    <h1 class="iframe-detail-title">{{ page.title }}</h1>
+    
+    <div class="iframe-detail-meta">
+      {% if page.author %}
+      <span class="meta-item">
+        <strong>Author:</strong> {{ page.author }}
+      </span>
+      {% endif %}
+      
+      {% if page.version %}
+      <span class="meta-item">
+        <strong>Version:</strong> {{ page.version }}
+      </span>
+      {% endif %}
+      
+      {% if page.last_updated %}
+      <span class="meta-item">
+        <strong>Last Updated:</strong> {{ page.last_updated }}
+      </span>
+      {% endif %}
+    </div>
+    
+    {% if page.tags %}
+    <div class="iframe-detail-tags">
+      {% for tag in page.tags %}
+      <span class="iframe-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if page.description %}
+    <p class="iframe-detail-description">{{ page.description }}</p>
+    {% endif %}
+  </div>
+  
+  <div class="iframe-detail-display">
+    <iframe src="{{ page.iframe_url }}" title="{{ page.title }}" allowfullscreen></iframe>
+  </div>
+  
+  <div class="responsive-preview-controls">
+    <h2>Responsive Preview</h2>
+    <p>View this component at different screen sizes to ensure it works well across devices.</p>
+    
+    <div class="device-selector">
+      <button class="device-button active" data-device="desktop">Desktop</button>
+      <button class="device-button" data-device="tablet">Tablet</button>
+      <button class="device-button" data-device="mobile">Mobile</button>
+    </div>
+    
+    <div class="preview-container desktop">
+      <iframe src="{{ page.iframe_url }}" title="{{ page.title }} - Desktop Preview"></iframe>
+    </div>
+  </div>
+  
+  <div class="iframe-documentation">
+    <h2>Documentation</h2>
+    
+    {{ content }}
+    
+    {% if page.usage %}
+    <h3>Usage</h3>
+    <div class="code-example">
+      <div class="code-example-header">
+        <span class="code-example-title">Embed Code</span>
+        <button class="code-example-copy" aria-label="Copy code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <pre><code>{{ page.usage }}</code></pre>
+    </div>
+    {% endif %}
+    
+    {% if page.parameters %}
+    <h3>Parameters</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for param in page.parameters %}
+        <tr>
+          <td><code>{{ param.name }}</code></td>
+          <td><code>{{ param.type }}</code></td>
+          <td>{% if param.default %}<code>{{ param.default }}</code>{% else %}-{% endif %}</td>
+          <td>{{ param.description }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    
+    {% if page.examples %}
+    <h3>Examples</h3>
+    {% for example in page.examples %}
+    <div class="code-example">
+      <div class="code-example-header">
+        <span class="code-example-title">{{ example.title }}</span>
+        <button class="code-example-copy" aria-label="Copy code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <pre><code>{{ example.code }}</code></pre>
+    </div>
+    {% if example.description %}
+    <p>{{ example.description }}</p>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+  
+  {% if page.related_components %}
+  <div class="related-iframes">
+    <h2>Related Components</h2>
+    <div class="iframe-grid">
+      {% for component in page.related_components %}
+      <div class="iframe-card">
+        <div class="iframe-card-header">
+          <div class="iframe-preview">
+            <iframe src="{{ component.iframe_url }}" title="{{ component.title }}"></iframe>
+          </div>
+        </div>
+        <div class="iframe-card-content">
+          <h3 class="iframe-title">
+            <a href="{{ component.url | relative_url }}">{{ component.title }}</a>
+          </h3>
+          <p class="iframe-description">{{ component.description }}</p>
+          {% if component.tags %}
+          <div class="iframe-tags">
+            {% for tag in component.tags %}
+            <span class="iframe-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Device preview switcher
+    const deviceButtons = document.querySelectorAll('.device-button');
+    const previewContainer = document.querySelector('.preview-container');
+    
+    deviceButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        deviceButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Update preview container class
+        const device = this.getAttribute('data-device');
+        previewContainer.className = 'preview-container ' + device;
+      });
+    });
+    
+    // Copy code functionality
+    const copyButtons = document.querySelectorAll('.code-example-copy');
+    
+    copyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const codeBlock = this.closest('.code-example').querySelector('code');
+        const textToCopy = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Show success feedback
+          const originalHTML = this.innerHTML;
+          this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          
+          setTimeout(() => {
+            this.innerHTML = originalHTML;
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
+    });
+  });
+</script>

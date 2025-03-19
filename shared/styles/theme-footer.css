@@ -1,0 +1,160 @@
+/**
+ * Theme Footer Styles - "Nascent Digital Dawn"
+ * 
+ * Styles for the site footer.
+ */
+
+/* Import variables */
+@import 'theme-variables.css';
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-deep-indigo);
+  color: var(--color-white-60);
+  padding: var(--space-xl) 0;
+  margin-top: var(--space-3xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle ember particles to footer */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at bottom left,
+    rgba(255, 0, 127, 0.1) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+.site-footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 0, 127, 0.05) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+/* Footer content */
+.footer-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+}
+
+.footer-heading {
+  font-family: var(--font-headline);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+  color: var(--color-white);
+}
+
+.footer-col {
+  margin-bottom: var(--space-lg);
+}
+
+/* Contact list */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.contact-list a {
+  color: var(--color-electric-magenta);
+  transition: color var(--transition-fast);
+}
+
+.contact-list a:hover {
+  color: var(--color-white);
+}
+
+/* Social media list */
+.social-media-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.social-media-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.social-media-list a {
+  color: var(--color-white-60);
+  transition: color var(--transition-fast);
+}
+
+.social-media-list a:hover {
+  color: var(--color-electric-magenta);
+}
+
+.social-media-list svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* Footer links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--space-sm);
+}
+
+.footer-links a {
+  color: var(--color-white-60);
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-electric-magenta);
+}
+
+/* Copyright */
+.footer-copyright {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-white-60);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-col {
+    margin-bottom: var(--space-md);
+  }
+}

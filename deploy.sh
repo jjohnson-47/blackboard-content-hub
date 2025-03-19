@@ -70,9 +70,19 @@ fi
 # Remove all files except .git
 find . -maxdepth 1 -not -path "./.git" -not -path "." -exec rm -rf {} \;
 
+# Check if dist directory exists and has contents
+if [ ! -d "dist" ] || [ -z "$(ls -A dist)" ]; then
+  echo "❌ Error: dist directory is empty or does not exist."
+  exit 1
+fi
+
 # Copy dist contents to root
 cp -r dist/* .
 rm -rf dist
+
+# List the files to verify they were copied
+echo "📋 Verifying copied files:"
+ls -la
 
 # Add a .nojekyll file to bypass Jekyll processing on GitHub Pages
 touch .nojekyll

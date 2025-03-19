@@ -1,21 +1,30 @@
 <div align="center">
   <img src="assets/images/blackboard-content-hub-logo.svg" alt="Blackboard Content Hub" width="800">
   <p><em>Interactive educational components with seamless documentation for Blackboard LMS</em></p>
+  <hr style="width: 50%; border-color: #FF007F; margin: 20px auto;">
 </div>
 
-# Blackboard Content Hub
+<h1 align="center" style="color: #FF007F;">Blackboard Content Hub</h1>
 
-A comprehensive platform for creating, hosting, and documenting interactive educational content as iframes for embedding in Blackboard LMS.
+<p align="center">A comprehensive platform for creating, hosting, and documenting interactive educational content as iframes for embedding in Blackboard LMS.</p>
 
-## 🎯 Overview
+<div align="center">
+  <a href="https://jjohnson-47.github.io/blackboard-content-hub/" style="display: inline-block; background-color: #2c3899; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 10px;">View Documentation</a>
+  <a href="https://jjohnson-47.github.io/blackboard-content-hub/component-browser/" style="display: inline-block; background-color: #FF007F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 10px;">Browse Components</a>
+</div>
 
-The Blackboard Content Hub provides a structured framework for developing and hosting interactive educational components that can be embedded in Blackboard courses. The project is designed to:
+## ✨ Overview
+
+The Blackboard Content Hub provides a structured framework for developing and hosting interactive educational components that can be embedded in Blackboard courses. Built with the "Nascent Digital Dawn" design theme, it combines deep indigo backgrounds with electric magenta accents for a modern, engaging experience.
+
+The project is designed to:
 
 - 🏢 Organize content by category (general, research, courses)
 - 🔄 Support both shared and course-specific components
 - 📚 Provide comprehensive documentation
 - 🚀 Optimize for GitHub Pages hosting
 - 🔌 Facilitate easy embedding in Blackboard
+- 🎨 Deliver a consistent, visually appealing experience
 
 ## 🗂️ Project Structure
 
@@ -27,6 +36,7 @@ blackboard-content-hub/
 │   └── templates/           # Templates for tracking issues
 ├── assets/                  # Static assets
 │   ├── images/              # Images for components
+│   │   └── banner/          # Banner animation images
 │   ├── fonts/               # Custom fonts
 │   ├── css/                 # CSS for animations
 │   ├── js/                  # JavaScript for animations
@@ -58,15 +68,34 @@ blackboard-content-hub/
 
 Comprehensive documentation is available at: [https://jjohnson-47.github.io/blackboard-content-hub/](https://jjohnson-47.github.io/blackboard-content-hub/)
 
-The documentation includes:
+The documentation features our "Nascent Digital Dawn" design theme with animated ember particles and wireframe surfaces, creating an immersive, digital landscape experience.
 
-| Section | Description |
-|---------|-------------|
-| **[User Guide](https://jjohnson-47.github.io/blackboard-content-hub/user-guide/)** | Instructions for creating and embedding components |
-| **[Developer Guide](https://jjohnson-47.github.io/blackboard-content-hub/developer-guide/)** | Technical documentation for developers |
-| **[Component Browser](https://jjohnson-47.github.io/blackboard-content-hub/component-browser/)** | Interactive browser for all available components |
-| **[Courses](https://jjohnson-47.github.io/blackboard-content-hub/courses/)** | Course-specific components |
-| **[Troubleshooting](https://jjohnson-47.github.io/blackboard-content-hub/troubleshooting/)** | Solutions to common issues |
+<table>
+  <tr>
+    <th style="background-color: #2c3899; color: white;">Section</th>
+    <th style="background-color: #2c3899; color: white;">Description</th>
+  </tr>
+  <tr>
+    <td><a href="https://jjohnson-47.github.io/blackboard-content-hub/user-guide/"><strong>User Guide</strong></a></td>
+    <td>Instructions for creating and embedding components</td>
+  </tr>
+  <tr>
+    <td><a href="https://jjohnson-47.github.io/blackboard-content-hub/developer-guide/"><strong>Developer Guide</strong></a></td>
+    <td>Technical documentation for developers</td>
+  </tr>
+  <tr>
+    <td><a href="https://jjohnson-47.github.io/blackboard-content-hub/component-browser/"><strong>Component Browser</strong></a></td>
+    <td>Interactive browser for all available components</td>
+  </tr>
+  <tr>
+    <td><a href="https://jjohnson-47.github.io/blackboard-content-hub/courses/"><strong>Courses</strong></a></td>
+    <td>Course-specific components</td>
+  </tr>
+  <tr>
+    <td><a href="https://jjohnson-47.github.io/blackboard-content-hub/troubleshooting/"><strong>Troubleshooting</strong></a></td>
+    <td>Solutions to common issues</td>
+  </tr>
+</table>
 
 ## 🚀 Getting Started
 
@@ -164,6 +193,18 @@ This approach provides:
 - Optimized serving of only necessary files
 - Full control over the build process
 - Version integrity with main branch as the single source of truth
+
+## 🎨 Design System
+
+The Blackboard Content Hub uses the "Nascent Digital Dawn" design system, featuring:
+
+- **Deep indigo backgrounds** (#08131b) that blend with the animated banner
+- **Electric magenta accents** (#FF007F) for interactive elements and highlights
+- **Animated ember particles** that create a dynamic, engaging experience
+- **Wireframe surface imagery** for a modern, digital aesthetic
+- **Clean typography** with Rajdhani for headings and Open Sans for body text
+
+For more details, see the [Nascent Digital Dawn Style Guide](https://jjohnson-47.github.io/blackboard-content-hub/developer-guide/nascent-digital-dawn-style-guide/).
 
 ## 🤝 Contributing
 

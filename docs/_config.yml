@@ -5,7 +5,8 @@ baseurl: "/blackboard-content-hub" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol, e.g. http://example.com
 
 # Theme settings
-theme: minima
+# Removing the theme to use our custom styles
+# theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -61,7 +62,7 @@ defaults:
   - scope:
       path: ""
     values:
-      layout: "page"
+      layout: "default"
   # Main purpose sections
   - scope:
       path: "iframe-hosting"

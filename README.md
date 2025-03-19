@@ -7,16 +7,6 @@
 
 A comprehensive platform for creating, hosting, and documenting interactive educational content as iframes for embedding in Blackboard LMS.
 
-## ✨ Nascent Digital Dawn
-
-The platform features our new "Nascent Digital Dawn" design theme, characterized by:
-
-- Deep indigo backgrounds with electric magenta accents
-- Animated ember particles creating a dynamic, engaging experience
-- Modern typography with Rajdhani and Open Sans fonts
-- Responsive design that works beautifully on all devices
-- Immersive iframe showcase with intuitive navigation
-
 ## 🎯 Overview
 
 The Blackboard Content Hub provides a structured framework for developing and hosting interactive educational components that can be embedded in Blackboard courses. The project is designed to:
@@ -37,7 +27,6 @@ blackboard-content-hub/
 │   └── templates/           # Templates for tracking issues
 ├── assets/                  # Static assets
 │   ├── images/              # Images for components
-│   │   └── banner/          # Banner animation images
 │   ├── fonts/               # Custom fonts
 │   ├── css/                 # CSS for animations
 │   ├── js/                  # JavaScript for animations
@@ -62,11 +51,6 @@ blackboard-content-hub/
 │   ├── libraries/           # Shared libraries
 │   ├── scripts/             # Shared JavaScript
 │   └── styles/              # Shared CSS
-│       ├── theme-variables.css    # Theme variables
-│       ├── theme-base.css         # Base styles
-│       ├── theme-components.css   # Component styles
-│       ├── theme-animations.css   # Animation styles
-│       └── theme-responsive.css   # Responsive styles
 └── tools/                   # Development tools
 ```
 

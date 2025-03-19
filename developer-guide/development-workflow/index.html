@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Development Workflow | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Development Workflow" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/developer-guide/development-workflow/" />
+<meta property="og:url" content="/blackboard-content-hub/developer-guide/development-workflow/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Development Workflow" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Development Workflow","url":"/blackboard-content-hub/developer-guide/development-workflow/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Development Workflow</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="development-workflow">Development Workflow</h1>
+
+<p>This guide explains how to use the development environment to create and test iframe components before moving them to production.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The Blackboard Content Hub includes a dedicated development environment that allows you to:</p>
+
+<ol>
+  <li>Create and test components in a sandbox environment</li>
+  <li>Preview components in real-time with live reloading</li>
+  <li>Test components at different screen sizes</li>
+  <li>Easily promote development components to production</li>
+</ol>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>Node.js (v18 or higher)</li>
+  <li>npm (v8 or higher)</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+
+<p>If you haven’t already installed the project dependencies, run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>This will install all required dependencies, including <code class="language-plaintext highlighter-rouge">live-server</code> for development.</p>
+
+<h2 id="development-environment">Development Environment</h2>
+
+<h3 id="starting-the-development-server">Starting the Development Server</h3>
+
+<p>To start the development server, run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<p>This will start a live-server instance on port 8080. The server will automatically reload when you make changes to your files.</p>
+
+<h3 id="accessing-the-development-environment">Accessing the Development Environment</h3>
+
+<ul>
+  <li><strong>Development Studio</strong>: <a href="http://localhost:8080/dev/preview/">http://localhost:8080/dev/preview/</a></li>
+  <li><strong>Individual Components</strong>: <a href="http://localhost:8080/dev/components/your-component.html">http://localhost:8080/dev/components/your-component.html</a></li>
+</ul>
+
+<h2 id="using-the-development-studio">Using the Development Studio</h2>
+
+<p>The Development Studio provides a professional interface for creating and editing iframe components. It includes:</p>
+
+<h3 id="component-management">Component Management</h3>
+
+<ul>
+  <li><strong>Component List</strong>: The sidebar shows all available development components</li>
+  <li><strong>Create New Component</strong>: Click the “+” button to create a new component</li>
+  <li><strong>Refresh List</strong>: Update the component list to see newly added components</li>
+</ul>
+
+<h3 id="code-editor">Code Editor</h3>
+
+<p>The editor supports HTML, CSS, and JavaScript editing with syntax highlighting and code formatting:</p>
+
+<ul>
+  <li><strong>HTML Tab</strong>: Edit the HTML structure of your component</li>
+  <li><strong>CSS Tab</strong>: Edit the component’s styles</li>
+  <li><strong>JavaScript Tab</strong>: Edit the component’s interactive behavior</li>
+  <li><strong>Format Button</strong>: Automatically format your code for readability</li>
+</ul>
+
+<h3 id="preview-panel">Preview Panel</h3>
+
+<p>The preview panel shows a live rendering of your component:</p>
+
+<ul>
+  <li><strong>Render Button</strong>: Update the preview with your latest changes</li>
+  <li><strong>Device Testing</strong>: Test your component at different screen sizes (Desktop, Tablet, Mobile)</li>
+  <li><strong>Open in New Window</strong>: View your component in a separate browser window</li>
+</ul>
+
+<h3 id="component-actions">Component Actions</h3>
+
+<ul>
+  <li><strong>Save Button</strong>: Save your changes to the component</li>
+  <li><strong>Promote to Production</strong>: Move a development component to production when it’s ready</li>
+</ul>
+
+<h2 id="creating-a-new-component">Creating a New Component</h2>
+
+<h3 id="using-the-development-studio-1">Using the Development Studio</h3>
+
+<ol>
+  <li>Click the “+” button in the sidebar</li>
+  <li>Enter a component name (lowercase, hyphens for spaces)</li>
+  <li>Enter a display title for the component</li>
+  <li>Select a template (Default, Blank, GeoGebra, Chart)</li>
+  <li>Click “Create”</li>
+</ol>
+
+<p>The new component will be created with a robust default structure that includes:</p>
+
+<ul>
+  <li>Responsive layout with header and main content area</li>
+  <li>Information panel with tabs</li>
+  <li>Mobile-friendly design</li>
+  <li>Common libraries (GeoGebra, MathJax, Chart.js)</li>
+</ul>
+
+<h3 id="component-structure">Component Structure</h3>
+
+<p>Each component consists of three main parts:</p>
+
+<ol>
+  <li><strong>HTML</strong>: The structure of your component</li>
+  <li><strong>CSS</strong>: The styles for your component</li>
+  <li><strong>JavaScript</strong>: The interactive behavior of your component</li>
+</ol>
+
+<p>The Development Studio separates these parts for easier editing, but combines them when rendering the preview.</p>
+
+<h2 id="default-template">Default Template</h2>
+
+<p>The default template provides a solid foundation for creating new components. It includes:</p>
+
+<ul>
+  <li>Responsive layout that works on all devices</li>
+  <li>Header with title and controls</li>
+  <li>Main content area for interactive elements</li>
+  <li>Information panel with tabs</li>
+  <li>GeoGebra integration (optional)</li>
+  <li>Chart.js integration (optional)</li>
+  <li>MathJax for mathematical notation</li>
+</ul>
+
+<p>You can customize this template to fit your specific needs or start from scratch with the blank template.</p>
+
+<h2 id="testing-components">Testing Components</h2>
+
+<h3 id="device-testing">Device Testing</h3>
+
+<p>The Development Studio allows you to test your components at different screen sizes:</p>
+
+<ul>
+  <li><strong>Desktop</strong>: Full-width view</li>
+  <li><strong>Tablet</strong>: 768px width</li>
+  <li><strong>Mobile</strong>: 375px width</li>
+</ul>
+
+<p>This helps ensure your components work well on all devices.</p>
+
+<h3 id="live-preview">Live Preview</h3>
+
+<p>The preview updates automatically when you click the “Render” button, showing you exactly how your component will look when embedded.</p>
+
+<h2 id="promoting-components-to-production">Promoting Components to Production</h2>
+
+<p>When your component is ready for production:</p>
+
+<ol>
+  <li>Click the “Promote to Production” button</li>
+  <li>Select the component type (Shared or Course-Specific)</li>
+  <li>For Course-Specific components, select the course</li>
+  <li>For Shared components, select the category</li>
+  <li>Enter a description and tags</li>
+  <li>Click “Promote”</li>
+</ol>
+
+<p>This will move your component to the appropriate production directory and add it to the component registry.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="component-organization">Component Organization</h3>
+
+<ul>
+  <li>Keep HTML structure clean and semantic</li>
+  <li>Use CSS for styling, not inline styles</li>
+  <li>Separate logic in JavaScript for maintainability</li>
+</ul>
+
+<h3 id="performance">Performance</h3>
+
+<ul>
+  <li>Minimize external dependencies</li>
+  <li>Optimize images and assets</li>
+  <li>Use efficient JavaScript code</li>
+</ul>
+
+<h3 id="accessibility">Accessibility</h3>
+
+<ul>
+  <li>Include proper ARIA attributes</li>
+  <li>Ensure keyboard navigation works</li>
+  <li>Provide text alternatives for visual content</li>
+</ul>
+
+<h3 id="responsive-design">Responsive Design</h3>
+
+<ul>
+  <li>Test on multiple device sizes</li>
+  <li>Use relative units (%, em, rem) instead of fixed pixels</li>
+  <li>Implement appropriate breakpoints for different screen sizes</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="component-not-appearing-in-preview">Component Not Appearing in Preview</h3>
+
+<p>If your component doesn’t appear in the preview:</p>
+
+<ol>
+  <li>Check for JavaScript errors in the browser console</li>
+  <li>Verify your HTML structure is valid</li>
+  <li>Try clicking the “Refresh” button</li>
+</ol>
+
+<h3 id="live-reload-not-working">Live Reload Not Working</h3>
+
+<p>If changes aren’t automatically reflected:</p>
+
+<ol>
+  <li>Ensure the development server is running</li>
+  <li>Try manually refreshing the page</li>
+  <li>Check for file permission issues</li>
+</ol>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<ul>
+  <li><a href="/developer-guide/iframe-integration/">Iframe Integration Guide</a></li>
+  <li><a href="/component-browser/">Component Browser</a></li>
+  <li><a href="/developer-guide/geogebra-api/integration-guide/">GeoGebra API Integration</a></li>
+</ul>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/developer-guide/" class="nav-back">← Back to Developer Guide</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

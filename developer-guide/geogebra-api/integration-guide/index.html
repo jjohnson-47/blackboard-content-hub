@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GeoGebra Integration Guide | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GeoGebra Integration Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/developer-guide/geogebra-api/integration-guide/" />
+<meta property="og:url" content="/blackboard-content-hub/developer-guide/geogebra-api/integration-guide/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GeoGebra Integration Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"GeoGebra Integration Guide","url":"/blackboard-content-hub/developer-guide/geogebra-api/integration-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">GeoGebra Integration Guide</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="geogebra-integration-guide">GeoGebra Integration Guide</h1>
+
+<p>This guide provides comprehensive information on integrating GeoGebra into web applications and developing custom tools, with specific guidance for the Blackboard Content Hub.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#reference-documentation">Reference Documentation</a></li>
+  <li><a href="#implementation-workflow">Implementation Workflow</a></li>
+  <li><a href="#best-practices">Best Practices</a></li>
+  <li><a href="#common-integration-scenarios">Common Integration Scenarios</a></li>
+  <li><a href="#blackboard-content-hub-integration">Blackboard Content Hub Integration</a></li>
+  <li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+
+<h2 id="reference-documentation">Reference Documentation</h2>
+
+<p>When implementing GeoGebra functionality, refer to these structured reference documents:</p>
+
+<ul>
+  <li><strong><a href="./overview.md">GeoGebra API - Overview</a></strong>: High-level overview and navigation</li>
+  <li><strong><a href="./core-methods.md">GeoGebra Core API Methods</a></strong>: Creating and manipulating objects</li>
+  <li><strong><a href="./construction-and-ui.md">GeoGebra Construction and UI Controls</a></strong>: Interface and construction management</li>
+  <li><strong><a href="./event-handling.md">GeoGebra Event Handling</a></strong>: Event listeners and client events</li>
+  <li><strong><a href="./file-format-data-exchange.md">GeoGebra File Format and Data Exchange</a></strong>: XML and file operations</li>
+  <li><strong><a href="./initialization-and-access.md">GeoGebra Initialization and API Access</a></strong>: Setup and configuration</li>
+  <li><strong><a href="./file-formats-scripting.md">GeoGebra File Formats and Scripting</a></strong>: File specifications and scripting</li>
+</ul>
+
+<h2 id="implementation-workflow">Implementation Workflow</h2>
+
+<p>Follow this systematic approach when implementing GeoGebra functionality:</p>
+
+<ol>
+  <li><strong>Analysis</strong>: Identify the required functionality (visualization, interaction, calculation)</li>
+  <li><strong>Setup</strong>: Initialize the GeoGebra applet with appropriate parameters</li>
+  <li><strong>Implementation</strong>: Develop the required features using the API</li>
+  <li><strong>Testing</strong>: Validate that the implementation meets requirements</li>
+  <li><strong>Optimization</strong>: Improve performance and user experience</li>
+</ol>
+
+<h3 id="example-implementation-process">Example Implementation Process</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. Setup parameters</span>
+<span class="kd">const</span> <span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ggb1</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">width</span><span class="dl">"</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">height</span><span class="dl">"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">showMenuBar</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">showAlgebraInput</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">showToolBar</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">customToolBar</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0 1 2 3 4 5 6 7 8 9 10 11 || 12 13 14 15</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">appletOnLoad</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 2. Store API reference</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">ggbApplet</span> <span class="o">=</span> <span class="nx">api</span><span class="p">;</span>
+    
+    <span class="c1">// 3. Initialize construction</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">setCoordSystem</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">A = (3, 2)</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">B = (5, 7)</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">f(x) = sin(x)</span><span class="dl">"</span><span class="p">);</span>
+    
+    <span class="c1">// 4. Set styles</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">setPointStyle</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// Filled circle</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">setPointStyle</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">setColor</span><span class="p">(</span><span class="dl">"</span><span class="s2">f</span><span class="dl">"</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    
+    <span class="c1">// 5. Add interactivity</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">registerObjectUpdateListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="nx">updateConstruction</span><span class="p">);</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nf">registerObjectUpdateListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="nx">updateConstruction</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 6. Initialize the applet</span>
+<span class="kd">const</span> <span class="nx">ggb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GGBApplet</span><span class="p">(</span><span class="nx">parameters</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">ggb</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="dl">'</span><span class="s1">ggb-element</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 7. Define update handler</span>
+<span class="kd">function</span> <span class="nf">updateConstruction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">xA</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getXcoord</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">yA</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getYcoord</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">xB</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getXcoord</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">yB</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getYcoord</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">);</span>
+  
+  <span class="c1">// Update dependent construction</span>
+  <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">C = Midpoint(A, B)</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="performance-optimization">Performance Optimization</h3>
+
+<ol>
+  <li><strong>Batch Operations</strong>: Disable repainting during multiple operations
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setRepaintingActive</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="c1">// Perform multiple operations...</span>
+<span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setRepaintingActive</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Event Listener Management</strong>: Only register necessary listeners and unregister when no longer needed
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">registerUpdateListener</span><span class="p">(</span><span class="nx">updateHandler</span><span class="p">);</span>
+<span class="c1">// Later when not needed:</span>
+<span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">unregisterUpdateListener</span><span class="p">(</span><span class="nx">updateHandler</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Error Handling</strong>: Implement proper error handling for commands
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setErrorDialogsActive</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">A = (1,2)</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Command failed</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error executing command:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="security-considerations">Security Considerations</h3>
+
+<ol>
+  <li><strong>Input Validation</strong>: Always validate user input before passing to evalCommand</li>
+  <li><strong>File Loading</strong>: Verify the source of .ggb or .ggt files before loading</li>
+  <li><strong>JavaScript Execution</strong>: Be cautious when loading files with embedded JavaScript</li>
+</ol>
+
+<h2 id="common-integration-scenarios">Common Integration Scenarios</h2>
+
+<h3 id="embedding-in-a-learning-management-system-lms">Embedding in a Learning Management System (LMS)</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"ggb-container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">ggbApp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GGBApplet</span><span class="p">({</span>
+    <span class="dl">"</span><span class="s2">material_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">abc123</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">appName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">graphing</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">width</span><span class="dl">"</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">height</span><span class="dl">"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">showResetIcon</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">enableLabelDrags</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+  
+  <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">ggbApp</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="dl">'</span><span class="s1">ggb-container</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="creating-an-interactive-assessment">Creating an Interactive Assessment</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Create a GeoGebra-based assessment with automatic checking</span>
+<span class="kd">function</span> <span class="nf">setupAssessment</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">A = (0,0)</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">B = (5,0)</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">C = Point({(x,y) | x^2 + y^2 = 25})</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setPointStyle</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setColor</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  
+  <span class="c1">// Question text</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">question</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> 
+    <span class="dl">"</span><span class="s2">Position point C so that triangle ABC is equilateral.</span><span class="dl">"</span><span class="p">;</span>
+  
+  <span class="c1">// Check button</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">check-btn</span><span class="dl">"</span><span class="p">).</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">xC</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getXcoord</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">yC</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getYcoord</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">);</span>
+    
+    <span class="c1">// Check if point C forms an equilateral triangle with A and B</span>
+    <span class="kd">const</span> <span class="nx">distAB</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">distAC</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="nx">xC</span><span class="o">*</span><span class="nx">xC</span> <span class="o">+</span> <span class="nx">yC</span><span class="o">*</span><span class="nx">yC</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">distBC</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">((</span><span class="nx">xC</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nx">xC</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="nx">yC</span><span class="o">*</span><span class="nx">yC</span><span class="p">);</span>
+    
+    <span class="kd">const</span> <span class="nx">isEquilateral</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="nx">distAB</span> <span class="o">-</span> <span class="nx">distAC</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="o">&amp;&amp;</span> 
+                          <span class="nb">Math</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="nx">distAB</span> <span class="o">-</span> <span class="nx">distBC</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="o">&amp;&amp;</span> 
+                          <span class="nb">Math</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="nx">distAC</span> <span class="o">-</span> <span class="nx">distBC</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">;</span>
+    
+    <span class="k">if </span><span class="p">(</span><span class="nx">isEquilateral</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">feedback</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Correct!</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">feedback</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Not quite. Try again!</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="blackboard-content-hub-integration">Blackboard Content Hub Integration</h2>
+
+<p>When integrating GeoGebra components into the Blackboard Content Hub, follow these specific guidelines:</p>
+
+<h3 id="directory-structure">Directory Structure</h3>
+
+<p>Place your GeoGebra components in the appropriate directory:</p>
+
+<ul>
+  <li><strong>Shared components</strong>: <code class="language-plaintext highlighter-rouge">shared/components/your-component.html</code></li>
+  <li><strong>Course-specific components</strong>: <code class="language-plaintext highlighter-rouge">courses/[course-id]/your-component.html</code></li>
+</ul>
+
+<h3 id="component-structure">Component Structure</h3>
+
+<p>Structure your GeoGebra component HTML file following this pattern:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Your Component Title<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://www.geogebra.org/apps/deployggb.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="c">/* Component-specific styles */</span>
+    <span class="nt">body</span> <span class="p">{</span>
+      <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Segoe UI'</span><span class="p">,</span> <span class="n">Tahoma</span><span class="p">,</span> <span class="n">Geneva</span><span class="p">,</span> <span class="n">Verdana</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f7f9fc</span><span class="p">;</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+      <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nc">.container</span> <span class="p">{</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+      <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+      <span class="nl">max-height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c">/* Add your component-specific styles here */</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Component header --&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+      <span class="nt">&lt;h1&gt;</span>Your Component Title<span class="nt">&lt;/h1&gt;</span>
+      <span class="c">&lt;!-- Controls, if needed --&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+    
+    <span class="c">&lt;!-- Main content area --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main-content"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- GeoGebra applet container --&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"ggb-element"</span><span class="nt">&gt;&lt;/div&gt;</span>
+      
+      <span class="c">&lt;!-- Additional UI elements --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;script&gt;</span>
+    <span class="c1">// GeoGebra initialization</span>
+    <span class="kd">const</span> <span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="c1">// Your GeoGebra parameters</span>
+    <span class="p">};</span>
+    
+    <span class="c1">// Initialize the applet</span>
+    <span class="kd">const</span> <span class="nx">ggb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GGBApplet</span><span class="p">(</span><span class="nx">parameters</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">ggb</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="dl">'</span><span class="s1">ggb-element</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">resize</span><span class="dl">'</span><span class="p">,</span> <span class="nx">resizeApplet</span><span class="p">);</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// Responsive sizing</span>
+    <span class="kd">const</span> <span class="nx">resizeApplet</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">ggb-element</span><span class="dl">'</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ggbApplet</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setWidth</span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">);</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setHeight</span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+    
+    <span class="c1">// Your component-specific code</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>Create documentation for your component in <code class="language-plaintext highlighter-rouge">docs/examples/your-component.md</code> with:</p>
+
+<ol>
+  <li>Overview of the component</li>
+  <li>Mathematical concepts demonstrated</li>
+  <li>Usage instructions with iframe embedding code</li>
+  <li>Implementation details</li>
+  <li>Educational applications</li>
+</ol>
+
+<h3 id="component-registration">Component Registration</h3>
+
+<p>Add your component to <code class="language-plaintext highlighter-rouge">docs/component-data.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-component-id"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Component Title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shared"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of your component"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/blackboard-content-hub/shared/components/your-component.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"documentationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/blackboard-content-hub/examples/your-component.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"relevant"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w"> </span><span class="s2">"here"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="example-flatland-message-component">Example: Flatland Message Component</h3>
+
+<p>The <a href="../../examples/flatland-message.html">Flatland Message component</a> demonstrates effective GeoGebra integration with:</p>
+
+<ol>
+  <li><strong>Interactive Problem Solving</strong>: Users interact with a mathematical problem by dragging a point along a parabola.</li>
+  <li><strong>Real-time Feedback</strong>: The component provides immediate feedback on the user’s progress.</li>
+  <li><strong>Tabbed Interface</strong>: Content is organized into Problem, Solution, and Guide tabs.</li>
+  <li><strong>Responsive Design</strong>: The layout adapts to different screen sizes.</li>
+  <li><strong>Visual Enhancements</strong>: Custom styling of GeoGebra objects improves the visual experience.</li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
+
+<ol>
+  <li><strong>Applet not loading</strong>
+    <ul>
+      <li>Check browser console for errors</li>
+      <li>Verify that deployggb.js is properly loaded</li>
+      <li>Ensure the container element exists and is correctly referenced</li>
+    </ul>
+  </li>
+  <li><strong>Commands not executing</strong>
+    <ul>
+      <li>Verify the command syntax using the GeoGebra documentation</li>
+      <li>Check if objects referenced in the command exist</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">evalCommandGetLabels</code> to get the created object labels for debugging</li>
+    </ul>
+  </li>
+  <li><strong>Performance issues</strong>
+    <ul>
+      <li>Limit the number of objects in the construction</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">setRepaintingActive(false)</code> during batch operations</li>
+      <li>Optimize event listeners to avoid unnecessary recalculations</li>
+    </ul>
+  </li>
+  <li><strong>Compatibility problems</strong>
+    <ul>
+      <li>Test with multiple browsers</li>
+      <li>Consider using the HTML5 version instead of Java applet</li>
+      <li>Check for version-specific API differences</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="debugging-techniques">Debugging Techniques</h3>
+
+<ol>
+  <li><strong>Command Inspection</strong>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">xmlString</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getXML</span><span class="p">(</span><span class="dl">"</span><span class="s2">myObject</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">xmlString</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>State Tracking</strong>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">registerUpdateListener</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">objName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Object updated: </span><span class="p">${</span><span class="nx">objName</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Value: </span><span class="p">${</span><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">getValue</span><span class="p">(</span><span class="nx">objName</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Error Capturing</strong>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">setErrorDialogsActive</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">ggbApplet</span><span class="p">.</span><span class="nf">evalCommand</span><span class="p">(</span><span class="dl">"</span><span class="s2">InvalidCommand[]</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Command execution success: </span><span class="p">${</span><span class="nx">success</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Remember to refer to the specific reference documentation sections for detailed information on method signatures and parameters.</p>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/developer-guide/" class="nav-back">← Back to Developer Guide</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

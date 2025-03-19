@@ -1,0 +1,4 @@
+Deployed from: main branch
+Commit: afaa22a
+Date: Wed Mar 19 10:41:03 AKDT 2025
+Message: Add simplified deployment script

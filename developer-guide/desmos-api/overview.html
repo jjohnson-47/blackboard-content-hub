@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Desmos API Overview | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Desmos API Overview" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/developer-guide/desmos-api/overview.html" />
+<meta property="og:url" content="/blackboard-content-hub/developer-guide/desmos-api/overview.html" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Desmos API Overview" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Desmos API Overview","url":"/blackboard-content-hub/developer-guide/desmos-api/overview.html"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <h1 id="desmos-api-overview">Desmos API Overview</h1>
+
+<p>This section provides comprehensive reference documentation for the Desmos APIs:</p>
+
+<ul>
+  <li><a href="./calculator-api.md">Desmos Calculator API v1.10</a> - API for the standard Desmos graphing calculator</li>
+  <li><a href="./geometry-api.md">Desmos Geometry API v1.10</a> - API for the Desmos geometry tool</li>
+  <li><a href="./3d-graphing-api.md">Desmos 3D Graphing API v1.11</a> - API for the Desmos 3D graphing calculator</li>
+</ul>
+
+<p>These reference materials are primarily for developer use when implementing interactive Desmos components within the Blackboard Content Hub. The documentation covers initialization, core methods, event handling, and other essential aspects of working with the Desmos APIs.</p>
+
+<h2 id="when-to-use-desmos">When to Use Desmos</h2>
+
+<p>Desmos is particularly useful for:</p>
+
+<ul>
+  <li>Creating interactive mathematical visualizations</li>
+  <li>Building explorable explanations for mathematical concepts</li>
+  <li>Developing dynamic problem-solving tools</li>
+  <li>Illustrating geometric principles and 3D mathematical concepts</li>
+</ul>
+
+<h2 id="integration-with-content-hub">Integration with Content Hub</h2>
+
+<p>When implementing Desmos components:</p>
+
+<ol>
+  <li>Follow the <a href="../iframe-integration.md">iframe integration guidelines</a> for embedding Desmos calculators</li>
+  <li>Use the appropriate API version based on your specific needs</li>
+  <li>Implement proper event handling for interactive components</li>
+  <li>Consider performance implications when embedding multiple calculators</li>
+</ol>
+
+<p>For implementation examples and best practices, refer to the specific API documentation pages.</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

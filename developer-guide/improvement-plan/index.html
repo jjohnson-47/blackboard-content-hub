@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Blackboard Content Hub Improvement Plan | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Blackboard Content Hub Improvement Plan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/developer-guide/improvement-plan/" />
+<meta property="og:url" content="/blackboard-content-hub/developer-guide/improvement-plan/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Blackboard Content Hub Improvement Plan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Blackboard Content Hub Improvement Plan","url":"/blackboard-content-hub/developer-guide/improvement-plan/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Blackboard Content Hub Improvement Plan</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="blackboard-content-hub-improvement-plan">Blackboard Content Hub Improvement Plan</h1>
+
+<p>This document outlines a comprehensive plan to improve the Blackboard Content Hub, focusing on its three main purposes:</p>
+
+<ol>
+  <li>Hosting iframes on GitHub Pages</li>
+  <li>Documentation for each iframe</li>
+  <li>Local development environment with live editor</li>
+</ol>
+
+<h2 id="current-state-analysis">Current State Analysis</h2>
+
+<p>The Blackboard Content Hub currently serves three distinct purposes:</p>
+
+<ol>
+  <li>
+    <p><strong>Iframe Hosting on GitHub Pages</strong>: Components are stored in <code class="language-plaintext highlighter-rouge">shared/components/</code> and <code class="language-plaintext highlighter-rouge">courses/[course-id]/</code> directories and hosted via GitHub Pages.</p>
+  </li>
+  <li>
+    <p><strong>Documentation for Each Iframe</strong>: Documentation is stored in <code class="language-plaintext highlighter-rouge">docs/examples/</code> and displayed in the component browser.</p>
+  </li>
+  <li>
+    <p><strong>Local Development Environment</strong>: A development studio in the <code class="language-plaintext highlighter-rouge">dev/</code> directory provides a live editor for creating and testing components.</p>
+  </li>
+</ol>
+
+<p>While the foundation is solid, there are opportunities to improve clarity, navigation, and user experience across all three areas.</p>
+
+<h2 id="proposed-improvements">Proposed Improvements</h2>
+
+<h3 id="1-documentation-restructuring">1. Documentation Restructuring</h3>
+
+<h4 id="purpose-focused-navigation">Purpose-Focused Navigation</h4>
+<ul>
+  <li>Create clear entry points for each of the three main purposes</li>
+  <li>Implement a breadcrumb navigation system to help users maintain context</li>
+  <li>Add a persistent sidebar with context-aware navigation</li>
+</ul>
+
+<h4 id="documentation-indexing">Documentation Indexing</h4>
+<ul>
+  <li>Create comprehensive indexes for components, APIs, and examples</li>
+  <li>Implement a search functionality across all documentation</li>
+  <li>Add tags and filters to help users find relevant content quickly</li>
+</ul>
+
+<h4 id="design-philosophy-documentation">Design Philosophy Documentation</h4>
+<ul>
+  <li>Separate general design principles from specific implementation details</li>
+  <li>Include visual examples that demonstrate principles without being tool-specific</li>
+  <li>Create a checklist for developers to ensure adherence to design principles</li>
+</ul>
+
+<h3 id="2-live-editor-enhancement">2. Live Editor Enhancement</h3>
+
+<h4 id="ui-refinement">UI Refinement</h4>
+<ul>
+  <li>Implement a cleaner, more minimal interface focused on the editing experience</li>
+  <li>Create a true split-screen view with adjustable divider</li>
+  <li>Add distraction-free mode for focused editing sessions</li>
+</ul>
+
+<h4 id="editor-enhancements">Editor Enhancements</h4>
+<ul>
+  <li>Improve syntax highlighting for HTML, CSS, and JavaScript</li>
+  <li>Add code linting and formatting capabilities</li>
+  <li>Implement code snippets and templates for common patterns</li>
+</ul>
+
+<h4 id="preview-improvements">Preview Improvements</h4>
+<ul>
+  <li>Add device-specific previews (desktop, tablet, mobile)</li>
+  <li>Implement real-time preview updates</li>
+  <li>Add console output and network monitoring</li>
+</ul>
+
+<h4 id="version-management">Version Management</h4>
+<ul>
+  <li>Implement local version history with diff viewing</li>
+  <li>Add ability to name/tag versions</li>
+  <li>Create a simple export workflow to staging area</li>
+</ul>
+
+<h4 id="theme-support">Theme Support</h4>
+<ul>
+  <li>Add proper light/dark mode toggle</li>
+  <li>Ensure consistent styling across all editor components</li>
+  <li>Optimize for long editing sessions with eye-friendly colors and contrast</li>
+</ul>
+
+<h3 id="3-iframe-hosting-and-structure">3. Iframe Hosting and Structure</h3>
+
+<h4 id="component-organization">Component Organization</h4>
+<ul>
+  <li>Standardize component directory structure and naming conventions</li>
+  <li>Implement clear separation between shared and course-specific components</li>
+  <li>Create a more robust component registry with enhanced metadata</li>
+</ul>
+
+<h4 id="deployment-pipeline">Deployment Pipeline</h4>
+<ul>
+  <li>Simplify the staging and production deployment process</li>
+  <li>Add basic validation checks before deployment</li>
+  <li>Implement automatic documentation generation from component metadata</li>
+</ul>
+
+<h4 id="embedding-experience">Embedding Experience</h4>
+<ul>
+  <li>Create simplified embedding instructions for each component</li>
+  <li>Implement copy-to-clipboard functionality for embed codes</li>
+  <li>Add responsive embedding options with recommended settings</li>
+</ul>
+
+<h3 id="4-cross-cutting-concerns">4. Cross-Cutting Concerns</h3>
+
+<h4 id="performance-optimization">Performance Optimization</h4>
+<ul>
+  <li>Implement lazy loading for components in documentation</li>
+  <li>Optimize asset loading and caching</li>
+  <li>Add performance monitoring and reporting</li>
+</ul>
+
+<h4 id="accessibility-improvements">Accessibility Improvements</h4>
+<ul>
+  <li>Add accessibility checking in the development environment</li>
+  <li>Ensure all documentation and components meet WCAG standards</li>
+  <li>Provide accessibility guidelines and examples</li>
+</ul>
+
+<h4 id="responsive-design">Responsive Design</h4>
+<ul>
+  <li>Ensure all components and documentation are fully responsive</li>
+  <li>Implement better testing tools for responsive design</li>
+  <li>Add responsive design guidelines and best practices</li>
+</ul>
+
+<h2 id="implementation-phases">Implementation Phases</h2>
+
+<h3 id="phase-1-documentation-restructuring-foundation">Phase 1: Documentation Restructuring (Foundation)</h3>
+<ul>
+  <li>Reorganize documentation structure around the three main purposes</li>
+  <li>Implement improved navigation and indexing</li>
+  <li>Create clear entry points for each purpose</li>
+</ul>
+
+<h3 id="phase-2-live-editor-enhancement">Phase 2: Live Editor Enhancement</h3>
+<ul>
+  <li>Implement UI refinements for cleaner, more focused editing</li>
+  <li>Add improved syntax highlighting and code formatting</li>
+  <li>Implement basic version history and draft management</li>
+</ul>
+
+<h3 id="phase-3-component-organization-and-deployment">Phase 3: Component Organization and Deployment</h3>
+<ul>
+  <li>Standardize component structure and naming conventions</li>
+  <li>Implement simplified staging and deployment process</li>
+  <li>Enhance component registry and metadata</li>
+</ul>
+
+<h3 id="phase-4-advanced-features-and-refinement">Phase 4: Advanced Features and Refinement</h3>
+<ul>
+  <li>Add performance optimizations</li>
+  <li>Implement accessibility improvements</li>
+  <li>Enhance responsive design support</li>
+  <li>Add advanced editor features</li>
+</ul>
+
+<h2 id="success-metrics">Success Metrics</h2>
+
+<h3 id="documentation-effectiveness">Documentation Effectiveness</h3>
+<ul>
+  <li>Reduced time to find relevant information</li>
+  <li>Decreased number of navigation steps to reach specific content</li>
+  <li>Positive user feedback on documentation clarity</li>
+</ul>
+
+<h3 id="development-efficiency">Development Efficiency</h3>
+<ul>
+  <li>Reduced time to create and test new components</li>
+  <li>Increased component quality and consistency</li>
+  <li>Smoother transition from development to production</li>
+</ul>
+
+<h3 id="user-experience">User Experience</h3>
+<ul>
+  <li>Improved satisfaction with the live editor</li>
+  <li>Reduced errors in component embedding</li>
+  <li>Increased usage of components across courses</li>
+</ul>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/developer-guide/" class="nav-back">← Back to Developer Guide</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Design Tool Demo | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Design Tool Demo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/examples/design-tool-demo/" />
+<meta property="og:url" content="/blackboard-content-hub/examples/design-tool-demo/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Design Tool Demo" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Design Tool Demo","url":"/blackboard-content-hub/examples/design-tool-demo/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Design Tool Demo</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="design-tool-demo">Design Tool Demo</h1>
+
+<p>The Design Tool Demo is an interactive component that demonstrates UI design implementation principles for educational tools. It provides a practical example of the concepts outlined in the <a href="/blackboard-content-hub/docs/developer-guide/ui-design-implementation/">UI Design Implementation Guide</a>.</p>
+
+<div class="component-preview">
+  <iframe src="/blackboard-content-hub/shared/components/design-tool-demo.html" width="100%" height="600px" frameborder="0"></iframe>
+</div>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li><strong>Interactive Canvas</strong>: Draw and manipulate lines on a canvas</li>
+  <li><strong>Selection Tool</strong>: Select and move objects on the canvas</li>
+  <li><strong>Measurement Tool</strong>: Measure distances between points</li>
+  <li><strong>Layer Management</strong>: Control the stacking order of objects</li>
+  <li><strong>Property Controls</strong>: Adjust size, opacity, and color of objects</li>
+  <li><strong>Grid System</strong>: Optional grid with snap-to-grid functionality</li>
+  <li><strong>Responsive Design</strong>: Works on desktop and mobile devices</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<p>To embed this component in your Blackboard course, use the following HTML:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> 
+  <span class="na">src=</span><span class="s">"https://jjohnson-47.github.io/blackboard-content-hub/shared/components/design-tool-demo.html"</span> 
+  <span class="na">width=</span><span class="s">"100%"</span> 
+  <span class="na">height=</span><span class="s">"600"</span> 
+  <span class="na">frameborder=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h2 id="implementation-details">Implementation Details</h2>
+
+<p>The Design Tool Demo implements the principles outlined in the <a href="/blackboard-content-hub/docs/developer-guide/ui-design-implementation/">UI Design Implementation Guide</a>, including:</p>
+
+<h3 id="1-tool-purpose-and-requirements">1. Tool Purpose and Requirements</h3>
+
+<p>The tool is designed to demonstrate UI design principles for educational tools, with a focus on:</p>
+
+<ul>
+  <li>Canvas management for object placement and manipulation</li>
+  <li>Measurement functionality for precise distance calculation</li>
+  <li>Layer management for controlling object stacking order</li>
+  <li>Interactive controls for adjusting object properties</li>
+</ul>
+
+<h3 id="2-layout-planning">2. Layout Planning</h3>
+
+<p>The interface is organized into distinct zones:</p>
+
+<ul>
+  <li><strong>Header</strong>: Contains the title and global actions (undo, clear)</li>
+  <li><strong>Canvas</strong>: The main interactive area where objects are placed and manipulated</li>
+  <li><strong>Tools Panel</strong>: Contains all the tools and controls, organized into collapsible sections</li>
+  <li><strong>Status Bar</strong>: Displays current tool and cursor coordinates</li>
+</ul>
+
+<h3 id="3-core-functionality">3. Core Functionality</h3>
+
+<h4 id="canvas-implementation">Canvas Implementation</h4>
+
+<p>The canvas is implemented using the HTML5 Canvas API, with custom drawing and interaction handling:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Canvas setup</span>
+<span class="kd">const</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">canvas</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nf">getContext</span><span class="p">(</span><span class="dl">'</span><span class="s1">2d</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Set canvas size to match container</span>
+<span class="kd">function</span> <span class="nf">resizeCanvas</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
+  <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">;</span>
+  <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">;</span>
+  <span class="nf">drawGrid</span><span class="p">();</span>
+  <span class="nf">drawObjects</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="measurement-tool">Measurement Tool</h4>
+
+<p>The measurement tool allows users to measure distances between points on the canvas:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">handleMouseDown</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">currentTool</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">measure</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">measureStart</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">measureStart</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">measureEnd</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">};</span>
+      <span class="nf">displayMeasurement</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">displayMeasurement</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">measureStart</span> <span class="o">||</span> <span class="o">!</span><span class="nx">measureEnd</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  
+  <span class="c1">// Calculate distance</span>
+  <span class="kd">const</span> <span class="nx">dx</span> <span class="o">=</span> <span class="nx">measureEnd</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">measureStart</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">dy</span> <span class="o">=</span> <span class="nx">measureEnd</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">measureStart</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">distance</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="nx">dx</span> <span class="o">*</span> <span class="nx">dx</span> <span class="o">+</span> <span class="nx">dy</span> <span class="o">*</span> <span class="nx">dy</span><span class="p">);</span>
+  
+  <span class="c1">// Update measurement display</span>
+  <span class="nx">measurementDisplay</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">measurementDisplay</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="p">((</span><span class="nx">measureStart</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">measureEnd</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">measurementDisplay</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="p">((</span><span class="nx">measureStart</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">measureEnd</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">measurementDisplay</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="nx">distance</span><span class="p">)}</span><span class="s2">px`</span><span class="p">;</span>
+  
+  <span class="c1">// Reset for next measurement</span>
+  <span class="nx">measureStart</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nx">measureEnd</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="layer-management">Layer Management</h4>
+
+<p>The tool includes layer management functionality to control the stacking order of objects:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Layer controls</span>
+<span class="nx">bringForwardBtn</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">selectedObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">objects</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">selectedObject</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">objects</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Swap with next object</span>
+      <span class="p">[</span><span class="nx">objects</span><span class="p">[</span><span class="nx">index</span><span class="p">],</span> <span class="nx">objects</span><span class="p">[</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">objects</span><span class="p">[</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="nx">objects</span><span class="p">[</span><span class="nx">index</span><span class="p">]];</span>
+      <span class="nf">drawObjects</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">sendBackwardBtn</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">selectedObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">objects</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">selectedObject</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Swap with previous object</span>
+      <span class="p">[</span><span class="nx">objects</span><span class="p">[</span><span class="nx">index</span><span class="p">],</span> <span class="nx">objects</span><span class="p">[</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">objects</span><span class="p">[</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="nx">objects</span><span class="p">[</span><span class="nx">index</span><span class="p">]];</span>
+      <span class="nf">drawObjects</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="4-interactive-controls">4. Interactive Controls</h3>
+
+<p>The tool includes various interactive controls for adjusting object properties:</p>
+
+<h4 id="sliders">Sliders</h4>
+
+<p>Sliders are used for adjusting numeric values like size and opacity:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sizeSlider</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">currentSize</span> <span class="o">=</span> <span class="nf">parseInt</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+  <span class="nx">sizeValue</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">currentSize</span><span class="p">;</span>
+  
+  <span class="k">if </span><span class="p">(</span><span class="nx">selectedObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">selectedObject</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="nx">currentSize</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="nf">drawObjects</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h4 id="toggle-switches">Toggle Switches</h4>
+
+<p>Toggle switches are used for boolean settings like grid display and snap-to-grid:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gridToggle</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">showGrid</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">checked</span><span class="p">;</span>
+  <span class="nf">drawObjects</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">snapToggle</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">snapToGrid</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">checked</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h4 id="color-picker">Color Picker</h4>
+
+<p>A simple color picker allows users to select from predefined colors:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">colorOptions</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">option</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">option</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Update active color</span>
+    <span class="nx">colorOptions</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">opt</span> <span class="o">=&gt;</span> <span class="nx">opt</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">));</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">currentColor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">getAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">data-color</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="c1">// Update selected object if any</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">selectedObject</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">selectedObject</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">currentColor</span><span class="p">;</span>
+      <span class="nf">drawObjects</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="5-responsive-design">5. Responsive Design</h3>
+
+<p>The tool is designed to work on both desktop and mobile devices:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Responsive design */</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.main-content</span> <span class="p">{</span>
+    <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="nc">.tools-panel</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">40%</span><span class="p">;</span>
+    <span class="nl">border-left</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#e0e0e0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="educational-applications">Educational Applications</h2>
+
+<p>This design tool demo can be used in various educational contexts:</p>
+
+<ol>
+  <li><strong>UI/UX Design Courses</strong>: Demonstrate principles of interface design and user interaction</li>
+  <li><strong>Computer Graphics Classes</strong>: Illustrate basic canvas drawing and manipulation</li>
+  <li><strong>Mathematics Education</strong>: Use the measurement tool to explore geometric concepts</li>
+  <li><strong>Design Thinking Workshops</strong>: Provide a hands-on tool for sketching and ideation</li>
+</ol>
+
+<h2 id="accessibility-considerations">Accessibility Considerations</h2>
+
+<p>The component includes several accessibility features:</p>
+
+<ul>
+  <li>High contrast colors for visibility</li>
+  <li>Keyboard navigation for essential functions</li>
+  <li>Clear visual feedback for interactive elements</li>
+  <li>Text labels alongside icons for clarity</li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The Design Tool Demo is compatible with modern browsers that support the HTML5 Canvas API:</p>
+
+<ul>
+  <li>Chrome 50+</li>
+  <li>Firefox 50+</li>
+  <li>Safari 10+</li>
+  <li>Edge 79+</li>
+</ul>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>The full source code for this component is available in the <a href="https://github.com/jjohnson-47/blackboard-content-hub/blob/main/shared/components/design-tool-demo.html">GitHub repository</a>.</p>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/examples/" class="nav-back">← Back to Examples</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

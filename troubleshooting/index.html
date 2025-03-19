@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Troubleshooting | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Troubleshooting" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/troubleshooting/" />
+<meta property="og:url" content="/blackboard-content-hub/troubleshooting/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Troubleshooting" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Troubleshooting","url":"/blackboard-content-hub/troubleshooting/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link active" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Troubleshooting</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="troubleshooting-guide">Troubleshooting Guide</h1>
+
+<p>This guide addresses common issues you might encounter when creating, deploying, or embedding components from the Blackboard Content Hub.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#component-display-issues">Component Display Issues</a></li>
+  <li><a href="#embedding-problems">Embedding Problems</a></li>
+  <li><a href="#cross-origin-errors">Cross-Origin Errors</a></li>
+  <li><a href="#responsive-design-issues">Responsive Design Issues</a></li>
+  <li><a href="#development-environment-problems">Development Environment Problems</a></li>
+  <li><a href="#deployment-issues">Deployment Issues</a></li>
+  <li><a href="#blackboard-integration-issues">Blackboard Integration Issues</a></li>
+</ol>
+
+<h2 id="component-display-issues">Component Display Issues</h2>
+
+<h3 id="component-not-loading">Component Not Loading</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Blank iframe</li>
+  <li>Loading spinner that never completes</li>
+  <li>Error message in iframe</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Path Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Incorrect URL path to the component</li>
+      <li><strong>Solution:</strong> Verify the component URL in the iframe src attribute. Make sure it points to the correct location.</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Incorrect --&gt;</span>
+<span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"/components/visualization.html"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+     
+<span class="c">&lt;!-- Correct --&gt;</span>
+<span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"/blackboard-content-hub/shared/components/visualization.html"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Missing Files</strong>
+    <ul>
+      <li><strong>Problem:</strong> Referenced CSS, JavaScript, or assets are missing</li>
+      <li><strong>Solution:</strong> Check browser console for 404 errors and ensure all referenced files exist</li>
+      <li><strong>Verification:</strong> Open the component URL directly in a browser to see if it loads properly</li>
+    </ul>
+  </li>
+  <li><strong>JavaScript Errors</strong>
+    <ul>
+      <li><strong>Problem:</strong> JavaScript errors preventing component initialization</li>
+      <li><strong>Solution:</strong> Check browser console for errors and fix the JavaScript code</li>
+      <li><strong>Common Issues:</strong>
+        <ul>
+          <li>Missing libraries</li>
+          <li>Syntax errors</li>
+          <li>Undefined variables</li>
+          <li>Timing issues (trying to access DOM elements before they’re loaded)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="styling-issues">Styling Issues</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Component appears unstyled</li>
+  <li>Layout is broken</li>
+  <li>Elements overlap or display incorrectly</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>CSS Path Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Incorrect paths to CSS files</li>
+      <li><strong>Solution:</strong> Verify all CSS file paths are correct relative to the component location</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Incorrect --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"styles/main.css"</span><span class="nt">&gt;</span>
+     
+<span class="c">&lt;!-- Correct --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/blackboard-content-hub/shared/styles/main.css"</span><span class="nt">&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>CSS Conflicts</strong>
+    <ul>
+      <li><strong>Problem:</strong> Styles from the parent page affecting the iframe content</li>
+      <li><strong>Solution:</strong> Use more specific selectors or reset styles at the component level</li>
+      <li><strong>Example:</strong>
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Reset styles at the component level */</span>
+<span class="nc">.component-container</span> <span class="o">*</span> <span class="p">{</span>
+  <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Responsive Design Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Component not adapting to iframe dimensions</li>
+      <li><strong>Solution:</strong> Use responsive design techniques (see <a href="#responsive-design-issues">Responsive Design Issues</a>)</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="embedding-problems">Embedding Problems</h2>
+
+<h3 id="iframe-not-displaying-in-blackboard">Iframe Not Displaying in Blackboard</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Empty space where the iframe should be</li>
+  <li>Error message instead of iframe</li>
+  <li>Iframe HTML code showing as text</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>HTML Editor Stripping Iframe</strong>
+    <ul>
+      <li><strong>Problem:</strong> Blackboard’s HTML editor removing iframe tags</li>
+      <li><strong>Solution:</strong> Use the HTML editor button in Blackboard to enter HTML mode before pasting the iframe code</li>
+      <li><strong>Alternative:</strong> Some Blackboard versions have a specific “Embed Content” option that should be used instead</li>
+    </ul>
+  </li>
+  <li><strong>Content Security Policy (CSP)</strong>
+    <ul>
+      <li><strong>Problem:</strong> Blackboard’s CSP blocking the iframe</li>
+      <li><strong>Solution:</strong> Ensure your GitHub Pages domain is allowed in Blackboard’s CSP</li>
+      <li><strong>Workaround:</strong> If you have admin access, add your GitHub Pages domain to the allowed frame-src directives</li>
+    </ul>
+  </li>
+  <li><strong>HTTPS Required</strong>
+    <ul>
+      <li><strong>Problem:</strong> Trying to embed HTTP content in an HTTPS page</li>
+      <li><strong>Solution:</strong> Ensure your GitHub Pages site uses HTTPS (this is default for github.io domains)</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="iframe-size-issues">Iframe Size Issues</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Iframe too small to display content properly</li>
+  <li>Scrollbars appearing unnecessarily</li>
+  <li>Content cut off</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Fixed Dimensions Too Small</strong>
+    <ul>
+      <li><strong>Problem:</strong> Iframe height or width set too small</li>
+      <li><strong>Solution:</strong> Increase the iframe dimensions or use percentage-based sizing</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Better sizing --&gt;</span>
+<span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">width=</span><span class="s">"100%"</span> <span class="na">height=</span><span class="s">"500"</span> <span class="na">frameborder=</span><span class="s">"0"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Responsive Container Needed</strong>
+    <ul>
+      <li><strong>Problem:</strong> Iframe not adapting to different screen sizes</li>
+      <li><strong>Solution:</strong> Use a responsive container technique</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iframe</span> 
+    <span class="na">style=</span><span class="s">"position: absolute; top: 0; left: 0; width: 100%; height: 100%;"</span> 
+    <span class="na">src=</span><span class="s">"..."</span> 
+    <span class="na">frameborder=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/iframe&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Content Requires Specific Height</strong>
+    <ul>
+      <li><strong>Problem:</strong> Content height varies based on content or interactions</li>
+      <li><strong>Solution:</strong> Implement iframe resizing using postMessage communication</li>
+      <li><strong>See:</strong> <a href="#cross-origin-communication">Cross-Origin Communication</a> section for implementation details</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="cross-origin-errors">Cross-Origin Errors</h2>
+
+<h3 id="security-errors-in-console">Security Errors in Console</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Console errors mentioning “cross-origin” or “CORS”</li>
+  <li>Component features not working</li>
+  <li>Unable to access iframe content from parent page or vice versa</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Direct DOM Access Attempts</strong>
+    <ul>
+      <li><strong>Problem:</strong> Trying to directly access iframe DOM from parent page or vice versa</li>
+      <li><strong>Solution:</strong> Use postMessage for communication between iframe and parent</li>
+      <li><strong>Example:</strong>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In parent page</span>
+<span class="kd">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">component-iframe</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nf">postMessage</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">getData</span><span class="dl">'</span>
+<span class="p">},</span> <span class="dl">'</span><span class="s1">https://jjohnson-47.github.io</span><span class="dl">'</span><span class="p">);</span>
+     
+<span class="c1">// In iframe</span>
+<span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Verify origin for security</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">https://blackboard.youruniversity.edu</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+       
+  <span class="c1">// Process message</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">action</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">getData</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Send response back to parent</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nf">postMessage</span><span class="p">({</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">response</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">result</span><span class="p">:</span> <span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span>
+    <span class="p">},</span> <span class="nx">event</span><span class="p">.</span><span class="nx">origin</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Loading Resources from Different Origins</strong>
+    <ul>
+      <li><strong>Problem:</strong> Component trying to load resources from origins without CORS headers</li>
+      <li><strong>Solution:</strong> Host resources on the same origin or use sources that provide proper CORS headers</li>
+      <li><strong>Alternative:</strong> Use proxy services for APIs that don’t support CORS</li>
+    </ul>
+  </li>
+  <li><strong>Iframe Sandbox Restrictions</strong>
+    <ul>
+      <li><strong>Problem:</strong> Iframe sandbox attribute restricting necessary features</li>
+      <li><strong>Solution:</strong> Adjust sandbox attributes to allow required functionality</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> 
+  <span class="na">src=</span><span class="s">"..."</span> 
+  <span class="na">sandbox=</span><span class="s">"allow-scripts allow-same-origin allow-popups allow-forms"</span>
+  <span class="na">frameborder=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="responsive-design-issues">Responsive Design Issues</h2>
+
+<h3 id="component-not-adapting-to-container-size">Component Not Adapting to Container Size</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Content overflows iframe</li>
+  <li>Layout breaks at certain sizes</li>
+  <li>Horizontal scrollbars appear</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Fixed Width Elements</strong>
+    <ul>
+      <li><strong>Problem:</strong> Elements with fixed pixel widths</li>
+      <li><strong>Solution:</strong> Use percentage-based widths or max-width</li>
+      <li><strong>Example:</strong>
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Avoid */</span>
+<span class="nc">.chart-container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+<span class="p">}</span>
+     
+<span class="c">/* Better */</span>
+<span class="nc">.chart-container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>No Viewport Meta Tag</strong>
+    <ul>
+      <li><strong>Problem:</strong> Missing or incorrect viewport meta tag</li>
+      <li><strong>Solution:</strong> Add proper viewport meta tag</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>No Media Queries</strong>
+    <ul>
+      <li><strong>Problem:</strong> Layout not adapting to different screen sizes</li>
+      <li><strong>Solution:</strong> Implement media queries for different breakpoints</li>
+      <li><strong>Example:</strong>
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.component-grid</span> <span class="p">{</span>
+    <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">1</span><span class="n">fr</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="mobile-specific-issues">Mobile-Specific Issues</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Touch interactions not working properly</li>
+  <li>Text too small to read on mobile</li>
+  <li>Buttons too small to tap accurately</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>No Touch Event Handling</strong>
+    <ul>
+      <li><strong>Problem:</strong> Component only handles mouse events</li>
+      <li><strong>Solution:</strong> Add touch event handling or use libraries that normalize events</li>
+      <li><strong>Example:</strong>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">element</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">touchstart</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleInteraction</span><span class="p">);</span>
+<span class="nx">element</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mousedown</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleInteraction</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Font Size Too Small</strong>
+    <ul>
+      <li><strong>Problem:</strong> Text difficult to read on small screens</li>
+      <li><strong>Solution:</strong> Use relative font sizes and increase for mobile</li>
+      <li><strong>Example:</strong>
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+<span class="p">}</span>
+     
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">480px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">18px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Interactive Elements Too Small</strong>
+    <ul>
+      <li><strong>Problem:</strong> Buttons and controls too small for touch</li>
+      <li><strong>Solution:</strong> Ensure touch targets are at least 44×44px</li>
+      <li><strong>Example:</strong>
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.button</span> <span class="p">{</span>
+  <span class="nl">min-width</span><span class="p">:</span> <span class="m">44px</span><span class="p">;</span>
+  <span class="nl">min-height</span><span class="p">:</span> <span class="m">44px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span> <span class="m">15px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="development-environment-problems">Development Environment Problems</h2>
+
+<h3 id="setup-issues">Setup Issues</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Error when running npm commands</li>
+  <li>Development server won’t start</li>
+  <li>Build process fails</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Node.js Version Mismatch</strong>
+    <ul>
+      <li><strong>Problem:</strong> Using incompatible Node.js version</li>
+      <li><strong>Solution:</strong> Use Node.js v18 or higher as specified in package.json</li>
+      <li><strong>Verification:</strong> Check your Node.js version with <code class="language-plaintext highlighter-rouge">node -v</code></li>
+    </ul>
+  </li>
+  <li><strong>Missing Dependencies</strong>
+    <ul>
+      <li><strong>Problem:</strong> Dependencies not installed correctly</li>
+      <li><strong>Solution:</strong> Run <code class="language-plaintext highlighter-rouge">npm ci</code> to do a clean install of dependencies</li>
+      <li><strong>Alternative:</strong> Delete node_modules folder and package-lock.json, then run <code class="language-plaintext highlighter-rouge">npm install</code></li>
+    </ul>
+  </li>
+  <li><strong>Port Conflicts</strong>
+    <ul>
+      <li><strong>Problem:</strong> Another service using the same port</li>
+      <li><strong>Solution:</strong> Change the port in the Vite configuration or stop the conflicting service</li>
+      <li><strong>Example:</strong> Modify vite.config.js to use a different port
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">server</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">port</span><span class="p">:</span> <span class="mi">3001</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="build-errors">Build Errors</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Error messages during build process</li>
+  <li>Missing files in dist directory</li>
+  <li>Incorrect paths in built files</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Syntax Errors</strong>
+    <ul>
+      <li><strong>Problem:</strong> JavaScript or CSS syntax errors</li>
+      <li><strong>Solution:</strong> Check error messages for file and line numbers, then fix the syntax issues</li>
+    </ul>
+  </li>
+  <li><strong>Path Resolution Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Incorrect path resolution during build</li>
+      <li><strong>Solution:</strong> Use absolute paths with the correct base URL</li>
+      <li><strong>Example:</strong>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In vite.config.js</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">base</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/blackboard-content-hub/</span><span class="dl">'</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Missing Files</strong>
+    <ul>
+      <li><strong>Problem:</strong> Referenced files not included in build</li>
+      <li><strong>Solution:</strong> Ensure all required files are properly imported or included in the build configuration</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="deployment-issues">Deployment Issues</h2>
+
+<h3 id="github-pages-not-updating">GitHub Pages Not Updating</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Changes not appearing on the live site</li>
+  <li>Old version still showing after deployment</li>
+  <li>GitHub Actions workflow failing</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Workflow Failures</strong>
+    <ul>
+      <li><strong>Problem:</strong> GitHub Actions workflow failing</li>
+      <li><strong>Solution:</strong> Check the Actions tab in GitHub for error messages and fix the underlying issues</li>
+    </ul>
+  </li>
+  <li><strong>Branch Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Deploying to the wrong branch</li>
+      <li><strong>Solution:</strong> Ensure the workflow is deploying to the gh-pages branch and GitHub Pages is configured to serve from that branch</li>
+    </ul>
+  </li>
+  <li><strong>Caching Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Browser caching old versions</li>
+      <li><strong>Solution:</strong> Force refresh (Ctrl+F5 or Cmd+Shift+R) or clear browser cache</li>
+      <li><strong>Prevention:</strong> Add cache control headers or version parameters to resources</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="path-issues-in-production">Path Issues in Production</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Resources 404ing in production but working locally</li>
+  <li>Links broken on the live site</li>
+  <li>Images not loading</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Absolute vs. Relative Paths</strong>
+    <ul>
+      <li><strong>Problem:</strong> Using relative paths that work locally but break in production</li>
+      <li><strong>Solution:</strong> Use absolute paths with the repository name</li>
+      <li><strong>Example:</strong>
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Incorrect for GitHub Pages --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/logo.png"</span><span class="nt">&gt;</span>
+     
+<span class="c">&lt;!-- Correct for GitHub Pages --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/blackboard-content-hub/images/logo.png"</span><span class="nt">&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Base URL Configuration</strong>
+    <ul>
+      <li><strong>Problem:</strong> Base URL not configured correctly for GitHub Pages</li>
+      <li><strong>Solution:</strong> Set the correct base URL in build configuration</li>
+      <li><strong>Example:</strong> In Jekyll’s _config.yml:
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/blackboard-content-hub"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Case Sensitivity</strong>
+    <ul>
+      <li><strong>Problem:</strong> Incorrect case in file paths (GitHub Pages is case-sensitive)</li>
+      <li><strong>Solution:</strong> Ensure all file paths use the correct case</li>
+      <li><strong>Example:</strong> If the file is <code class="language-plaintext highlighter-rouge">Image.jpg</code>, referencing it as <code class="language-plaintext highlighter-rouge">image.jpg</code> will fail</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="blackboard-integration-issues">Blackboard Integration Issues</h2>
+
+<h3 id="content-not-appearing-in-blackboard">Content Not Appearing in Blackboard</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Embedded iframe not showing in Blackboard</li>
+  <li>Error messages in Blackboard</li>
+  <li>Content blocked by Blackboard security</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>HTML Filtering</strong>
+    <ul>
+      <li><strong>Problem:</strong> Blackboard filtering out iframe HTML</li>
+      <li><strong>Solution:</strong> Use the HTML editor mode in Blackboard when embedding iframes</li>
+      <li><strong>Alternative:</strong> Use Blackboard’s built-in “Embed Content” tool if available</li>
+    </ul>
+  </li>
+  <li><strong>Missing Permissions</strong>
+    <ul>
+      <li><strong>Problem:</strong> Insufficient permissions to add embedded content</li>
+      <li><strong>Solution:</strong> Contact your Blackboard administrator for appropriate permissions</li>
+    </ul>
+  </li>
+  <li><strong>HTTPS Required</strong>
+    <ul>
+      <li><strong>Problem:</strong> Blackboard requires HTTPS content</li>
+      <li><strong>Solution:</strong> Ensure your GitHub Pages site uses HTTPS (default for github.io domains)</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="iframe-resizing-issues-in-blackboard">Iframe Resizing Issues in Blackboard</h3>
+
+<p><strong>Symptoms:</strong></p>
+<ul>
+  <li>Iframe too small in Blackboard</li>
+  <li>Scrollbars appearing unnecessarily</li>
+  <li>Content cut off</li>
+</ul>
+
+<p><strong>Possible Causes and Solutions:</strong></p>
+
+<ol>
+  <li><strong>Fixed Height Issues</strong>
+    <ul>
+      <li><strong>Problem:</strong> Content height changes but iframe height is fixed</li>
+      <li><strong>Solution:</strong> Implement dynamic iframe resizing</li>
+      <li><strong>Example:</strong> Use the iframe-resizer library
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- In Blackboard page --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.2/js/iframeResizer.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">"myIframe"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">scrolling=</span><span class="s">"no"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nf">iFrameResize</span><span class="p">({</span> <span class="na">log</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span> <span class="dl">'</span><span class="s1">#myIframe</span><span class="dl">'</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+     
+<span class="c">&lt;!-- In your component --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.2/js/iframeResizer.contentWindow.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Blackboard Theme Conflicts</strong>
+    <ul>
+      <li><strong>Problem:</strong> Blackboard theme affecting iframe content</li>
+      <li><strong>Solution:</strong> Use a reset CSS in your component to neutralize external styles</li>
+      <li><strong>Example:</strong>
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* At the top of your component CSS */</span>
+<span class="nc">.component-container</span> <span class="p">{</span>
+  <span class="nl">all</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+  <span class="c">/* Add other base styles */</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Mobile Responsiveness</strong>
+    <ul>
+      <li><strong>Problem:</strong> Blackboard mobile view breaking iframe layout</li>
+      <li><strong>Solution:</strong> Test and optimize for Blackboard mobile view</li>
+      <li><strong>Technique:</strong> Use the responsive container approach mentioned earlier</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="still-need-help">Still Need Help?</h2>
+
+<p>If you’re still experiencing issues after trying these solutions:</p>
+
+<ol>
+  <li>Check the <a href="https://github.com/jjohnson-47/blackboard-content-hub/issues">GitHub repository issues</a> to see if others have reported the same problem</li>
+  <li>Search the <a href="/blackboard-content-hub/developer-guide/">developer guide</a> for more detailed information</li>
+  <li>Create a new issue on GitHub with:
+    <ul>
+      <li>Detailed description of the problem</li>
+      <li>Steps to reproduce</li>
+      <li>Expected vs. actual behavior</li>
+      <li>Screenshots if applicable</li>
+      <li>Browser and OS information</li>
+    </ul>
+  </li>
+</ol>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/troubleshooting/" class="nav-back">← Back to Troubleshooting</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>User Guide | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="User Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/user-guide/" />
+<meta property="og:url" content="/blackboard-content-hub/user-guide/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="User Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"User Guide","url":"/blackboard-content-hub/user-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link active" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">User Guide</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="user-guide">User Guide</h1>
+
+<p>This guide provides comprehensive instructions for creating, managing, and embedding interactive content components from the Blackboard Content Hub.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <li><a href="#creating-components">Creating Components</a></li>
+  <li><a href="#embedding-components">Embedding Components in Blackboard</a></li>
+  <li><a href="#managing-components">Managing Components</a></li>
+  <li><a href="#best-practices">Best Practices</a></li>
+</ol>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>The Blackboard Content Hub hosts interactive educational content as iframes that can be embedded in Blackboard courses. These components are organized into three main categories:</p>
+
+<ul>
+  <li><strong>General</strong>: Components for general educational purposes that can be used across disciplines</li>
+  <li><strong>Research</strong>: Components specifically designed for research activities and data analysis</li>
+  <li><strong>Courses</strong>: Components tailored for specific courses (e.g., math221, stat253)</li>
+</ul>
+
+<p>Components can be either:</p>
+<ul>
+  <li><strong>Shared</strong>: Available for use across multiple courses or contexts</li>
+  <li><strong>Course-specific</strong>: Designed for a particular course</li>
+</ul>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>To create and manage components, you’ll need:</p>
+
+<ul>
+  <li>A GitHub account with access to the repository</li>
+  <li>Basic knowledge of HTML, CSS, and JavaScript (for creating custom components)</li>
+  <li>Access to the Blackboard courses where you want to embed components</li>
+</ul>
+
+<h2 id="creating-components">Creating Components</h2>
+
+<h3 id="using-the-component-creation-tool">Using the Component Creation Tool</h3>
+
+<p>The easiest way to create a new component is using our component creation tool:</p>
+
+<ol>
+  <li>Clone the repository to your local machine</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">npm install</code> to install dependencies</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">npm run new:component</code> to start the component creation wizard</li>
+  <li>Follow the prompts to specify:
+    <ul>
+      <li>Component type (course-specific or shared)</li>
+      <li>Component category (general, research, or courses)</li>
+      <li>Course ID (if course-specific)</li>
+      <li>Component name and title</li>
+      <li>Basic description</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The tool will create the necessary files with boilerplate code that you can customize.</p>
+
+<h3 id="manual-component-creation">Manual Component Creation</h3>
+
+<p>If you prefer to create components manually:</p>
+
+<ol>
+  <li>Determine the appropriate location for your component:
+    <ul>
+      <li>Shared components: <code class="language-plaintext highlighter-rouge">/shared/components/[component-name].html</code></li>
+      <li>Course-specific components: <code class="language-plaintext highlighter-rouge">/courses/[course-id]/[component-name].html</code></li>
+    </ul>
+  </li>
+  <li>Create an HTML file with the following structure:</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Your Component Title<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/shared/styles/main.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"/shared/scripts/component.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="c">/* Component-specific styles */</span>
+    <span class="nc">.component-container</span> <span class="p">{</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+      <span class="nl">border-radius</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="m">#f5f5f5</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"component-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Your Component Title<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"interactive-content"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Your component's HTML goes here --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;script&gt;</span>
+    <span class="c1">// Component-specific code</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// Initialize your component</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Component loaded</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add your component to the appropriate configuration file:
+    <ul>
+      <li>For course-specific components: <code class="language-plaintext highlighter-rouge">/courses/[course-id]/course-config.json</code></li>
+      <li>For shared components: <code class="language-plaintext highlighter-rouge">/shared/components/shared-config.json</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="creating-component-documentation">Creating Component Documentation</h3>
+
+<p>Each component should have accompanying documentation:</p>
+
+<ol>
+  <li>Create a documentation file in the appropriate location:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/docs/examples/[component-name].md</code></li>
+    </ul>
+  </li>
+  <li>Use the following template for your documentation:</li>
+</ol>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">page</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Component Name Documentation</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/examples/component-name/</span>
+<span class="nn">---</span>
+
+<span class="gh"># Component Name</span>
+
+Brief description of what the component does and its educational purpose.
+
+<span class="gu">## Features</span>
+<span class="p">
+-</span> Feature 1
+<span class="p">-</span> Feature 2
+<span class="p">-</span> Feature 3
+
+<span class="gu">## How to Use</span>
+
+Step-by-step instructions on how to use the component.
+
+<span class="gu">## Implementation Details</span>
+
+Technical details about how the component works.
+
+<span class="gu">## Embedding</span>
+
+Example code for embedding this component:
+
+<span class="p">```</span><span class="nl">html
+</span><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"https://jjohnson-47.github.io/blackboard-content-hub/path/to/component.html"</span> 
+  <span class="na">width=</span><span class="s">"100%"</span> <span class="na">height=</span><span class="s">"500"</span> <span class="na">frameborder=</span><span class="s">"0"</span> <span class="na">allowfullscreen</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h2 id="customization-options">Customization Options</h2>
+
+<p>Any parameters or options that can be used to customize the component.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## Embedding Components in Blackboard {#embedding-components}
+
+To embed a component in Blackboard:
+
+1. Navigate to the [Component Browser](/blackboard-content-hub/component-browser/) to find the component you want to embed
+2. Click the "Copy to clipboard" button under the Embed Code section
+3. In Blackboard, navigate to your course
+4. Edit the content area where you want to add the component
+5. Click the "HTML" button in the editor toolbar
+6. Paste the iframe code
+7. Click "Update" and then "Submit"
+
+### Responsive Embedding
+
+For responsive embedding that works well on all devices, use the following pattern:
+
+```html
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;"&gt;
+  &lt;iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://jjohnson-47.github.io/blackboard-content-hub/path/to/component.html" 
+    frameborder="0" 
+    allowfullscreen&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre></div></div>
+
+<p>This creates a responsive container with a 16:9 aspect ratio. Adjust the padding-bottom percentage to change the aspect ratio:</p>
+<ul>
+  <li>75% for 4:3 aspect ratio</li>
+  <li>100% for 1:1 (square) aspect ratio</li>
+</ul>
+
+<h2 id="managing-components">Managing Components</h2>
+
+<h3 id="updating-components">Updating Components</h3>
+
+<p>To update an existing component:</p>
+
+<ol>
+  <li>Make your changes to the component HTML file</li>
+  <li>Commit and push your changes to GitHub</li>
+  <li>GitHub Actions will automatically build and deploy the updated component</li>
+  <li>The changes will be reflected in all instances where the component is embedded</li>
+</ol>
+
+<h3 id="versioning-components">Versioning Components</h3>
+
+<p>If you need to maintain multiple versions of a component:</p>
+
+<ol>
+  <li>Create a new file with a versioned name (e.g., <code class="language-plaintext highlighter-rouge">component-name-v2.html</code>)</li>
+  <li>Update the documentation to reference both versions</li>
+  <li>Update any course configurations to use the appropriate version</li>
+</ol>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="performance">Performance</h3>
+
+<ul>
+  <li>Minimize external dependencies</li>
+  <li>Optimize images and assets</li>
+  <li>Use lazy loading for non-essential resources</li>
+  <li>Keep components focused on a single purpose</li>
+</ul>
+
+<h3 id="accessibility">Accessibility</h3>
+
+<ul>
+  <li>Ensure all interactive elements are keyboard accessible</li>
+  <li>Provide alternative text for images</li>
+  <li>Use semantic HTML</li>
+  <li>Test with screen readers</li>
+  <li>Maintain sufficient color contrast</li>
+</ul>
+
+<h3 id="security">Security</h3>
+
+<ul>
+  <li>Use HTTPS for all external resources</li>
+  <li>Validate user input</li>
+  <li>Be cautious with third-party libraries</li>
+  <li>Set appropriate sandbox attributes for iframes</li>
+</ul>
+
+<h3 id="cross-browser-compatibility">Cross-Browser Compatibility</h3>
+
+<ul>
+  <li>Test on multiple browsers (Chrome, Firefox, Safari, Edge)</li>
+  <li>Use feature detection rather than browser detection</li>
+  <li>Provide fallbacks for unsupported features</li>
+</ul>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<ul>
+  <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+  <li><a href="/blackboard-content-hub/api-reference/">API Reference</a></li>
+  <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+  <li><a href="https://github.com/jjohnson-47/blackboard-content-hub">GitHub Repository</a></li>
+</ul>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/user-guide/" class="nav-back">← Back to User Guide</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

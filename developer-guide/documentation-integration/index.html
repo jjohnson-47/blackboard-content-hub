@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Documentation Integration | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Documentation Integration" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/developer-guide/documentation-integration/" />
+<meta property="og:url" content="/blackboard-content-hub/developer-guide/documentation-integration/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Documentation Integration" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Documentation Integration","url":"/blackboard-content-hub/developer-guide/documentation-integration/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Documentation Integration</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="documentation-integration">Documentation Integration</h1>
+
+<p>The Blackboard Content Hub features an integrated documentation system that automatically generates and maintains documentation for components. This guide explains how the documentation system works and how to use it effectively.</p>
+
+<h2 id="documentation-generation">Documentation Generation</h2>
+
+<p>When you create a component using the Component Manager, documentation is automatically generated based on the component’s metadata. The generated documentation includes:</p>
+
+<ul>
+  <li>Component title and description</li>
+  <li>Live preview</li>
+  <li>Embedding instructions</li>
+  <li>Implementation details</li>
+  <li>Educational applications</li>
+  <li>Accessibility information</li>
+  <li>Browser compatibility</li>
+  <li>Version history</li>
+</ul>
+
+<h2 id="documentation-structure">Documentation Structure</h2>
+
+<p>Each component’s documentation follows a consistent structure:</p>
+
+<ol>
+  <li><strong>Header</strong>: Title, version, release date, and description</li>
+  <li><strong>Preview</strong>: Live interactive preview of the component</li>
+  <li><strong>Features</strong>: Key features of the component</li>
+  <li><strong>Usage</strong>: Embedding instructions and recommended settings</li>
+  <li><strong>Implementation Details</strong>: Technical details and parent-iframe communication</li>
+  <li><strong>Educational Applications</strong>: Learning objectives, educational levels, and subject areas</li>
+  <li><strong>Accessibility</strong>: Accessibility features and compliance level</li>
+  <li><strong>Browser Compatibility</strong>: Supported browsers and versions</li>
+  <li><strong>Version History</strong>: History of changes across versions</li>
+</ol>
+
+<h2 id="documentation-locations">Documentation Locations</h2>
+
+<p>Documentation is stored in different locations based on the component type:</p>
+
+<ul>
+  <li><strong>Shared Components</strong>: <code class="language-plaintext highlighter-rouge">/docs/examples/{component-id}.md</code></li>
+  <li><strong>Course-Specific Components</strong>: <code class="language-plaintext highlighter-rouge">/docs/courses/{course-id}/{component-id}.md</code></li>
+  <li><strong>Development Components</strong>: <code class="language-plaintext highlighter-rouge">/docs/development-environment/components/{component-id}.md</code></li>
+</ul>
+
+<h2 id="customizing-documentation">Customizing Documentation</h2>
+
+<p>While documentation is generated automatically, you can customize it to provide more detailed information:</p>
+
+<ol>
+  <li>Open the generated documentation file</li>
+  <li>Add or modify content as needed</li>
+  <li>Commit your changes</li>
+</ol>
+
+<p>When updating a component’s metadata using the Component Manager, the documentation will be updated to reflect the changes while preserving your customizations.</p>
+
+<h2 id="documentation-templates">Documentation Templates</h2>
+
+<p>The Component Manager uses templates to generate documentation. The default template includes placeholders for all required sections. You can customize these templates by modifying the <code class="language-plaintext highlighter-rouge">generateDocumentation</code> function in <code class="language-plaintext highlighter-rouge">tools/component-manager.js</code>.</p>
+
+<h2 id="linking-documentation">Linking Documentation</h2>
+
+<p>Documentation pages are automatically linked from:</p>
+
+<ul>
+  <li>The Component Browser</li>
+  <li>Course pages</li>
+  <li>Related components</li>
+</ul>
+
+<p>You can also manually link to documentation pages using the following format:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">Component Name</span><span class="p">](</span><span class="sx">/blackboard-content-hub/examples/component-id</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="documentation-preview">Documentation Preview</h2>
+
+<p>You can preview documentation locally by running:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<p>This starts a local Jekyll server that serves the documentation site at <code class="language-plaintext highlighter-rouge">http://localhost:4000/blackboard-content-hub/</code>.</p>
+
+<h2 id="documentation-search">Documentation Search</h2>
+
+<p>The documentation site includes a search feature that allows users to search for components by:</p>
+
+<ul>
+  <li>Title</li>
+  <li>Description</li>
+  <li>Tags</li>
+  <li>Educational context</li>
+  <li>Accessibility features</li>
+</ul>
+
+<h2 id="documentation-versioning">Documentation Versioning</h2>
+
+<p>When you create a new version of a component, the documentation is automatically updated to include:</p>
+
+<ul>
+  <li>The new version number</li>
+  <li>The release date</li>
+  <li>Changes in the new version</li>
+</ul>
+
+<p>Previous versions remain in the version history section.</p>
+
+<h2 id="documentation-best-practices">Documentation Best Practices</h2>
+
+<h3 id="writing-style">Writing Style</h3>
+
+<ul>
+  <li>Use clear, concise language</li>
+  <li>Explain technical concepts in simple terms</li>
+  <li>Use examples to illustrate usage</li>
+  <li>Include screenshots or diagrams where helpful</li>
+</ul>
+
+<h3 id="structure">Structure</h3>
+
+<ul>
+  <li>Use headings to organize content</li>
+  <li>Keep paragraphs short and focused</li>
+  <li>Use lists for steps or features</li>
+  <li>Include code examples with syntax highlighting</li>
+</ul>
+
+<h3 id="educational-context">Educational Context</h3>
+
+<ul>
+  <li>Clearly state learning objectives</li>
+  <li>Explain how the component supports learning</li>
+  <li>Suggest classroom activities or assignments</li>
+  <li>Provide assessment ideas</li>
+</ul>
+
+<h3 id="accessibility">Accessibility</h3>
+
+<ul>
+  <li>Document keyboard shortcuts</li>
+  <li>Explain screen reader support</li>
+  <li>Note any accessibility limitations</li>
+  <li>Provide alternative approaches for users with disabilities</li>
+</ul>
+
+<h2 id="automatic-documentation-updates">Automatic Documentation Updates</h2>
+
+<p>The documentation system automatically updates documentation when:</p>
+
+<ol>
+  <li>A component is created</li>
+  <li>A component’s metadata is updated</li>
+  <li>A new version of a component is created</li>
+  <li>A component is promoted from development to production</li>
+</ol>
+
+<h2 id="documentation-integration-with-github-pages">Documentation Integration with GitHub Pages</h2>
+
+<p>The documentation site is built and deployed to GitHub Pages automatically when changes are pushed to the main branch. The deployment process:</p>
+
+<ol>
+  <li>Builds the Jekyll site</li>
+  <li>Copies components to the appropriate locations</li>
+  <li>Deploys the site to the gh-pages branch</li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="missing-documentation">Missing Documentation</h3>
+
+<p>If documentation is missing for a component, check:</p>
+
+<ul>
+  <li>The component exists in <code class="language-plaintext highlighter-rouge">component-data.json</code></li>
+  <li>The documentation file exists in the expected location</li>
+  <li>The documentation file has the correct front matter</li>
+</ul>
+
+<h3 id="broken-links">Broken Links</h3>
+
+<p>If links in the documentation are broken, check:</p>
+
+<ul>
+  <li>The target page exists</li>
+  <li>The URL is correct</li>
+  <li>The permalink in the front matter matches the expected URL</li>
+</ul>
+
+<h3 id="preview-issues">Preview Issues</h3>
+
+<p>If the live preview in the documentation doesn’t work, check:</p>
+
+<ul>
+  <li>The component URL is correct</li>
+  <li>The component is accessible</li>
+  <li>The iframe has the correct permissions</li>
+</ul>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/developer-guide/" class="nav-back">← Back to Developer Guide</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

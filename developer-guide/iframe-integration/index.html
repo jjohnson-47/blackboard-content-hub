@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Iframe Integration Guide | Blackboard Content Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Iframe Integration Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<meta property="og:description" content="Documentation for creating, managing, and embedding interactive educational content" />
+<link rel="canonical" href="/blackboard-content-hub/developer-guide/iframe-integration/" />
+<meta property="og:url" content="/blackboard-content-hub/developer-guide/iframe-integration/" />
+<meta property="og:site_name" content="Blackboard Content Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Iframe Integration Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Documentation for creating, managing, and embedding interactive educational content","headline":"Iframe Integration Guide","url":"/blackboard-content-hub/developer-guide/iframe-integration/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-variables.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-base.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-components.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-animations.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-responsive.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-iframe-showcase.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-homepage.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/theme-footer.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/css/banner-animation.css">
+  
+  <!-- Legacy Styles (for backward compatibility) -->
+  <link rel="stylesheet" href="/blackboard-content-hub/assets/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/main.css">
+  <link rel="stylesheet" href="/blackboard-content-hub/shared/styles/examples.css"><link type="application/atom+xml" rel="alternate" href="/blackboard-content-hub/feed.xml" title="Blackboard Content Hub" /></head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="site-title" rel="author" href="/blackboard-content-hub/">
+          Blackboard Content Hub
+        </a>
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </button><ul class="nav-links"><li><a class="page-link" href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li><li><a class="page-link" href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li><li><a class="page-link" href="/blackboard-content-hub/development-environment/">Development Environment</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/component-browser/">Component Browser</a></li><li><a class="page-link" href="/blackboard-content-hub/user-guide/">User Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li><li><a class="page-link" href="/blackboard-content-hub/examples/">Component Examples</a></li><li><a class="page-link" href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li></ul>
+      </nav>
+    </div>
+  </header>
+
+  
+
+  <main class="page-content" aria-label="Content">
+    <div class="container">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Iframe Integration Guide</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      <!-- Purpose Navigation -->
+<div class="purpose-nav">
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/iframe-hosting/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18zm-1 2H4v14h16V5zm-2 2v2H6V7h12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Iframe Hosting</h3>
+        <p>Host your interactive components on GitHub Pages</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/component-documentation/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Component Documentation</h3>
+        <p>Create and maintain comprehensive documentation</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="purpose-nav-item">
+    <a href="/blackboard-content-hub/development-environment/" class="purpose-nav-link">
+      <div class="purpose-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm8 10h6v2h-6v-2zm-3-3h9v2h-9v-2zm0-3h9v2h-9V9zm-3-2h3v8H6V7z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="purpose-text">
+        <h3>Development Environment</h3>
+        <p>Use our live editor to create and test components</p>
+      </div>
+    </a>
+  </div>
+</div>
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        <h1 id="iframe-integration-guide-for-blackboard-content-hub">Iframe Integration Guide for Blackboard Content Hub</h1>
+
+<p>This guide provides best practices and implementation details for creating and integrating iframes in the Blackboard Content Hub.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Iframes (inline frames) are HTML elements that allow you to embed one HTML document within another. In the Blackboard Content Hub, iframes are used to embed interactive educational components into Blackboard courses.</p>
+
+<h2 id="basic-implementation">Basic Implementation</h2>
+
+<h3 id="html-structure">HTML Structure</h3>
+
+<p>A basic iframe implementation looks like this:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> 
+  <span class="na">src=</span><span class="s">"https://jjohnson-47.github.io/blackboard-content-hub/shared/components/your-component.html"</span> 
+  <span class="na">width=</span><span class="s">"100%"</span> 
+  <span class="na">height=</span><span class="s">"500"</span> 
+  <span class="na">frameborder=</span><span class="s">"0"</span> 
+  <span class="na">allowfullscreen</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="key-attributes">Key Attributes</h3>
+
+<ul>
+  <li><strong>src</strong>: The URL of the component to embed</li>
+  <li><strong>width</strong>: The width of the iframe (use percentage for responsive design)</li>
+  <li><strong>height</strong>: The height of the iframe</li>
+  <li><strong>frameborder</strong>: Set to “0” to remove the border</li>
+  <li><strong>allowfullscreen</strong>: Allows the iframe to be displayed in fullscreen mode</li>
+</ul>
+
+<h2 id="security-considerations">Security Considerations</h2>
+
+<h3 id="https">HTTPS</h3>
+
+<p>Always use HTTPS for iframe sources to ensure secure communication:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"https://jjohnson-47.github.io/blackboard-content-hub/..."</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="sandbox-attribute">Sandbox Attribute</h3>
+
+<p>Use the sandbox attribute to restrict iframe capabilities:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> 
+  <span class="na">src=</span><span class="s">"..."</span> 
+  <span class="na">sandbox=</span><span class="s">"allow-scripts allow-same-origin allow-popups allow-forms"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<p>Common sandbox values:</p>
+<ul>
+  <li><strong>allow-scripts</strong>: Allows JavaScript execution</li>
+  <li><strong>allow-same-origin</strong>: Allows the iframe to be treated as same-origin</li>
+  <li><strong>allow-popups</strong>: Allows popups</li>
+  <li><strong>allow-forms</strong>: Allows form submission</li>
+</ul>
+
+<h3 id="content-security-policy">Content Security Policy</h3>
+
+<p>Implement Content Security Policy (CSP) headers to restrict resource loading:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Security-Policy"</span> <span class="na">content=</span><span class="s">"default-src 'self'; script-src 'self' https://www.geogebra.org; style-src 'self' 'unsafe-inline';"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="performance-optimization">Performance Optimization</h2>
+
+<h3 id="lazy-loading">Lazy Loading</h3>
+
+<p>Use the loading attribute to lazy-load iframes:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">loading=</span><span class="s">"lazy"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="proper-dimensions">Proper Dimensions</h3>
+
+<p>Set proper width and height to avoid reflow:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">width=</span><span class="s">"100%"</span> <span class="na">height=</span><span class="s">"500"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="minimize-dependencies">Minimize Dependencies</h3>
+
+<p>Minimize external dependencies to improve loading time:</p>
+
+<ol>
+  <li>Combine and minify CSS and JavaScript</li>
+  <li>Optimize images and other assets</li>
+  <li>Use shared resources when possible</li>
+</ol>
+
+<h2 id="accessibility">Accessibility</h2>
+
+<h3 id="title-attribute">Title Attribute</h3>
+
+<p>Use the title attribute to describe the iframe purpose:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">title=</span><span class="s">"Interactive Calculus Derivative Explorer"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="alternative-content">Alternative Content</h3>
+
+<p>Provide alternative content for when iframes cannot be displayed:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Your browser does not support iframes. Please visit <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"..."</span><span class="nt">&gt;</span>this link<span class="nt">&lt;/a&gt;</span> to view the content.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="keyboard-navigation">Keyboard Navigation</h3>
+
+<p>Ensure keyboard navigation works within iframes:</p>
+
+<ol>
+  <li>Use proper focus management</li>
+  <li>Implement keyboard shortcuts</li>
+  <li>Ensure all interactive elements are keyboard accessible</li>
+</ol>
+
+<h2 id="cross-origin-communication">Cross-Origin Communication</h2>
+
+<h3 id="using-postmessage">Using postMessage</h3>
+
+<p>Use the postMessage API for secure communication between the iframe and the parent page:</p>
+
+<p><strong>In the parent page:</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Send message to iframe</span>
+<span class="kd">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">myIframe</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nf">postMessage</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">getData</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">params</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">123</span> <span class="p">}</span>
+<span class="p">},</span> <span class="dl">'</span><span class="s1">https://jjohnson-47.github.io</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Listen for responses</span>
+<span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Always verify origin</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">https://jjohnson-47.github.io</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received data:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>In the iframe:</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Listen for messages from parent</span>
+<span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Always verify origin</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">https://parentorigin.com</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  
+  <span class="c1">// Process the message</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">action</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">getData</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Send response back to parent</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nf">postMessage</span><span class="p">({</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">response</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">result</span><span class="p">:</span> <span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span>
+    <span class="p">},</span> <span class="nx">event</span><span class="p">.</span><span class="nx">origin</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="message-structure">Message Structure</h3>
+
+<p>Use a consistent message structure:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">response</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">event</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">actionName</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+  <span class="nx">error</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span> <span class="c1">// Optional</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="responsive-design">Responsive Design</h2>
+
+<h3 id="relative-units">Relative Units</h3>
+
+<p>Use relative units for dimensions:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">width=</span><span class="s">"100%"</span> <span class="na">height=</span><span class="s">"80vh"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<h3 id="aspect-ratio-preservation">Aspect Ratio Preservation</h3>
+
+<p>Use CSS to preserve aspect ratio:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iframe</span> 
+    <span class="na">src=</span><span class="s">"..."</span> 
+    <span class="na">style=</span><span class="s">"position: absolute; top: 0; left: 0; width: 100%; height: 100%;"</span> 
+    <span class="na">frameborder=</span><span class="s">"0"</span> 
+    <span class="na">allowfullscreen</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/iframe&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="media-queries">Media Queries</h3>
+
+<p>Use media queries to adjust iframe behavior on different screen sizes:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nt">iframe</span> <span class="p">{</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="integration-with-blackboard-content-hub">Integration with Blackboard Content Hub</h2>
+
+<h3 id="directory-structure">Directory Structure</h3>
+
+<p>Place your component files in the appropriate directory:</p>
+
+<ul>
+  <li><strong>Shared components</strong>: <code class="language-plaintext highlighter-rouge">shared/components/your-component.html</code></li>
+  <li><strong>Course-specific components</strong>: <code class="language-plaintext highlighter-rouge">courses/[course-id]/your-component.html</code></li>
+</ul>
+
+<h3 id="component-registration">Component Registration</h3>
+
+<p>Add your component to the component registry in <code class="language-plaintext highlighter-rouge">docs/component-data.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-component-id"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Component Title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shared"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description of your component"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/blackboard-content-hub/shared/components/your-component.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"documentationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/blackboard-content-hub/examples/your-component.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"relevant"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w"> </span><span class="s2">"here"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>Create documentation for your component in <code class="language-plaintext highlighter-rouge">docs/examples/your-component.md</code> with:</p>
+
+<ol>
+  <li>Overview of the component</li>
+  <li>Usage instructions with iframe embedding code</li>
+  <li>Implementation details</li>
+  <li>Educational applications</li>
+</ol>
+
+<h3 id="embedding-in-blackboard">Embedding in Blackboard</h3>
+
+<p>To embed your component in Blackboard:</p>
+
+<ol>
+  <li>In Blackboard, navigate to the content area where you want to add the component</li>
+  <li>Click “Build Content” &gt; “Item”</li>
+  <li>In the content editor, click the HTML button</li>
+  <li>Paste your iframe code</li>
+  <li>Click “Submit”</li>
+</ol>
+
+<h2 id="testing-and-validation">Testing and Validation</h2>
+
+<h3 id="cross-browser-testing">Cross-Browser Testing</h3>
+
+<p>Test your component in multiple browsers:</p>
+
+<ul>
+  <li>Chrome</li>
+  <li>Firefox</li>
+  <li>Safari</li>
+  <li>Edge</li>
+</ul>
+
+<h3 id="responsive-testing">Responsive Testing</h3>
+
+<p>Test your component on different devices and screen sizes:</p>
+
+<ul>
+  <li>Desktop</li>
+  <li>Tablet</li>
+  <li>Mobile</li>
+</ul>
+
+<h3 id="accessibility-testing">Accessibility Testing</h3>
+
+<p>Validate accessibility using tools like:</p>
+
+<ul>
+  <li>WAVE (Web Accessibility Evaluation Tool)</li>
+  <li>Axe</li>
+  <li>Lighthouse</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="common-issues">Common Issues</h3>
+
+<ol>
+  <li>
+    <p><strong>X-Frame-Options</strong>: If your component doesn’t load, check if the server is sending X-Frame-Options headers that prevent embedding.</p>
+  </li>
+  <li>
+    <p><strong>Mixed Content</strong>: Ensure all resources (scripts, styles, images) are loaded over HTTPS.</p>
+  </li>
+  <li>
+    <p><strong>Cross-Origin Issues</strong>: Use CORS headers and postMessage for cross-origin communication.</p>
+  </li>
+  <li>
+    <p><strong>Responsive Issues</strong>: Check that your component adapts properly to different screen sizes.</p>
+  </li>
+</ol>
+
+<h3 id="debugging-techniques">Debugging Techniques</h3>
+
+<ol>
+  <li>
+    <p><strong>Console Logging</strong>: Use console.log to debug issues in the iframe.</p>
+  </li>
+  <li>
+    <p><strong>Network Monitoring</strong>: Use browser developer tools to monitor network requests.</p>
+  </li>
+  <li>
+    <p><strong>postMessage Debugging</strong>: Log all postMessage events to debug communication issues.</p>
+  </li>
+</ol>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="basic-component">Basic Component</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Basic Component<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nt">body</span> <span class="p">{</span>
+      <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Segoe UI'</span><span class="p">,</span> <span class="n">Tahoma</span><span class="p">,</span> <span class="n">Geneva</span><span class="p">,</span> <span class="n">Verdana</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nc">.container</span> <span class="p">{</span>
+      <span class="nl">max-width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Basic Component<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is a basic component for the Blackboard Content Hub.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"action-button"</span><span class="nt">&gt;</span>Click Me<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"result"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;script&gt;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">action-button</span><span class="dl">'</span><span class="p">).</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">result</span><span class="dl">'</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Button clicked at </span><span class="dl">'</span> <span class="o">+</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toLocaleTimeString</span><span class="p">();</span>
+      
+      <span class="c1">// Notify parent page</span>
+      <span class="k">if </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">parent</span> <span class="o">!==</span> <span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nf">postMessage</span><span class="p">({</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">event</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">buttonClicked</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">()</span> <span class="p">}</span>
+        <span class="p">},</span> <span class="dl">'</span><span class="s1">*</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// Listen for messages from parent</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">action</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">reset</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">result</span><span class="dl">'</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="embedding-code">Embedding Code</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> 
+  <span class="na">src=</span><span class="s">"https://jjohnson-47.github.io/blackboard-content-hub/shared/components/basic-component.html"</span> 
+  <span class="na">width=</span><span class="s">"100%"</span> 
+  <span class="na">height=</span><span class="s">"300"</span> 
+  <span class="na">frameborder=</span><span class="s">"0"</span> 
+  <span class="na">allowfullscreen</span>
+  <span class="na">title=</span><span class="s">"Basic Component"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="c1">// Control the iframe</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">reset-button</span><span class="dl">'</span><span class="p">).</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">iframe</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nf">postMessage</span><span class="p">({</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">command</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">reset</span><span class="dl">'</span>
+    <span class="p">},</span> <span class="dl">'</span><span class="s1">https://jjohnson-47.github.io</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// Listen for events from the iframe</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">https://jjohnson-47.github.io</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    
+    <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">event</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">action</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">buttonClicked</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Button clicked in iframe at:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">time</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">MDN Web Docs: iframe</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage">MDN Web Docs: Window.postMessage()</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a></li>
+  <li><a href="https://www.w3.org/WAI/">Web Accessibility Initiative (WAI)</a></li>
+</ul>
+
+      </div>
+      
+      
+      <div class="page-navigation">
+        
+        <a href="/blackboard-content-hub/developer-guide/" class="nav-back">← Back to Developer Guide</a>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h2 class="footer-heading">Blackboard Content Hub</h2>
+          <ul class="contact-list">
+            <li class="p-name">Blackboard Content Hub</li></ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Documentation</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/user-guide/">User Guide</a></li>
+            <li><a href="/blackboard-content-hub/developer-guide/">Developer Guide</a></li>
+            <li><a href="/blackboard-content-hub/examples/">Examples</a></li>
+            <li><a href="/blackboard-content-hub/troubleshooting/">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="/blackboard-content-hub/component-browser/">Component Browser</a></li>
+            <li><a href="/blackboard-content-hub/iframe-hosting/">Iframe Hosting</a></li>
+            <li><a href="/blackboard-content-hub/component-documentation/">Component Documentation</a></li>
+            <li><a href="/blackboard-content-hub/development-environment/">Development Environment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p>Documentation for creating, managing, and embedding interactive educational content</p><!-- Social media links -->
+<ul class="social-media-list">
+  
+
+  
+</ul></div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; Blackboard Content Hub 2025. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/blackboard-content-hub/assets/js/banner-animation.js"></script>
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', 
+            menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+          );
+        });
+      }
+      
+      // Add scrolled class to header on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

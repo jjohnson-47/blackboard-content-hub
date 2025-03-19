@@ -1,57 +1,12 @@
-<!-- Breadcrumb Navigation -->
+<!-- Breadcrumbs navigation -->
 <div class="breadcrumbs">
   <a href="{{ site.baseurl }}/">Home</a>
+  <span class="separator">/</span>
   
-  {% assign parts = page.url | split: '/' %}
-  {% assign url = '' %}
+  {% if page.category %}
+    <a href="{{ site.baseurl }}/{{ page.category | slugify }}/">{{ page.category }}</a>
+    <span class="separator">/</span>
+  {% endif %}
   
-  {% for part in parts %}
-    {% if part != '' and part != 'index.html' %}
-      {% assign url = url | append: '/' | append: part %}
-      
-      {% if forloop.last %}
-        <span class="breadcrumb-separator">›</span>
-        <span class="breadcrumb-current">{{ page.title }}</span>
-      {% else %}
-        {% assign part_title = part | replace: '-', ' ' | capitalize %}
-        
-        {% if part == 'iframe-hosting' %}
-          {% assign part_title = 'Iframe Hosting' %}
-        {% elsif part == 'component-documentation' %}
-          {% assign part_title = 'Component Documentation' %}
-        {% elsif part == 'development-environment' %}
-          {% assign part_title = 'Development Environment' %}
-        {% elsif part == 'component-browser' %}
-          {% assign part_title = 'Component Browser' %}
-        {% elsif part == 'developer-guide' %}
-          {% assign part_title = 'Developer Guide' %}
-        {% elsif part == 'user-guide' %}
-          {% assign part_title = 'User Guide' %}
-        {% endif %}
-        
-        <span class="breadcrumb-separator">›</span>
-        <a href="{{ site.baseurl }}{{ url }}/">{{ part_title }}</a>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
+  <span class="current">{{ page.title }}</span>
 </div>
-
-<style>
-.breadcrumbs {
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.breadcrumb-separator {
-  margin: 0 8px;
-  color: #6c757d;
-}
-
-.breadcrumb-current {
-  font-weight: 500;
-  color: #4a148c;
-}
-</style>

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Nascent Digital Dawn" Style Revamp Plan
+title: '"Nascent Digital Dawn" Style Revamp Plan'
 ---
 
 # "Nascent Digital Dawn" Style Revamp Plan

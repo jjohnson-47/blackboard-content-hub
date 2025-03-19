@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Component Schema",
+  "description": "Schema for Blackboard Content Hub components",
+  "type": "object",
+  "required": ["id", "title", "type", "category", "version", "description", "url", "documentationUrl"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the component"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title for the component"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["shared", "course-specific", "development"],
+      "description": "Component type"
+    },
+    "category": {
+      "type": "string",
+      "description": "Primary category for the component"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Optional subcategory for more specific categorization"
+    },
+    "courseId": {
+      "type": "string",
+      "description": "Course ID for course-specific components"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the component (major.minor.patch)",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "releaseDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Release date of this version"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the component"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to the component"
+    },
+    "documentationUrl": {
+      "type": "string",
+      "description": "URL to the component documentation"
+    },
+    "sourceUrl": {
+      "type": "string",
+      "description": "URL to the component source code (if available)"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorizing and searching components"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "version"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the dependency component"
+          },
+          "version": {
+            "type": "string",
+            "description": "Version requirement for the dependency"
+          },
+          "optional": {
+            "type": "boolean",
+            "description": "Whether this dependency is optional"
+          }
+        }
+      },
+      "description": "Other components this component depends on"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Author name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Author email"
+          },
+          "role": {
+            "type": "string",
+            "description": "Author role in component development"
+          }
+        }
+      },
+      "description": "Component authors"
+    },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "wcag": {
+          "type": "string",
+          "description": "WCAG compliance level (A, AA, AAA)"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Accessibility features implemented"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Known accessibility limitations"
+        }
+      },
+      "description": "Accessibility information"
+    },
+    "browserSupport": {
+      "type": "object",
+      "properties": {
+        "chrome": {
+          "type": "string",
+          "description": "Minimum Chrome version supported"
+        },
+        "firefox": {
+          "type": "string",
+          "description": "Minimum Firefox version supported"
+        },
+        "safari": {
+          "type": "string",
+          "description": "Minimum Safari version supported"
+        },
+        "edge": {
+          "type": "string",
+          "description": "Minimum Edge version supported"
+        }
+      },
+      "description": "Browser compatibility information"
+    },
+    "educationalContext": {
+      "type": "object",
+      "properties": {
+        "learningObjectives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Learning objectives this component addresses"
+        },
+        "educationalLevel": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["K-12", "Undergraduate", "Graduate", "Professional"]
+          },
+          "description": "Educational levels this component is suitable for"
+        },
+        "subjectAreas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Subject areas this component covers"
+        }
+      },
+      "description": "Educational context information"
+    },
+    "versionHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["version", "date", "changes"],
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Version number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Release date"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Changes in this version"
+          }
+        }
+      },
+      "description": "Version history of the component"
+    }
+  }
+}

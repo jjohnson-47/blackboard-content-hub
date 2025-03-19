@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Tool Demo</title>
+  <style>
+    /* Basic styling for layout components */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #4a148c;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .main-content {
+      display: flex;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+
+    .canvas-container {
+      flex-grow: 1;
+      position: relative;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    #canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: default;
+    }
+
+    .tools-panel {
+      width: 280px;
+      background-color: white;
+      padding: 15px;
+      overflow-y: auto;
+      border-left: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .tool-section {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .tool-header {
+      background-color: #f0f2f5;
+      padding: 10px 15px;
+      font-weight: 600;
+      color: #4a148c;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .tool-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tool-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tool-button {
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .tool-button:hover {
+      background-color: #7c43bd;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-button:active {
+      transform: translateY(0);
+    }
+
+    .tool-button.active {
+      background-color: #7c43bd;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-button.secondary {
+      background-color: #00897b;
+    }
+
+    .tool-button.secondary:hover {
+      background-color: #4ebaaa;
+    }
+
+    .tool-icon {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+    }
+
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e0e0e0;
+      outline: none;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #4a148c;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .slider::-webkit-slider-thumb:hover {
+      background: #7c43bd;
+      transform: scale(1.1);
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e0e0e0;
+      transition: .4s;
+      border-radius: 20px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #4a148c;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+
+    .color-picker {
+      display: flex;
+      gap: 5px;
+    }
+
+    .color-option {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+
+    .color-option.active {
+      border-color: #333;
+    }
+
+    .status-bar {
+      background-color: #f0f2f5;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      color: #757575;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .coordinates {
+      font-family: monospace;
+    }
+
+    .measurement-display {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      pointer-events: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+      }
+      
+      .tools-panel {
+        width: 100%;
+        height: 40%;
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Design Tool Demo</h1>
+      <div class="tool-row">
+        <button id="undoBtn" class="tool-button secondary">
+          <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" fill="currentColor"/>
+          </svg>
+          Undo
+        </button>
+        <button id="clearBtn" class="tool-button secondary">
+          <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+          </svg>
+          Clear
+        </button>
+      </div>
+    </header>
+    
+    <div class="main-content">
+      <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+        <div id="measurementDisplay" class="measurement-display"></div>
+      </div>
+      
+      <div class="tools-panel">
+        <div class="tool-section">
+          <div class="tool-header">
+            <span>Drawing Tools</span>
+          </div>
+          <div class="tool-content">
+            <div class="tool-row">
+              <button id="selectTool" class="tool-button active">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 14l5-5 5 5z" fill="currentColor"/>
+                </svg>
+                Select
+              </button>
+              <button id="drawTool" class="tool-button">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/>
+                </svg>
+                Draw
+              </button>
+              <button id="measureTool" class="tool-button">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h2v4h2V8h2v4h2V8h2v4h2V8h2v4h2V8h2v8z" fill="currentColor"/>
+                </svg>
+                Measure
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tool-section">
+          <div class="tool-header">
+            <span>Object Properties</span>
+          </div>
+          <div class="tool-content">
+            <div class="slider-container">
+              <div class="slider-label">
+                <span>Size</span>
+                <span id="sizeValue">50</span>
+              </div>
+              <input type="range" min="10" max="100" value="50" class="slider" id="sizeSlider">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-label">
+                <span>Opacity</span>
+                <span id="opacityValue">100%</span>
+              </div>
+              <input type="range" min="10" max="100" value="100" class="slider" id="opacitySlider">
+            </div>
+            
+            <div class="color-picker">
+              <div class="color-option active" style="background-color: #4a148c;" data-color="#4a148c"></div>
+              <div class="color-option" style="background-color: #00897b;" data-color="#00897b"></div>
+              <div class="color-option" style="background-color: #ff6d00;" data-color="#ff6d00"></div>
+              <div class="color-option" style="background-color: #d32f2f;" data-color="#d32f2f"></div>
+              <div class="color-option" style="background-color: #388e3c;" data-color="#388e3c"></div>
+              <div class="color-option" style="background-color: #1976d2;" data-color="#1976d2"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tool-section">
+          <div class="tool-header">
+            <span>Layer Controls</span>
+          </div>
+          <div class="tool-content">
+            <div class="tool-row">
+              <button id="bringForwardBtn" class="tool-button">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 20h20v-4H2v4zm2-3h16v2H4v-2zM4 5v3h16V5H4zm16 9H4v-3h16v3z" fill="currentColor"/>
+                </svg>
+                Bring Forward
+              </button>
+              <button id="sendBackwardBtn" class="tool-button">
+                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 4h20v4H2V4zm2 3h16V5H4v2zm-2 5h20v4H2v-4zm2 3h16v-2H4v2zm0 5h16v-2H4v2z" fill="currentColor"/>
+                </svg>
+                Send Backward
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tool-section">
+          <div class="tool-header">
+            <span>Settings</span>
+          </div>
+          <div class="tool-content">
+            <div class="toggle-container">
+              <span>Show Grid</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="gridToggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="toggle-container">
+              <span>Snap to Grid</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="snapToggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="status-bar">
+      <div id="toolStatus">Tool: Select</div>
+      <div id="coordinates" class="coordinates">X: 0, Y: 0</div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Canvas setup
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const measurementDisplay = document.getElementById('measurementDisplay');
+      
+      // Tool state - define variables before using them
+      let currentTool = 'select';
+      let isDrawing = false;
+      let objects = [];
+      let selectedObject = null;
+      let startPoint = null;
+      let measureStart = null;
+      let measureEnd = null;
+      let currentColor = '#4a148c';
+      let currentSize = 50;
+      let currentOpacity = 1;
+      let showGrid = false;
+      let snapToGrid = false;
+      let gridSize = 20;
+      
+      // Tool buttons
+      const selectTool = document.getElementById('selectTool');
+      const drawTool = document.getElementById('drawTool');
+      const measureTool = document.getElementById('measureTool');
+      const toolStatus = document.getElementById('toolStatus');
+      const coordinates = document.getElementById('coordinates');
+      
+      // Object property controls
+      const sizeSlider = document.getElementById('sizeSlider');
+      const sizeValue = document.getElementById('sizeValue');
+      const opacitySlider = document.getElementById('opacitySlider');
+      const opacityValue = document.getElementById('opacityValue');
+      const colorOptions = document.querySelectorAll('.color-option');
+      
+      // Layer controls
+      const bringForwardBtn = document.getElementById('bringForwardBtn');
+      const sendBackwardBtn = document.getElementById('sendBackwardBtn');
+      
+      // Settings
+      const gridToggle = document.getElementById('gridToggle');
+      const snapToggle = document.getElementById('snapToggle');
+      
+      // Action buttons
+      const undoBtn = document.getElementById('undoBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      
+      // Helper functions
+      function drawGrid() {
+        if (!showGrid) return;
+        
+        ctx.save();
+        ctx.strokeStyle = '#e0e0e0';
+        ctx.lineWidth = 1;
+        
+        // Draw vertical lines
+        for (let x = 0; x < canvas.width; x += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, canvas.height);
+          ctx.stroke();
+        }
+        
+        // Draw horizontal lines
+        for (let y = 0; y < canvas.height; y += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(canvas.width, y);
+          ctx.stroke();
+        }
+        
+        ctx.restore();
+      }
+      
+      function drawObjects() {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw grid if enabled
+        drawGrid();
+        
+        // Draw all objects
+        objects.forEach((obj, index) => {
+          ctx.save();
+          
+          if (obj === selectedObject) {
+            // Draw selection indicator
+            ctx.strokeStyle = '#ff6d00';
+            ctx.lineWidth = obj.size + 4;
+            ctx.globalAlpha = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(obj.x1, obj.y1);
+            ctx.lineTo(obj.x2, obj.y2);
+            ctx.stroke();
+          }
+          
+          // Draw the object
+          if (obj.type === 'line') {
+            ctx.beginPath();
+            ctx.moveTo(obj.x1, obj.y1);
+            ctx.lineTo(obj.x2, obj.y2);
+            ctx.strokeStyle = obj.color;
+            ctx.lineWidth = obj.size;
+            ctx.globalAlpha = obj.opacity;
+            ctx.stroke();
+          }
+          
+          ctx.restore();
+        });
+      }
+      
+      // Set canvas size to match container
+      function resizeCanvas() {
+        const container = canvas.parentElement;
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        drawGrid();
+        drawObjects();
+      }
+      
+      // Initial resize and event listener for window resize
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Tool selection
+      selectTool.addEventListener('click', () => setActiveTool('select'));
+      drawTool.addEventListener('click', () => setActiveTool('draw'));
+      measureTool.addEventListener('click', () => setActiveTool('measure'));
+      
+      function setActiveTool(tool) {
+        currentTool = tool;
+        
+        // Update UI
+        selectTool.classList.toggle('active', tool === 'select');
+        drawTool.classList.toggle('active', tool === 'draw');
+        measureTool.classList.toggle('active', tool === 'measure');
+        
+        // Update status
+        toolStatus.textContent = `Tool: ${tool.charAt(0).toUpperCase() + tool.slice(1)}`;
+        
+        // Reset measurement
+        if (tool !== 'measure') {
+          measureStart = null;
+          measureEnd = null;
+          measurementDisplay.style.display = 'none';
+        }
+        
+        // Update cursor
+        switch(tool) {
+          case 'select':
+            canvas.style.cursor = 'default';
+            break;
+          case 'draw':
+            canvas.style.cursor = 'crosshair';
+            break;
+          case 'measure':
+            canvas.style.cursor = 'crosshair';
+            break;
+        }
+      }
+      
+      // Canvas event listeners
+      canvas.addEventListener('mousedown', handleMouseDown);
+      canvas.addEventListener('mousemove', handleMouseMove);
+      canvas.addEventListener('mouseup', handleMouseUp);
+      
+      function handleMouseDown(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        if (currentTool === 'select') {
+          // Check if clicked on an object
+          selectedObject = getObjectAtPosition(x, y);
+          if (selectedObject) {
+            startPoint = { x, y };
+          }
+        } else if (currentTool === 'draw') {
+          isDrawing = true;
+          startPoint = { x, y };
+        } else if (currentTool === 'measure') {
+          if (!measureStart) {
+            measureStart = { x, y };
+          } else {
+            measureEnd = { x, y };
+            displayMeasurement();
+          }
+        }
+        
+        drawObjects();
+      }
+      
+      function handleMouseMove(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Update coordinates display
+        coordinates.textContent = `X: ${Math.round(x)}, Y: ${Math.round(y)}`;
+        
+        if (currentTool === 'select' && selectedObject && startPoint) {
+          // Move selected object
+          const dx = x - startPoint.x;
+          const dy = y - startPoint.y;
+          
+          selectedObject.x += dx;
+          selectedObject.y += dy;
+          
+          // Snap to grid if enabled
+          if (snapToGrid) {
+            selectedObject.x = Math.round(selectedObject.x / gridSize) * gridSize;
+            selectedObject.y = Math.round(selectedObject.y / gridSize) * gridSize;
+          }
+          
+          startPoint = { x, y };
+          drawObjects();
+        } else if (currentTool === 'draw' && isDrawing) {
+          // Preview drawing
+          drawObjects();
+          ctx.beginPath();
+          ctx.moveTo(startPoint.x, startPoint.y);
+          ctx.lineTo(x, y);
+          ctx.strokeStyle = currentColor;
+          ctx.lineWidth = currentSize / 10;
+          ctx.globalAlpha = currentOpacity;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        } else if (currentTool === 'measure' && measureStart) {
+          // Preview measurement
+          drawObjects();
+          
+          // Draw measurement line
+          ctx.beginPath();
+          ctx.moveTo(measureStart.x, measureStart.y);
+          ctx.lineTo(x, y);
+          ctx.strokeStyle = '#4a148c';
+          ctx.lineWidth = 2;
+          ctx.setLineDash([5, 5]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          
+          // Draw points
+          ctx.fillStyle = '#4a148c';
+          ctx.beginPath();
+          ctx.arc(measureStart.x, measureStart.y, 4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Calculate distance
+          const dx = x - measureStart.x;
+          const dy = y - measureStart.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          // Update measurement display
+          measurementDisplay.style.display = 'block';
+          measurementDisplay.style.left = ((measureStart.x + x) / 2) + 'px';
+          measurementDisplay.style.top = ((measureStart.y + y) / 2 - 30) + 'px';
+          measurementDisplay.textContent = `${Math.round(distance)}px`;
+        }
+      }
+      
+      function handleMouseUp(e) {
+        if (currentTool === 'draw' && isDrawing) {
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          // Create new line object
+          objects.push({
+            type: 'line',
+            x1: startPoint.x,
+            y1: startPoint.y,
+            x2: x,
+            y2: y,
+            color: currentColor,
+            size: currentSize / 10,
+            opacity: currentOpacity
+          });
+          
+          isDrawing = false;
+          startPoint = null;
+        }
+        
+        drawObjects();
+      }
+      
+      function getObjectAtPosition(x, y) {
+        // Check in reverse order (top to bottom)
+        for (let i = objects.length - 1; i >= 0; i--) {
+          const obj = objects[i];
+          
+          if (obj.type === 'line') {
+            // Check if point is near the line
+            const distance = distanceToLine(x, y, obj.x1, obj.y1, obj.x2, obj.y2);
+            if (distance < 10) {
+              return obj;
+            }
+          }
+        }
+        
+        return null;
+      }
+      
+      function distanceToLine(x, y, x1, y1, x2, y2) {
+        const A = x - x1;
+        const B = y - y1;
+        const C = x2 - x1;
+        const D = y2 - y1;
+        
+        const dot = A * C + B * D;
+        const len_sq = C * C + D * D;
+        let param = -1;
+        
+        if (len_sq !== 0) {
+          param = dot / len_sq;
+        }
+        
+        let xx, yy;
+        
+        if (param < 0) {
+          xx = x1;
+          yy = y1;
+        } else if (param > 1) {
+          xx = x2;
+          yy = y2;
+        } else {
+          xx = x1 + param * C;
+          yy = y1 + param * D;
+        }
+        
+        const dx = x - xx;
+        const dy = y - yy;
+        
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+      
+      function displayMeasurement() {
+        if (!measureStart || !measureEnd) return;
+        
+        // Calculate distance
+        const dx = measureEnd.x - measureStart.x;
+        const dy = measureEnd.y - measureStart.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // Update measurement display
+        measurementDisplay.style.display = 'block';
+        measurementDisplay.style.left = ((measureStart.x + measureEnd.x) / 2) + 'px';
+        measurementDisplay.style.top = ((measureStart.y + measureEnd.y) / 2 - 30) + 'px';
+        measurementDisplay.textContent = `${Math.round(distance)}px`;
+        
+        // Reset for next measurement
+        measureStart = null;
+        measureEnd = null;
+      }
+      
+      // UI control event listeners
+      sizeSlider.addEventListener('input', function() {
+        currentSize = parseInt(this.value);
+        sizeValue.textContent = currentSize;
+        
+        if (selectedObject) {
+          selectedObject.size = currentSize / 10;
+          drawObjects();
+        }
+      });
+      
+      opacitySlider.addEventListener('input', function() {
+        currentOpacity = parseInt(this.value) / 100;
+        opacityValue.textContent = `${this.value}%`;
+        
+        if (selectedObject) {
+          selectedObject.opacity = currentOpacity;
+          drawObjects();
+        }
+      });
+      
+      colorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Update active color
+          colorOptions.forEach(opt => opt.classList.remove('active'));
+          this.classList.add('active');
+          currentColor = this.getAttribute('data-color');
+          
+          // Update selected object if any
+          if (selectedObject) {
+            selectedObject.color = currentColor;
+            drawObjects();
+          }
+        });
+      });
+      
+      // Layer controls
+      bringForwardBtn.addEventListener('click', function() {
+        if (selectedObject) {
+          const index = objects.indexOf(selectedObject);
+          if (index < objects.length - 1) {
+            // Swap with next object
+            [objects[index], objects[index + 1]] = [objects[index + 1], objects[index]];
+            drawObjects();
+          }
+        }
+      });
+      
+      sendBackwardBtn.addEventListener('click', function() {
+        if (selectedObject) {
+          const index = objects.indexOf(selectedObject);
+          if (index > 0) {
+            // Swap with previous object
+            [objects[index], objects[index - 1]] = [objects[index - 1], objects[index]];
+            drawObjects();
+          }
+        }
+      });
+      
+      // Settings
+      gridToggle.addEventListener('change', function() {
+        showGrid = this.checked;
+        drawObjects();
+      });
+      
+      snapToggle.addEventListener('change', function() {
+        snapToGrid = this.checked;
+      });
+      
+      // Action buttons
+      undoBtn.addEventListener('click', function() {
+        if (objects.length > 0) {
+          objects.pop();
+          selectedObject = null;
+          drawObjects();
+        }
+      });
+      
+      clearBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to clear the canvas?')) {
+          objects = [];
+          selectedObject = null;
+          drawObjects();
+        }
+      });
+      
+      // Initial draw
+      drawObjects();
+    });
+  </script>
+</body>
+</html>

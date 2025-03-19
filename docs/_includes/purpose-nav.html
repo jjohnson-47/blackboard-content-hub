@@ -1,0 +1,141 @@
+<!-- Purpose Navigation Sidebar -->
+<div class="purpose-nav">
+  <h3>Main Purposes</h3>
+  <ul class="purpose-list">
+    <li class="purpose-item {% if page.url contains '/iframe-hosting/' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/iframe-hosting/">
+        <span class="purpose-icon">📦</span>
+        <span class="purpose-text">Iframe Hosting</span>
+      </a>
+    </li>
+    <li class="purpose-item {% if page.url contains '/component-documentation/' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/component-documentation/">
+        <span class="purpose-icon">📝</span>
+        <span class="purpose-text">Component Documentation</span>
+      </a>
+    </li>
+    <li class="purpose-item {% if page.url contains '/development-environment/' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/development-environment/">
+        <span class="purpose-icon">🛠️</span>
+        <span class="purpose-text">Development Environment</span>
+      </a>
+    </li>
+  </ul>
+
+  <h3>Resources</h3>
+  <ul class="purpose-list">
+    <li class="purpose-item {% if page.url contains '/component-browser/' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/component-browser/">
+        <span class="purpose-icon">🔍</span>
+        <span class="purpose-text">Component Browser</span>
+      </a>
+    </li>
+    <li class="purpose-item {% if page.url contains '/developer-guide/' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/developer-guide/">
+        <span class="purpose-icon">📚</span>
+        <span class="purpose-text">Developer Guide</span>
+      </a>
+    </li>
+    <li class="purpose-item {% if page.url contains '/user-guide/' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/user-guide/">
+        <span class="purpose-icon">👤</span>
+        <span class="purpose-text">User Guide</span>
+      </a>
+    </li>
+  </ul>
+
+  <h3>Quick Links</h3>
+  <ul class="purpose-list">
+    <li class="purpose-item">
+      <a href="{{ site.baseurl }}/developer-guide/iframe-integration/">
+        <span class="purpose-icon">🔗</span>
+        <span class="purpose-text">Iframe Integration</span>
+      </a>
+    </li>
+    <li class="purpose-item">
+      <a href="{{ site.baseurl }}/developer-guide/improvement-plan/">
+        <span class="purpose-icon">📈</span>
+        <span class="purpose-text">Improvement Plan</span>
+      </a>
+    </li>
+    <li class="purpose-item">
+      <a href="{{ site.baseurl }}/troubleshooting/">
+        <span class="purpose-icon">🔧</span>
+        <span class="purpose-text">Troubleshooting</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+.purpose-nav {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.purpose-nav h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #4a148c;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.purpose-nav h3:not(:first-child) {
+  margin-top: 25px;
+}
+
+.purpose-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.purpose-item {
+  margin-bottom: 10px;
+}
+
+.purpose-item a {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.purpose-item a:hover {
+  background-color: #e9ecef;
+  text-decoration: none;
+}
+
+.purpose-item.active a {
+  background-color: #e8eaf6;
+  color: #4a148c;
+  font-weight: 500;
+}
+
+.purpose-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.purpose-text {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .purpose-nav {
+    padding: 15px;
+  }
+  
+  .purpose-item a {
+    padding: 10px;
+  }
+}
+</style>

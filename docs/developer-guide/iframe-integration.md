@@ -20,7 +20,7 @@ A basic iframe implementation looks like this:
 
 ```html
 <iframe 
-  src="https://yourusername.github.io/blackboard-content-hub/shared/components/your-component.html" 
+  src="https://jjohnson-47.github.io/blackboard-content-hub/shared/components/your-component.html" 
   width="100%" 
   height="500" 
   frameborder="0" 
@@ -43,7 +43,7 @@ A basic iframe implementation looks like this:
 Always use HTTPS for iframe sources to ensure secure communication:
 
 ```html
-<iframe src="https://yourusername.github.io/blackboard-content-hub/..."></iframe>
+<iframe src="https://jjohnson-47.github.io/blackboard-content-hub/..."></iframe>
 ```
 
 ### Sandbox Attribute
@@ -139,12 +139,12 @@ iframe.contentWindow.postMessage({
   type: 'command',
   action: 'getData',
   params: { id: 123 }
-}, 'https://yourusername.github.io');
+}, 'https://jjohnson-47.github.io');
 
 // Listen for responses
 window.addEventListener('message', function(event) {
   // Always verify origin
-  if (event.origin !== 'https://yourusername.github.io') return;
+  if (event.origin !== 'https://jjohnson-47.github.io') return;
   
   console.log('Received data:', event.data);
 }, false);
@@ -371,7 +371,7 @@ Validate accessibility using tools like:
 
 ```html
 <iframe 
-  src="https://yourusername.github.io/blackboard-content-hub/shared/components/basic-component.html" 
+  src="https://jjohnson-47.github.io/blackboard-content-hub/shared/components/basic-component.html" 
   width="100%" 
   height="300" 
   frameborder="0" 
@@ -386,12 +386,12 @@ Validate accessibility using tools like:
     iframe.contentWindow.postMessage({
       type: 'command',
       action: 'reset'
-    }, 'https://yourusername.github.io');
+    }, 'https://jjohnson-47.github.io');
   });
   
   // Listen for events from the iframe
   window.addEventListener('message', function(event) {
-    if (event.origin !== 'https://yourusername.github.io') return;
+    if (event.origin !== 'https://jjohnson-47.github.io') return;
     
     if (event.data.type === 'event' && event.data.action === 'buttonClicked') {
       console.log('Button clicked in iframe at:', event.data.data.time);

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Graph</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #4a148c;
+      margin-top: 0;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 10px;
+    }
+    
+    .dev-banner {
+      background-color: #ffeb3b;
+      color: #333;
+      padding: 8px 12px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dev-banner button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .graph-container {
+      width: 100%;
+      height: 400px;
+      background-color: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .graph-canvas {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .controls label {
+      display: flex;
+      flex-direction: column;
+      min-width: 120px;
+    }
+    
+    .controls input {
+      padding: 8px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+    
+    .controls button {
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 22px;
+    }
+    
+    .controls button:hover {
+      background-color: #7b1fa2;
+    }
+    
+    .equation {
+      font-family: monospace;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="dev-banner">
+      <span>DEVELOPMENT MODE</span>
+      <button onclick="toggleDevBanner()">Hide</button>
+    </div>
+    
+    <h1>Interactive Graph</h1>
+    
+    <div class="equation">
+      y = <span id="equation">a * sin(b * x + c) + d</span>
+    </div>
+    
+    <div class="controls">
+      <label>
+        a (amplitude)
+        <input type="range" id="param-a" min="0" max="10" step="0.1" value="1">
+      </label>
+      <label>
+        b (frequency)
+        <input type="range" id="param-b" min="0" max="2" step="0.1" value="1">
+      </label>
+      <label>
+        c (phase)
+        <input type="range" id="param-c" min="0" max="6.28" step="0.1" value="0">
+      </label>
+      <label>
+        d (offset)
+        <input type="range" id="param-d" min="-5" max="5" step="0.1" value="0">
+      </label>
+      <button id="reset-btn">Reset</button>
+    </div>
+    
+    <div class="graph-container">
+      <canvas id="graph-canvas" class="graph-canvas"></canvas>
+    </div>
+    
+    <div>
+      <p>This interactive graph demonstrates a sine wave with adjustable parameters:</p>
+      <ul>
+        <li><strong>a (amplitude)</strong>: Controls the height of the wave</li>
+        <li><strong>b (frequency)</strong>: Controls how many cycles appear</li>
+        <li><strong>c (phase)</strong>: Shifts the wave horizontally</li>
+        <li><strong>d (offset)</strong>: Shifts the wave vertically</li>
+      </ul>
+      <p>Use the sliders to adjust the parameters and see how they affect the graph.</p>
+    </div>
+  </div>
+
+  <script>
+    // Development utilities
+    function toggleDevBanner() {
+      const banner = document.querySelector('.dev-banner');
+      banner.style.display = banner.style.display === 'none' ? 'flex' : 'none';
+    }
+    
+    // Graph implementation
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Interactive Graph component loaded');
+      
+      const canvas = document.getElementById('graph-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Parameters
+      let params = {
+        a: 1,  // amplitude
+        b: 1,  // frequency
+        c: 0,  // phase
+        d: 0   // offset
+      };
+      
+      // Input elements
+      const inputA = document.getElementById('param-a');
+      const inputB = document.getElementById('param-b');
+      const inputC = document.getElementById('param-c');
+      const inputD = document.getElementById('param-d');
+      const resetBtn = document.getElementById('reset-btn');
+      const equationEl = document.getElementById('equation');
+      
+      // Set initial values
+      inputA.value = params.a;
+      inputB.value = params.b;
+      inputC.value = params.c;
+      inputD.value = params.d;
+      
+      // Event listeners
+      inputA.addEventListener('input', updateGraph);
+      inputB.addEventListener('input', updateGraph);
+      inputC.addEventListener('input', updateGraph);
+      inputD.addEventListener('input', updateGraph);
+      resetBtn.addEventListener('click', resetParams);
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        resizeCanvas();
+        drawGraph();
+      });
+      
+      // Initialize
+      resizeCanvas();
+      drawGraph();
+      
+      // Functions
+      function resizeCanvas() {
+        const container = canvas.parentElement;
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+      }
+      
+      function updateGraph() {
+        params.a = parseFloat(inputA.value);
+        params.b = parseFloat(inputB.value);
+        params.c = parseFloat(inputC.value);
+        params.d = parseFloat(inputD.value);
+        
+        updateEquation();
+        drawGraph();
+      }
+      
+      function resetParams() {
+        params = { a: 1, b: 1, c: 0, d: 0 };
+        inputA.value = params.a;
+        inputB.value = params.b;
+        inputC.value = params.c;
+        inputD.value = params.d;
+        
+        updateEquation();
+        drawGraph();
+      }
+      
+      function updateEquation() {
+        equationEl.textContent = `${params.a} * sin(${params.b} * x + ${params.c}) + ${params.d}`;
+      }
+      
+      function drawGraph() {
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+        
+        // Draw axes
+        ctx.strokeStyle = '#ccc';
+        ctx.lineWidth = 1;
+        
+        // X-axis
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2);
+        ctx.lineTo(width, height / 2);
+        ctx.stroke();
+        
+        // Y-axis
+        ctx.beginPath();
+        ctx.moveTo(width / 2, 0);
+        ctx.lineTo(width / 2, height);
+        ctx.stroke();
+        
+        // Draw grid
+        const gridSize = 20;
+        ctx.strokeStyle = '#f0f0f0';
+        
+        // Vertical grid lines
+        for (let x = width / 2; x < width; x += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        
+        for (let x = width / 2; x > 0; x -= gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        
+        // Horizontal grid lines
+        for (let y = height / 2; y < height; y += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+        
+        for (let y = height / 2; y > 0; y -= gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+        
+        // Draw function
+        ctx.strokeStyle = '#4a148c';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        
+        const scale = 40; // Pixels per unit
+        
+        for (let i = 0; i < width; i++) {
+          const x = (i - width / 2) / scale;
+          const y = params.a * Math.sin(params.b * x + params.c) + params.d;
+          const canvasY = height / 2 - y * scale;
+          
+          if (i === 0) {
+            ctx.moveTo(i, canvasY);
+          } else {
+            ctx.lineTo(i, canvasY);
+          }
+        }
+        
+        ctx.stroke();
+      }
+    });
+  </script>
+</body>
+</html>

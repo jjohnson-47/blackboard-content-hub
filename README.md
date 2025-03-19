@@ -54,17 +54,17 @@ blackboard-content-hub/
 
 ## 📖 Documentation
 
-Comprehensive documentation is available at: [https://yourusername.github.io/blackboard-content-hub/](https://yourusername.github.io/blackboard-content-hub/)
+Comprehensive documentation is available at: [https://jjohnson-47.github.io/blackboard-content-hub/](https://jjohnson-47.github.io/blackboard-content-hub/)
 
 The documentation includes:
 
 | Section | Description |
 |---------|-------------|
-| **[User Guide](https://yourusername.github.io/blackboard-content-hub/user-guide/)** | Instructions for creating and embedding components |
-| **[Developer Guide](https://yourusername.github.io/blackboard-content-hub/developer-guide/)** | Technical documentation for developers |
-| **[Component Browser](https://yourusername.github.io/blackboard-content-hub/component-browser/)** | Interactive browser for all available components |
-| **[Courses](https://yourusername.github.io/blackboard-content-hub/courses/)** | Course-specific components |
-| **[Troubleshooting](https://yourusername.github.io/blackboard-content-hub/troubleshooting/)** | Solutions to common issues |
+| **[User Guide](https://jjohnson-47.github.io/blackboard-content-hub/user-guide/)** | Instructions for creating and embedding components |
+| **[Developer Guide](https://jjohnson-47.github.io/blackboard-content-hub/developer-guide/)** | Technical documentation for developers |
+| **[Component Browser](https://jjohnson-47.github.io/blackboard-content-hub/component-browser/)** | Interactive browser for all available components |
+| **[Courses](https://jjohnson-47.github.io/blackboard-content-hub/courses/)** | Course-specific components |
+| **[Troubleshooting](https://jjohnson-47.github.io/blackboard-content-hub/troubleshooting/)** | Solutions to common issues |
 
 ## 🚀 Getting Started
 
@@ -79,7 +79,7 @@ The documentation includes:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/blackboard-content-hub.git
+   git clone https://github.com/jjohnson-47/blackboard-content-hub.git
    cd blackboard-content-hub
    ```
 
@@ -129,7 +129,7 @@ npm run deploy
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please see the [Contributing Guide](https://yourusername.github.io/blackboard-content-hub/contributing/) for details.
+Contributions are welcome! Please see the [Contributing Guide](https://jjohnson-47.github.io/blackboard-content-hub/contributing/) for details.
 
 ## 📄 License
 

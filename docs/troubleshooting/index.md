@@ -177,7 +177,7 @@ This guide addresses common issues you might encounter when creating, deploying,
      iframe.contentWindow.postMessage({
        type: 'command',
        action: 'getData'
-     }, 'https://yourusername.github.io');
+     }, 'https://jjohnson-47.github.io');
      
      // In iframe
      window.addEventListener('message', function(event) {
@@ -498,7 +498,7 @@ This guide addresses common issues you might encounter when creating, deploying,
 
 If you're still experiencing issues after trying these solutions:
 
-1. Check the [GitHub repository issues](https://github.com/yourusername/blackboard-content-hub/issues) to see if others have reported the same problem
+1. Check the [GitHub repository issues](https://github.com/jjohnson-47/blackboard-content-hub/issues) to see if others have reported the same problem
 2. Search the [developer guide](/blackboard-content-hub/developer-guide/) for more detailed information
 3. Create a new issue on GitHub with:
    - Detailed description of the problem

@@ -37,7 +37,7 @@ To embed this component in a Blackboard page, use the following iframe code:
 
 ```html
 <iframe 
-  src="https://yourusername.github.io/blackboard-content-hub/shared/components/flatland-message.html" 
+  src="https://jjohnson-47.github.io/blackboard-content-hub/shared/components/flatland-message.html" 
   width="100%" 
   height="600" 
   frameborder="0" 

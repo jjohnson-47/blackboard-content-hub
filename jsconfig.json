@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "checkJs": false,
+    "lib": ["DOM", "ES2020"],
+    "noEmit": true
+  },
+  "include": ["dev/preview/js/**/*.js"],
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

@@ -20,16 +20,16 @@ console.log('Copying components...');
 
 // Copy shared components
 const sharedComponentsDir = path.join(rootDir, 'shared', 'components');
-const distSharedDir = path.join(distDir, 'shared', 'components');
+const distSharedComponentsDir = path.join(distDir, 'shared', 'components');
 
 if (fs.existsSync(sharedComponentsDir)) {
-  if (!fs.existsSync(distSharedDir)) {
-    fs.mkdirSync(distSharedDir, { recursive: true });
+  if (!fs.existsSync(distSharedComponentsDir)) {
+    fs.mkdirSync(distSharedComponentsDir, { recursive: true });
   }
   
   fs.readdirSync(sharedComponentsDir).forEach(file => {
     const srcPath = path.join(sharedComponentsDir, file);
-    const destPath = path.join(distSharedDir, file);
+    const destPath = path.join(distSharedComponentsDir, file);
     
     if (fs.statSync(srcPath).isFile()) {
       fs.copyFileSync(srcPath, destPath);
@@ -69,6 +69,49 @@ if (fs.existsSync(coursesDir)) {
   });
 }
 
+// Copy development components (if --include-dev flag is provided)
+if (process.argv.includes('--include-dev')) {
+  console.log('Copying development components...');
+  const devComponentsDir = path.join(rootDir, 'dev', 'components');
+  const distDevDir = path.join(distDir, 'dev', 'components');
+  const devPreviewDir = path.join(rootDir, 'dev', 'preview');
+  const distDevPreviewDir = path.join(distDir, 'dev', 'preview');
+
+  // Copy dev components
+  if (fs.existsSync(devComponentsDir)) {
+    if (!fs.existsSync(distDevDir)) {
+      fs.mkdirSync(distDevDir, { recursive: true });
+    }
+    
+    fs.readdirSync(devComponentsDir).forEach(file => {
+      const srcPath = path.join(devComponentsDir, file);
+      const destPath = path.join(distDevDir, file);
+      
+      if (fs.statSync(srcPath).isFile()) {
+        fs.copyFileSync(srcPath, destPath);
+        console.log(`Copied: ${file} to dev/components`);
+      }
+    });
+  }
+
+  // Copy dev preview
+  if (fs.existsSync(devPreviewDir)) {
+    if (!fs.existsSync(distDevPreviewDir)) {
+      fs.mkdirSync(distDevPreviewDir, { recursive: true });
+    }
+    
+    fs.readdirSync(devPreviewDir).forEach(file => {
+      const srcPath = path.join(devPreviewDir, file);
+      const destPath = path.join(distDevPreviewDir, file);
+      
+      if (fs.statSync(srcPath).isFile()) {
+        fs.copyFileSync(srcPath, destPath);
+        console.log(`Copied: ${file} to dev/preview`);
+      }
+    });
+  }
+}
+
 // Copy assets
 console.log('Copying assets...');
 const assetsDir = path.join(rootDir, 'assets');
@@ -95,6 +138,38 @@ if (fs.existsSync(assetsDir)) {
         if (fs.statSync(srcPath).isFile()) {
           fs.copyFileSync(srcPath, destPath);
           console.log(`Copied: ${file} to assets/${assetType}`);
+        }
+      });
+    }
+  });
+}
+
+// Copy shared styles and scripts
+console.log('Copying shared styles and scripts...');
+const sharedDir = path.join(rootDir, 'shared');
+const distSharedDir = path.join(distDir, 'shared');
+
+if (fs.existsSync(sharedDir)) {
+  if (!fs.existsSync(distSharedDir)) {
+    fs.mkdirSync(distSharedDir, { recursive: true });
+  }
+  
+  ['styles', 'scripts', 'libraries'].forEach(sharedType => {
+    const sharedTypeDir = path.join(sharedDir, sharedType);
+    const distSharedTypeDir = path.join(distSharedDir, sharedType);
+    
+    if (fs.existsSync(sharedTypeDir)) {
+      if (!fs.existsSync(distSharedTypeDir)) {
+        fs.mkdirSync(distSharedTypeDir, { recursive: true });
+      }
+      
+      fs.readdirSync(sharedTypeDir).forEach(file => {
+        const srcPath = path.join(sharedTypeDir, file);
+        const destPath = path.join(distSharedTypeDir, file);
+        
+        if (fs.statSync(srcPath).isFile()) {
+          fs.copyFileSync(srcPath, destPath);
+          console.log(`Copied: ${file} to shared/${sharedType}`);
         }
       });
     }

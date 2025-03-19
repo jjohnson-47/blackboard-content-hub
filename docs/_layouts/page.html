@@ -1,0 +1,90 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="page-container">
+    <!-- Include the purpose navigation sidebar -->
+    <div class="sidebar-container">
+      {% include purpose-nav.html %}
+    </div>
+    
+    <div class="content-container">
+      <div class="post-content">
+        {{ content }}
+      </div>
+      
+      {% if page.category %}
+      <div class="page-navigation">
+        {% if page.category == "Examples" %}
+        <a href="{{ site.baseurl }}/examples/" class="nav-back">← Back to Examples</a>
+        {% elsif page.category == "Developer Guide" %}
+        <a href="{{ site.baseurl }}/developer-guide/" class="nav-back">← Back to Developer Guide</a>
+        {% elsif page.category == "User Guide" %}
+        <a href="{{ site.baseurl }}/user-guide/" class="nav-back">← Back to User Guide</a>
+        {% elsif page.category == "API Reference" %}
+        <a href="{{ site.baseurl }}/api-reference/" class="nav-back">← Back to API Reference</a>
+        {% elsif page.category == "Troubleshooting" %}
+        <a href="{{ site.baseurl }}/troubleshooting/" class="nav-back">← Back to Troubleshooting</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+</article>
+
+<style>
+  .page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex: 1;
+    min-width: 0; /* Prevents content from overflowing */
+  }
+  
+  .page-navigation {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .nav-back {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-back:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+    }
+    
+    .sidebar-container {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>

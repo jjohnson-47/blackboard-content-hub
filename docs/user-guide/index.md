@@ -144,7 +144,7 @@ Technical details about how the component works.
 Example code for embedding this component:
 
 ```html
-<iframe src="https://yourusername.github.io/blackboard-content-hub/path/to/component.html" 
+<iframe src="https://jjohnson-47.github.io/blackboard-content-hub/path/to/component.html" 
   width="100%" height="500" frameborder="0" allowfullscreen></iframe>
 ```
 
@@ -173,7 +173,7 @@ For responsive embedding that works well on all devices, use the following patte
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
   <iframe 
     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-    src="https://yourusername.github.io/blackboard-content-hub/path/to/component.html" 
+    src="https://jjohnson-47.github.io/blackboard-content-hub/path/to/component.html" 
     frameborder="0" 
     allowfullscreen>
   </iframe>
@@ -238,4 +238,4 @@ If you need to maintain multiple versions of a component:
 - [Developer Guide](/blackboard-content-hub/developer-guide/)
 - [API Reference](/blackboard-content-hub/api-reference/)
 - [Troubleshooting](/blackboard-content-hub/troubleshooting/)
-- [GitHub Repository](https://github.com/yourusername/blackboard-content-hub)
+- [GitHub Repository](https://github.com/jjohnson-47/blackboard-content-hub)

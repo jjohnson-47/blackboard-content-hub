@@ -13,6 +13,14 @@ plugins:
 
 # Navigation
 header_pages:
+  # Main purpose pages
+  - iframe-hosting/index.md
+  - component-documentation/index.md
+  - development-environment/index.md
+  # Component browser
+  - component-browser/index.md
+  - component-browser/enhanced-index.md
+  # Original sections
   - user-guide/index.md
   - developer-guide/index.md
   - api-reference/index.md
@@ -21,6 +29,17 @@ header_pages:
 
 # Collections for different documentation sections
 collections:
+  # Main purpose collections
+  iframe_hosting:
+    output: true
+    permalink: /iframe-hosting/:path/
+  component_documentation:
+    output: true
+    permalink: /component-documentation/:path/
+  development_environment:
+    output: true
+    permalink: /development-environment/:path/
+  # Original collections
   user_guide:
     output: true
     permalink: /user-guide/:path/
@@ -43,6 +62,20 @@ defaults:
       path: ""
     values:
       layout: "page"
+  # Main purpose sections
+  - scope:
+      path: "iframe-hosting"
+    values:
+      category: "Iframe Hosting"
+  - scope:
+      path: "component-documentation"
+    values:
+      category: "Component Documentation"
+  - scope:
+      path: "development-environment"
+    values:
+      category: "Development Environment"
+  # Original sections
   - scope:
       path: "user-guide"
     values:

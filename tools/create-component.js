@@ -95,7 +95,7 @@ To embed this component in a Blackboard page, use the following iframe code:
 
 \`\`\`html
 <iframe 
-  src="https://yourusername.github.io/blackboard-content-hub/{{URL}}" 
+  src="https://jjohnson-47.github.io/blackboard-content-hub/{{URL}}" 
   width="100%" 
   height="500" 
   frameborder="0" 
@@ -238,7 +238,7 @@ function createComponent(directory, componentName, title, description, tags, cou
   fs.writeFileSync(dataPath, JSON.stringify(components, null, 2));
   console.log(`Component added to component-data.json`);
   
-  console.log(`\nComponent URL will be: https://yourusername.github.io/blackboard-content-hub/${directory}/${componentName}.html`);
+  console.log(`\nComponent URL will be: https://jjohnson-47.github.io/blackboard-content-hub/${directory}/${componentName}.html`);
   
   rl.close();
 }

@@ -1,5 +1,25 @@
 [
   {
+    "id": "design-tool-demo",
+    "title": "Design Tool Demo",
+    "category": "general",
+    "type": "shared",
+    "description": "Interactive design tool demonstrating UI implementation principles for educational tools. Features canvas management, layering, measurement tools, and interactive controls.",
+    "url": "/blackboard-content-hub/shared/components/design-tool-demo.html",
+    "documentationUrl": "/blackboard-content-hub/docs/developer-guide/ui-design-implementation.html",
+    "tags": ["design", "UI/UX", "interactive", "canvas", "measurement"]
+  },
+  {
+    "id": "design-principles-demo",
+    "title": "Design Principles Demo: Interactive Canvas Tool",
+    "category": "general",
+    "type": "development",
+    "description": "An interactive canvas tool demonstrating game design principles applied to educational tools. Create and manipulate shapes on the canvas using the controls.",
+    "url": "/blackboard-content-hub/dev/components/design-principles-demo.html",
+    "documentationUrl": "/blackboard-content-hub/docs/developer-guide/design-principles.html",
+    "tags": ["design", "UI/UX", "interactive", "canvas", "development"]
+  },
+  {
     "id": "binary-search-visualization",
     "title": "Binary Search Visualization",
     "category": "general",

@@ -221,7 +221,7 @@ function createCourse(courseId, courseTitle, courseDescription) {
   updateCoursesList(rootDir, courseId, courseTitle, courseDescription);
   
   console.log(`\nCourse "${courseTitle}" (${courseId}) has been created successfully.`);
-  console.log(`Course page will be available at: https://yourusername.github.io/blackboard-content-hub/courses/${courseId}/`);
+  console.log(`Course page will be available at: https://jjohnson-47.github.io/blackboard-content-hub/courses/${courseId}/`);
   
   rl.close();
 }

@@ -1,15 +1,38 @@
 {
   "name": "blackboard-content-hub",
   "version": "1.0.0",
-  "description": "Interactive content for Blackboard LMS",
+  "description": "Interactive educational content for Blackboard",
+  "main": "index.js",
   "scripts": {
-    "start": "jekyll serve --source docs",
     "build": "node build/build.js",
-    "deploy": "gh-pages -d dist",
-    "new:component": "node tools/create-component.js",
-    "new:course": "node tools/create-course.js"
+    "build:dev": "node build/build.js --include-dev",
+    "serve": "jekyll serve --source docs --destination _site",
+    "dev": "jekyll serve --source docs --destination _site --watch",
+    "preview": "node tools/dev-server.js",
+    "component-manager": "node tools/component-manager.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjohnson-47/blackboard-content-hub.git"
+  },
+  "keywords": [
+    "education",
+    "interactive",
+    "blackboard",
+    "iframe"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jjohnson-47/blackboard-content-hub/issues"
+  },
+  "homepage": "https://github.com/jjohnson-47/blackboard-content-hub#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "semver": "^7.5.4"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3"
   }
 }

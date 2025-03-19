@@ -1,330 +1,265 @@
 /**
  * Theme Responsive Styles - "Nascent Digital Dawn"
  * 
- * This file contains media queries and responsive adjustments
- * for different screen sizes, following a mobile-first approach.
+ * Responsive design adjustments for different screen sizes.
  */
 
 /* Import variables */
 @import 'theme-variables.css';
 
-/* Base styles are mobile-first in other CSS files */
-/* This file contains adjustments for larger screens */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-  .container {
-    max-width: var(--container-sm);
-  }
-  
-  /* Typography adjustments */
-  h1 {
-    font-size: calc(var(--font-size-3xl) + 0.5rem);
-  }
-  
-  /* Banner adjustments */
-  .banner-container {
-    height: calc(var(--banner-height-mobile) + 50px);
-  }
-  
-  /* Grid adjustments */
-  .grid-2-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .container {
-    max-width: var(--container-md);
-  }
-  
-  /* Typography adjustments */
-  h1 {
-    font-size: var(--font-size-4xl);
-  }
-  
-  h2 {
-    font-size: var(--font-size-3xl);
-  }
-  
-  /* Banner adjustments */
-  .banner-container {
-    height: var(--banner-height-tablet);
-  }
-  
-  /* Navigation adjustments */
-  .menu-toggle {
-    display: none;
-  }
-  
-  .site-nav {
-    flex-direction: row;
-  }
-  
-  .nav-links {
-    display: flex !important;
-    flex-direction: row;
-    margin-top: 0;
-    width: auto;
-  }
-  
-  .nav-links li {
-    margin: 0 var(--space-md);
-  }
-  
-  /* Grid adjustments */
-  .grid-3-cols {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  /* Iframe showcase adjustments */
-  .iframe-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  /* Component browser adjustments */
-  .component-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  /* Responsive preview adjustments */
-  .preview-container.tablet {
-    width: 768px;
-    height: 1024px;
-  }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .container {
-    max-width: var(--container-lg);
-  }
-  
-  /* Banner adjustments */
-  .banner-container {
-    height: var(--banner-height-desktop);
-  }
-  
-  /* Layout adjustments */
-  .content-with-sidebar {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: var(--space-xl);
-  }
-  
-  .content-with-sidebar.sidebar-left {
-    grid-template-columns: 300px 1fr;
-  }
-  
-  /* Grid adjustments */
-  .grid-4-cols {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  /* Iframe showcase adjustments */
-  .iframe-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  /* Component browser adjustments */
-  .component-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  /* Documentation layout adjustments */
-  .documentation-layout {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: var(--space-xl);
-  }
-  
-  .documentation-nav {
-    position: sticky;
-    top: 80px;
-    height: calc(100vh - 100px);
-    overflow-y: auto;
-  }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
+/* Large Desktops (1200px and up) */
 @media (min-width: 1200px) {
-  .container {
-    max-width: var(--container-xl);
-  }
-  
-  /* Grid adjustments */
-  .grid-5-cols {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  
-  /* Iframe showcase adjustments */
-  .iframe-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  /* Component browser adjustments */
-  .component-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  /* Documentation layout adjustments */
-  .documentation-layout {
-    grid-template-columns: 300px 1fr;
-  }
+    .container {
+        max-width: var(--container-xl);
+    }
+    
+    /* Larger spacing for larger screens */
+    .page-content {
+        padding: var(--space-2xl) 0;
+    }
+    
+    /* Larger font sizes for headings on large screens */
+    h1 {
+        font-size: var(--font-size-5xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-4xl);
+    }
+    
+    h3 {
+        font-size: var(--font-size-3xl);
+    }
 }
 
-/* Special adjustments for extra small devices */
-@media (max-width: 575.98px) {
-  /* Typography adjustments */
-  html {
-    font-size: 14px;
-  }
-  
-  h1 {
-    font-size: var(--font-size-2xl);
-  }
-  
-  h2 {
-    font-size: var(--font-size-xl);
-  }
-  
-  /* Spacing adjustments */
-  .container {
-    padding: 0 var(--space-sm);
-  }
-  
-  /* Banner adjustments */
-  .banner-container {
-    height: var(--banner-height-mobile);
-  }
-  
-  /* Button adjustments */
-  .btn {
-    display: block;
-    width: 100%;
-    margin-bottom: var(--space-sm);
-  }
-  
-  /* Card adjustments */
-  .card {
-    padding: var(--space-md);
-  }
-  
-  /* Navigation adjustments */
-  .site-title {
-    font-size: var(--font-size-lg);
-  }
-  
-  /* Iframe preview adjustments */
-  .iframe-preview {
-    padding-top: 75%; /* 4:3 aspect ratio for better visibility on small screens */
-  }
-  
-  /* Component browser adjustments */
-  .component-filters {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .filter-button {
-    margin-bottom: var(--space-xs);
-  }
-  
-  /* Responsive preview adjustments */
-  .preview-container.mobile {
-    width: 100%;
-    height: 500px;
-  }
+/* Desktops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: var(--container-lg);
+    }
 }
 
-/* Height-based media queries */
-@media (max-height: 700px) {
-  /* Banner adjustments */
-  .banner-container {
-    height: 200px;
-  }
-  
-  /* Documentation nav adjustments */
-  .documentation-nav {
-    max-height: 500px;
-  }
+/* Tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: var(--container-md);
+    }
+    
+    /* Adjust grid layouts for tablets */
+    .grid-4-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-5-cols {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Adjust banner sizes for tablets */
+    .banner-size-hero {
+        height: 400px;
+    }
+    
+    .banner-size-medium {
+        height: 300px;
+    }
+    
+    .banner-size-small {
+        height: 200px;
+    }
+    
+    /* Adjust typography for tablets */
+    h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    h3 {
+        font-size: var(--font-size-xl);
+    }
+}
+
+/* Mobile Landscape (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: var(--container-sm);
+    }
+    
+    /* Adjust grid layouts for mobile landscape */
+    .grid-3-cols,
+    .grid-4-cols,
+    .grid-5-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Adjust purpose container for mobile landscape */
+    .purpose-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust banner sizes for mobile landscape */
+    .banner-size-hero {
+        height: 350px;
+    }
+    
+    .banner-size-medium {
+        height: 250px;
+    }
+    
+    .banner-size-small {
+        height: 180px;
+    }
+    
+    /* Adjust typography for mobile landscape */
+    h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-xl);
+    }
+    
+    h3 {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Adjust spacing for mobile landscape */
+    .page-content {
+        padding: var(--space-lg) 0;
+    }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    /* Adjust grid layouts for mobile portrait */
+    .grid-2-cols,
+    .grid-3-cols,
+    .grid-4-cols,
+    .grid-5-cols {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust purpose container for mobile portrait */
+    .purpose-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust banner sizes for mobile portrait */
+    .banner-size-hero {
+        height: 300px;
+    }
+    
+    .banner-size-medium {
+        height: 200px;
+    }
+    
+    .banner-size-small {
+        height: 150px;
+    }
+    
+    /* Adjust typography for mobile portrait */
+    h1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    h2 {
+        font-size: var(--font-size-lg);
+    }
+    
+    h3 {
+        font-size: var(--font-size-md);
+    }
+    
+    /* Adjust spacing for mobile portrait */
+    .page-content {
+        padding: var(--space-md) 0;
+    }
+    
+    /* Adjust card padding for mobile portrait */
+    .card {
+        padding: var(--space-md);
+    }
+    
+    /* Adjust button sizes for mobile portrait */
+    .btn {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Stack footer columns on mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Specific adjustments for iframe components */
+@media (max-width: 768px) {
+    .iframe-detail-display iframe {
+        height: 400px;
+    }
+    
+    .preview-container.desktop iframe {
+        height: 300px;
+    }
+    
+    .preview-container.tablet iframe {
+        height: 250px;
+    }
+    
+    .preview-container.mobile iframe {
+        height: 200px;
+    }
+    
+    .iframe-card {
+        width: 100%;
+    }
 }
 
 /* Print styles */
 @media print {
-  body {
-    background-color: white;
-    color: black;
-  }
-  
-  .site-header,
-  .site-footer,
-  .banner-container,
-  .component-filters,
-  .device-selector {
-    display: none;
-  }
-  
-  .container {
-    max-width: 100%;
-    padding: 0;
-  }
-  
-  a {
-    color: black;
-    text-decoration: underline;
-  }
-  
-  a[href]:after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-  }
-  
-  pre, code {
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    color: black;
-  }
-  
-  .card,
-  .iframe-card {
-    border: 1px solid #ddd;
-    box-shadow: none;
-  }
-  
-  .iframe-preview {
-    border: 1px solid #ddd;
-  }
-  
-  /* Force page breaks */
-  h1, h2, h3 {
-    page-break-after: avoid;
-    page-break-inside: avoid;
-  }
-  
-  img, table, figure {
-    page-break-inside: avoid;
-  }
-  
-  ul, ol, dl {
-    page-break-before: avoid;
-  }
-}
-
-/* Dark mode overrides */
-@media (prefers-color-scheme: dark) {
-  /* These are already handled in theme-variables.css */
-  /* This section is for any additional dark mode specific adjustments */
-  
-  /* Ensure code blocks have enough contrast */
-  pre {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  /* Adjust card backgrounds for better contrast */
-  .card,
-  .iframe-card {
-    background-color: rgba(44, 56, 153, 0.8);
-  }
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .site-header,
+    .site-footer,
+    .banner-container,
+    .page-ember-container {
+        display: none;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: black;
+        page-break-after: avoid;
+    }
+    
+    img {
+        max-width: 100% !important;
+    }
+    
+    pre, blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    
+    @page {
+        margin: 2cm;
+    }
 }

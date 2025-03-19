@@ -1,9 +1,182 @@
 /**
- * Banner Animation System - "Nascent Digital Dawn" Theme
- * 
- * Creates a dynamic banner with animated ember particles and transitioning
- * wireframe landscape images. Adapted from the original banner animation.
+ * Banner Animation System
+ * Creates a dynamic banner with animated ember particles
+ * Also adds subtle ember particles throughout the page for a cohesive theme
  */
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Find all banner containers on the page
+    const bannerContainers = document.querySelectorAll('.banner-container');
+    
+    // Initialize each banner found
+    bannerContainers.forEach(container => {
+        // Initialize the banner animation
+        const bannerAnimator = new BannerAnimator({
+            container: container,
+            imageContainer: container.querySelector('.image-container'),
+            svgOverlay: container.querySelector('.svg-overlay'),
+            // Use the renamed image files
+            images: [
+                '/blackboard-content-hub/assets/images/banner/wireframe-surface-1.png',
+                '/blackboard-content-hub/assets/images/banner/wireframe-surface-2.png',
+                '/blackboard-content-hub/assets/images/banner/wireframe-surface-3.png',
+                '/blackboard-content-hub/assets/images/banner/wireframe-surface-4.png',
+                '/blackboard-content-hub/assets/images/banner/wireframe-surface-5.png',
+                '/blackboard-content-hub/assets/images/banner/wireframe-surface-6.png'
+            ],
+            transitionTime: 3000, // 3 seconds between transitions
+            particleCount: 150    // Number of ember particles
+        });
+        
+        // Add title and subtitle if provided in data attributes
+        const title = container.getAttribute('data-title');
+        const subtitle = container.getAttribute('data-subtitle');
+        
+        if (title || subtitle) {
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'banner-content';
+            
+            if (title) {
+                const titleElement = document.createElement('h1');
+                titleElement.className = 'banner-title';
+                titleElement.textContent = title;
+                contentDiv.appendChild(titleElement);
+            }
+            
+            if (subtitle) {
+                const subtitleElement = document.createElement('p');
+                subtitleElement.className = 'banner-subtitle';
+                subtitleElement.textContent = subtitle;
+                contentDiv.appendChild(subtitleElement);
+            }
+            
+            container.appendChild(contentDiv);
+        }
+    });
+    
+    // Add subtle ember particles to the entire page
+    addPageEmbers();
+});
+
+/**
+ * Add subtle ember particles to the entire page for a cohesive theme
+ */
+function addPageEmbers() {
+    // Create a container for the page embers
+    const emberContainer = document.createElement('div');
+    emberContainer.className = 'page-ember-container';
+    emberContainer.style.position = 'fixed';
+    emberContainer.style.top = '0';
+    emberContainer.style.left = '0';
+    emberContainer.style.width = '100%';
+    emberContainer.style.height = '100%';
+    emberContainer.style.pointerEvents = 'none';
+    emberContainer.style.zIndex = '1000';
+    emberContainer.style.overflow = 'hidden';
+    emberContainer.style.opacity = '0.4'; // More subtle than the banner
+    
+    // Create SVG for the embers
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.setAttribute("viewBox", "0 0 1200 800");
+    
+    // Add defs section with filter
+    const defs = document.createElementNS(svgNS, "defs");
+    
+    // Create glow filter
+    const filter = document.createElementNS(svgNS, "filter");
+    filter.setAttribute("id", "page-glow");
+    
+    const blur = document.createElementNS(svgNS, "feGaussianBlur");
+    blur.setAttribute("stdDeviation", "2.5");
+    blur.setAttribute("result", "coloredBlur");
+    
+    const merge = document.createElementNS(svgNS, "feMerge");
+    
+    const mergeNode1 = document.createElementNS(svgNS, "feMergeNode");
+    mergeNode1.setAttribute("in", "coloredBlur");
+    
+    const mergeNode2 = document.createElementNS(svgNS, "feMergeNode");
+    mergeNode2.setAttribute("in", "SourceGraphic");
+    
+    merge.appendChild(mergeNode1);
+    merge.appendChild(mergeNode2);
+    
+    filter.appendChild(blur);
+    filter.appendChild(merge);
+    
+    defs.appendChild(filter);
+    svg.appendChild(defs);
+    
+    // Create particle groups
+    const groups = [
+        document.createElementNS(svgNS, "g"),
+        document.createElementNS(svgNS, "g"),
+        document.createElementNS(svgNS, "g")
+    ];
+    
+    groups[0].setAttribute("class", "ember-group-1");
+    groups[1].setAttribute("class", "ember-group-2");
+    groups[2].setAttribute("class", "ember-group-3");
+    
+    // Determine number of particles based on screen size
+    let particleCount = 30; // Base count for page embers (much fewer than banner)
+    
+    if (window.innerWidth < 768) {
+        particleCount = 15; // Even fewer on mobile
+    }
+    
+    // Create particles and distribute them among groups
+    for (let i = 0; i < particleCount; i++) {
+        // Create a particle
+        const particle = document.createElementNS(svgNS, "circle");
+        
+        // Set base class with page-specific styles
+        particle.setAttribute("class", "ember");
+        particle.style.filter = "url(#page-glow)";
+        particle.style.opacity = "0.6";
+        
+        // Random positioning throughout the page
+        const x = Math.random() * 1200;
+        const y = Math.random() * 800;
+        
+        // Smaller particles for page effect
+        const radius = 1 + Math.random() * 2; // 1-3px
+        
+        particle.setAttribute("cx", x);
+        particle.setAttribute("cy", y);
+        particle.setAttribute("r", radius);
+        
+        // Color variation
+        const hue = 320 + (Math.random() * 40 - 20); // Magenta variation
+        const saturation = 85 + (Math.random() * 15);
+        const lightness = 45 + (Math.random() * 30);
+        
+        particle.style.fill = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        
+        // Apply random animation delay
+        const delay = Math.random() * 10; // Longer random delay for more varied effect
+        particle.style.animationDelay = `-${delay}s`;
+        
+        // Add to a random group
+        const groupIndex = Math.floor(Math.random() * groups.length);
+        groups[groupIndex].appendChild(particle);
+    }
+    
+    // Add groups to SVG
+    groups.forEach(group => {
+        svg.appendChild(group);
+    });
+    
+    // Add SVG to container
+    emberContainer.appendChild(svg);
+    
+    // Add container to body
+    document.body.appendChild(emberContainer);
+}
 
 /**
  * BannerAnimator Class
@@ -12,49 +185,32 @@
 class BannerAnimator {
     /**
      * @param {Object} options - Configuration options
-     * @param {Element|string} options.container - The main banner container element or selector
-     * @param {Element|string} options.imageContainer - Container for background images or selector
-     * @param {Element|string} options.svgOverlay - Container for SVG particle overlay or selector
+     * @param {Element} options.container - The main banner container element
+     * @param {Element} options.imageContainer - Container for the background images
+     * @param {Element} options.svgOverlay - Container for the SVG particle overlay
      * @param {Array<string>} options.images - Array of image paths
      * @param {number} options.transitionTime - Time in ms between image transitions
      * @param {number} options.particleCount - Number of ember particles to create
-     * @param {string} options.baseImagePath - Base path for images
-     * @param {string} options.title - Optional title to display over the banner
-     * @param {string} options.subtitle - Optional subtitle to display over the banner
-     * @param {string} options.size - Banner size: 'hero', 'medium', or 'small'
      */
     constructor(options) {
-        // Process selectors if strings were provided
-        this.container = typeof options.container === 'string' 
-            ? document.querySelector(options.container) 
-            : options.container;
-            
-        this.imageContainer = typeof options.imageContainer === 'string' 
-            ? document.querySelector(options.imageContainer) 
-            : options.imageContainer;
-            
-        this.svgOverlay = typeof options.svgOverlay === 'string' 
-            ? document.querySelector(options.svgOverlay) 
-            : options.svgOverlay;
-        
         // Store configuration options
+        this.container = options.container;
+        this.imageContainer = options.imageContainer;
+        this.svgOverlay = options.svgOverlay;
         this.images = options.images;
         this.transitionTime = options.transitionTime || 3000;
         this.particleCount = options.particleCount || 100;
-        this.baseImagePath = options.baseImagePath || '/assets/images/banner/';
-        this.title = options.title || '';
-        this.subtitle = options.subtitle || '';
-        this.size = options.size || 'hero';
+        
+        // Adjust particle count based on screen size
+        if (window.innerWidth < 768) {
+            this.particleCount = Math.floor(this.particleCount * 0.6); // 60% of particles on mobile
+        } else if (window.innerWidth < 1200) {
+            this.particleCount = Math.floor(this.particleCount * 0.8); // 80% of particles on tablet
+        }
         
         // Internal state
         this.currentIndex = 0;
         this.imageElements = [];
-        
-        // Validate required elements
-        if (!this.container || !this.imageContainer || !this.svgOverlay) {
-            console.error('BannerAnimator: Required container elements not found');
-            return;
-        }
         
         // Initialize the banner
         this.init();
@@ -64,14 +220,6 @@ class BannerAnimator {
      * Initialize the banner animation
      */
     init() {
-        // Apply size class to container
-        this.container.classList.add(`banner-size-${this.size}`);
-        
-        // Create title overlay if title is provided
-        if (this.title) {
-            this.createTitleOverlay();
-        }
-        
         // Preload images and set up the image container
         this.preloadImages();
         
@@ -83,36 +231,12 @@ class BannerAnimator {
     }
     
     /**
-     * Create title overlay with title and subtitle
-     */
-    createTitleOverlay() {
-        const titleOverlay = document.createElement('div');
-        titleOverlay.className = 'banner-title-overlay';
-        
-        if (this.title) {
-            const titleElement = document.createElement('h1');
-            titleElement.className = 'banner-title';
-            titleElement.textContent = this.title;
-            titleOverlay.appendChild(titleElement);
-        }
-        
-        if (this.subtitle) {
-            const subtitleElement = document.createElement('p');
-            subtitleElement.className = 'banner-subtitle';
-            subtitleElement.textContent = this.subtitle;
-            titleOverlay.appendChild(subtitleElement);
-        }
-        
-        this.container.appendChild(titleOverlay);
-    }
-    
-    /**
      * Preload all images and add them to the DOM
      */
     preloadImages() {
         this.images.forEach((src, index) => {
             const img = document.createElement('img');
-            img.src = this.baseImagePath + src;
+            img.src = src;
             img.className = 'banner-image';
             img.alt = `Wireframe surface ${index + 1}`;
             
@@ -152,17 +276,16 @@ class BannerAnimator {
         svg.setAttribute("width", "100%");
         svg.setAttribute("height", "100%");
         svg.setAttribute("viewBox", "0 0 1200 400");
-        svg.setAttribute("aria-hidden", "true"); // Hide from screen readers
         
         // Add defs section with filter and styles
         const defs = document.createElementNS(svgNS, "defs");
         
         // Create glow filter
         const filter = document.createElementNS(svgNS, "filter");
-        filter.setAttribute("id", "ember-glow"); // Changed ID to avoid conflicts
+        filter.setAttribute("id", "glow");
         
         const blur = document.createElementNS(svgNS, "feGaussianBlur");
-        blur.setAttribute("stdDeviation", "3.5");
+        blur.setAttribute("stdDeviation", "3.5");  // Increased blur for better glow
         blur.setAttribute("result", "coloredBlur");
         
         const merge = document.createElementNS(svgNS, "feMerge");
@@ -193,16 +316,8 @@ class BannerAnimator {
         groups[1].setAttribute("class", "ember-group-2");
         groups[2].setAttribute("class", "ember-group-3");
         
-        // Adjust particle count based on banner size
-        let adjustedParticleCount = this.particleCount;
-        if (this.size === 'medium') {
-            adjustedParticleCount = Math.floor(this.particleCount * 0.7);
-        } else if (this.size === 'small') {
-            adjustedParticleCount = Math.floor(this.particleCount * 0.4);
-        }
-        
         // Create particles and distribute them among groups
-        for (let i = 0; i < adjustedParticleCount; i++) {
+        for (let i = 0; i < this.particleCount; i++) {
             // Create a particle
             const particle = document.createElementNS(svgNS, "circle");
             
@@ -210,6 +325,7 @@ class BannerAnimator {
             particle.setAttribute("class", "ember");
             
             // Strategic particle positioning to match the wireframe landscape
+            // More particles in the middle and lower sections, fewer at the top
             let x, y;
             
             // Create a wave-like distribution to match the wireframe landscape
@@ -218,6 +334,7 @@ class BannerAnimator {
                 x = Math.random() * 1200;
                 
                 // Create a wave-like pattern for y-coordinates
+                // Higher concentration in the middle section (200-350px)
                 const baseY = 250 + Math.sin(x / 100) * 50;
                 y = baseY + (Math.random() - 0.5) * 150;
             } else {
@@ -227,6 +344,7 @@ class BannerAnimator {
             }
             
             // More variation in particle sizes
+            // Some particles are larger to create more prominent embers
             let radius;
             if (Math.random() < 0.1) { // 10% chance for larger particles
                 radius = 4 + Math.random() * 4; // 4-8px
@@ -240,8 +358,8 @@ class BannerAnimator {
             particle.setAttribute("cy", y);
             particle.setAttribute("r", radius);
             
-            // Color variation using our theme's electric magenta
-            const hue = 320 + (Math.random() * 40 - 20); // Magenta variation
+            // More color variation for a more dynamic look
+            const hue = 320 + (Math.random() * 40 - 20); // Wider magenta variation
             const saturation = 85 + (Math.random() * 15);
             const lightness = 45 + (Math.random() * 30);
             
@@ -267,70 +385,3 @@ class BannerAnimator {
         this.svgOverlay.appendChild(svg);
     }
 }
-
-/**
- * Initialize banner animations on the page
- */
-function initBanners() {
-    // Banner image filenames
-    const bannerImages = [
-        'wireframe-surface-1.png',
-        'wireframe-surface-2.png',
-        'wireframe-surface-3.png',
-        'wireframe-surface-4.png',
-        'wireframe-surface-5.png',
-        'wireframe-surface-6.png'
-    ];
-    
-    // Initialize hero banner if present
-    const heroBanner = document.querySelector('.hero-banner');
-    if (heroBanner) {
-        new BannerAnimator({
-            container: heroBanner,
-            imageContainer: heroBanner.querySelector('.image-container'),
-            svgOverlay: heroBanner.querySelector('.svg-overlay'),
-            images: bannerImages,
-            transitionTime: 3000,
-            particleCount: 200,
-            title: heroBanner.dataset.title || '',
-            subtitle: heroBanner.dataset.subtitle || '',
-            size: 'hero'
-        });
-    }
-    
-    // Initialize all medium banners
-    document.querySelectorAll('.medium-banner').forEach(banner => {
-        new BannerAnimator({
-            container: banner,
-            imageContainer: banner.querySelector('.image-container'),
-            svgOverlay: banner.querySelector('.svg-overlay'),
-            images: bannerImages,
-            transitionTime: 4000,
-            particleCount: 120,
-            title: banner.dataset.title || '',
-            subtitle: banner.dataset.subtitle || '',
-            size: 'medium'
-        });
-    });
-    
-    // Initialize all small banners
-    document.querySelectorAll('.small-banner').forEach(banner => {
-        new BannerAnimator({
-            container: banner,
-            imageContainer: banner.querySelector('.image-container'),
-            svgOverlay: banner.querySelector('.svg-overlay'),
-            images: bannerImages,
-            transitionTime: 5000,
-            particleCount: 60,
-            title: banner.dataset.title || '',
-            subtitle: banner.dataset.subtitle || '',
-            size: 'small'
-        });
-    });
-}
-
-// Initialize banners when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', initBanners);
-
-// Export the BannerAnimator class for direct use
-window.BannerAnimator = BannerAnimator;

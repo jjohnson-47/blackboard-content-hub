@@ -56,12 +56,15 @@ COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 # Create or update the gh-pages branch
 echo "🌿 Updating gh-pages branch..."
 
+# Set git pull strategy to rebase
+git config pull.rebase true
+
 # Check if gh-pages branch exists locally
 if git show-ref --verify --quiet refs/heads/gh-pages; then
   # Branch exists, switch to it
   git checkout gh-pages
-  # Pull latest changes
-  git pull origin gh-pages --no-edit
+  # Pull latest changes (will use rebase strategy)
+  git pull origin gh-pages --no-edit || true
 else
   # Branch doesn't exist, create it
   git checkout -b gh-pages
@@ -93,7 +96,7 @@ git commit -m "Deploy: $COMMIT_MESSAGE (from $COMMIT_HASH)"
 
 # Push to GitHub
 echo "📤 Pushing to GitHub..."
-git push origin gh-pages
+git push -f origin gh-pages
 
 # Switch back to main branch
 git checkout main

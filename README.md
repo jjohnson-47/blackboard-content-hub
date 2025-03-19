@@ -92,7 +92,7 @@ The documentation includes:
 
 3. Start the documentation site locally:
    ```bash
-   npm start
+   npm run serve
    ```
 
 ### Creating a New Component
@@ -117,17 +117,53 @@ This will create the necessary directory structure and configuration files for a
 
 ### Building and Deploying
 
-Build the project:
+#### Local Development
+
+For local development and testing:
 
 ```bash
+# Build the project
 npm run build
+
+# Serve the documentation site locally
+npm run serve
+
+# Preview components in development mode
+npm run preview
 ```
 
-Deploy to GitHub Pages:
+#### Deployment
+
+Deploy to GitHub Pages with a single command:
 
 ```bash
 npm run deploy
 ```
+
+This script will:
+1. Build the Jekyll documentation site
+2. Process and prepare all iframe components
+3. Deploy everything to the gh-pages branch
+4. GitHub Pages will automatically serve the content
+
+## 📂 Deployment Architecture
+
+The project uses a two-branch deployment strategy:
+
+- **`main` branch**: Source code repository
+  - Contains all source files, development code, and documentation source
+  - Used for development and version control
+
+- **`gh-pages` branch**: Deployment branch
+  - Contains only built/processed files ready for serving
+  - Automatically updated by the deployment script
+  - Served as GitHub Pages
+
+This approach provides:
+- Clean separation between source and built files
+- Optimized serving of only necessary files
+- Full control over the build process
+- Version integrity with main branch as the single source of truth
 
 ## 🤝 Contributing
 

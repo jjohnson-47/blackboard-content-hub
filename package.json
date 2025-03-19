@@ -10,7 +10,8 @@
     "dev": "jekyll serve --source docs --destination _site --watch",
     "preview": "node tools/dev-server.js",
     "component-manager": "node tools/component-manager.js",
-    "deploy": "./deploy.sh"
+    "deploy": "./deploy.sh",
+    "deploy:simple": "./deploy-simple.sh"
   },
   "repository": {
     "type": "git",

@@ -27,6 +27,7 @@ Welcome to the Blackboard Content Hub Developer Guide. This guide provides compr
 
 ## Tools and Utilities
 
+- [Unified Component Registry](unified-component-registry.html) - Integrated workflow for component creation
 - [Component Manager](component-organization.html#component-manager) - Command-line tool for managing components
 - [Development Environment](../development-environment/) - Local development environment
 - [Iframe Testing Tool](iframe-testing-tool-plan.html) - Tool for testing iframe communication

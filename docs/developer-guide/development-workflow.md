@@ -41,15 +41,51 @@ This will install all required dependencies, including `live-server` for develop
 To start the development server, run:
 
 ```bash
-npm run dev
+npm run preview
 ```
 
-This will start a live-server instance on port 8080. The server will automatically reload when you make changes to your files.
+This will start a development server on port 8080 with the following features:
+
+- Live reloading when files change
+- Component registry API for unified component access
+- Browser-based Development Studio
 
 ### Accessing the Development Environment
 
 - **Development Studio**: [http://localhost:8080/dev/preview/](http://localhost:8080/dev/preview/)
 - **Individual Components**: [http://localhost:8080/dev/components/your-component.html](http://localhost:8080/dev/components/your-component.html)
+
+## Component Creation Workflows
+
+The Blackboard Content Hub supports two complementary workflows for creating and managing components:
+
+### 1. Browser-Based Workflow
+
+The Development Studio provides a professional interface for creating and editing iframe components directly in your browser:
+
+- **Component List**: Browse components from all locations (development, shared, course-specific)
+- **Create New Component**: Click the "+" button to create a new component
+- **Real-Time Preview**: See changes as you type
+- **Device Testing**: Test your component at different screen sizes
+
+### 2. CLI/Editor Workflow
+
+For developers who prefer working in their code editor and command line:
+
+- **Create Components**: Use `node tools/create-component.js` to create new components
+- **Develop Components**: Use `node tools/dev-component.js create` to create development components
+- **List Components**: Use `node tools/dev-component.js list` to list all development components
+- **Promote Components**: Use `node tools/dev-component.js promote` to promote to production
+
+### Unified Component Registry
+
+Both workflows are integrated through the Unified Component Registry, which ensures components created in one workflow are accessible in the other:
+
+- Components created via CLI are visible in the browser Development Studio
+- Components created in the browser can be edited in your preferred code editor
+- All components are organized by location type (local, development, shared, course-specific)
+
+For more details, see the [Unified Component Registry](unified-component-registry.html) documentation.
 
 ## Using the Development Studio
 
@@ -57,7 +93,9 @@ The Development Studio provides a professional interface for creating and editin
 
 ### Component Management
 
-- **Component List**: The sidebar shows all available development components
+- **Component List**: The sidebar shows all available components from all locations
+- **Location Filter**: Filter components by location type (local, development, shared, course)
+- **Search**: Search for components by name, title, or description
 - **Create New Component**: Click the "+" button to create a new component
 - **Refresh List**: Update the component list to see newly added components
 
@@ -99,6 +137,25 @@ The new component will be created with a robust default structure that includes:
 - Information panel with tabs
 - Mobile-friendly design
 - Common libraries (GeoGebra, MathJax, Chart.js)
+
+### Using the CLI
+
+1. Run the component creation tool:
+   ```bash
+   node tools/create-component.js
+   ```
+
+2. Follow the prompts to specify:
+   - Component type (shared or course-specific)
+   - Component name
+   - Component title
+   - Description
+   - Tags
+
+3. For development components, use:
+   ```bash
+   node tools/dev-component.js create
+   ```
 
 ### Component Structure
 
@@ -153,6 +210,12 @@ When your component is ready for production:
 
 This will move your component to the appropriate production directory and add it to the component registry.
 
+Alternatively, you can use the CLI:
+
+```bash
+node tools/dev-component.js promote your-component
+```
+
 ## Best Practices
 
 ### Component Organization
@@ -197,8 +260,17 @@ If changes aren't automatically reflected:
 2. Try manually refreshing the page
 3. Check for file permission issues
 
+### Component Not Appearing in Registry
+
+If a component doesn't appear in the registry:
+
+1. Click the "Refresh" button in the Development Studio
+2. Check that the component file exists in the expected location
+3. Restart the development server
+
 ## Next Steps
 
-- [Iframe Integration Guide](/developer-guide/iframe-integration/)
-- [Component Browser](/component-browser/)
-- [GeoGebra API Integration](/developer-guide/geogebra-api/integration-guide/)
+- [Unified Component Registry](unified-component-registry.html)
+- [Iframe Integration Guide](iframe-integration.html)
+- [Component Browser](../component-browser/)
+- [GeoGebra API Integration](geogebra-api/integration-guide.html)

@@ -1,0 +1,147 @@
+/**
+ * Component Registry Styles
+ * 
+ * Styles for the component registry integration in the browser preview.
+ */
+
+/* Component list item styles */
+.component-list-item {
+  margin-bottom: 8px;
+}
+
+.component-list-link {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.component-list-link:hover {
+  background-color: #e0e0e0;
+}
+
+.component-list-link.active {
+  background-color: #e1bee7;
+  border-left: 3px solid #7b1fa2;
+}
+
+.component-icon {
+  margin-right: 10px;
+  color: #7b1fa2;
+}
+
+.component-info {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.component-name {
+  display: block;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-date {
+  display: block;
+  font-size: 0.8rem;
+  color: #757575;
+  margin-top: 2px;
+}
+
+/* Location type badges */
+.component-location-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-top: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.component-location-badge.local {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.component-location-badge.development {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.component-location-badge.shared {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.component-location-badge.course {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+}
+
+/* Component filters */
+.component-filters {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.component-filters select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.component-filters label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+/* Component search */
+.component-search {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.component-search input {
+  width: 100%;
+  padding: 8px 10px 8px 32px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.component-search .search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #757575;
+  font-size: 18px;
+}
+
+/* Empty state */
+.component-empty-state {
+  padding: 20px;
+  text-align: center;
+  color: #757575;
+  font-size: 0.9rem;
+}
+
+.component-empty-state .material-icons {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #bdbdbd;
+}

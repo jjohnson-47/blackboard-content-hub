@@ -5,11 +5,16 @@
  * 
  * This script creates a new component with the appropriate structure
  * and adds it to the component-data.json file.
+ * 
+ * Enhanced in Phase 3 with:
+ * - Component Registry integration
+ * - Support for components from all locations
  */
 
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const componentRegistry = require('../shared/scripts/component-registry');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -139,6 +144,18 @@ The component includes several accessibility features:
 - Edge (latest)
 `;
 
+// Initialize component registry
+async function initRegistry() {
+  try {
+    await componentRegistry.initialize();
+    console.log('Component registry initialized');
+    return true;
+  } catch (error) {
+    console.error('Error initializing component registry:', error);
+    return false;
+  }
+}
+
 // Ask questions to configure the component
 rl.question('Component type (course-specific or shared): ', (type) => {
   if (type !== 'course-specific' && type !== 'shared') {
@@ -174,7 +191,7 @@ rl.question('Component type (course-specific or shared): ', (type) => {
   }
 });
 
-function createComponent(directory, componentName, title, description, tags, courseId = null, category = 'general') {
+async function createComponent(directory, componentName, title, description, tags, courseId = null, category = 'general') {
   const rootDir = path.join(__dirname, '..');
   
   // Create directory if it doesn't exist
@@ -237,6 +254,31 @@ function createComponent(directory, componentName, title, description, tags, cou
   
   fs.writeFileSync(dataPath, JSON.stringify(components, null, 2));
   console.log(`Component added to component-data.json`);
+  
+  // Register with component registry
+  try {
+    // Initialize registry if not already initialized
+    await initRegistry();
+    
+    // Register component
+    const registeredComponent = componentRegistry.registerComponent({
+      id: componentName,
+      name: `${componentName}.html`,
+      title: title,
+      path: path.join(directory, `${componentName}.html`),
+      fullPath: filePath,
+      locationType: courseId ? 'course' : 'shared',
+      courseId: courseId,
+      category: category,
+      description: description,
+      tags: tags,
+      lastModified: new Date().toISOString()
+    });
+    
+    console.log(`Component registered with unified registry`);
+  } catch (error) {
+    console.error('Error registering component with registry:', error);
+  }
   
   console.log(`\nComponent URL will be: https://jjohnson-47.github.io/blackboard-content-hub/${directory}/${componentName}.html`);
   

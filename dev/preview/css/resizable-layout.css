@@ -1,0 +1,138 @@
+/**
+ * Resizable Layout Styles
+ *
+ * Styles for the resizable editor and preview panes
+ */
+
+/* Editor-preview container */
+.editor-preview-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+/* Editor container */
+.editor-container {
+  flex: 0 0 auto; /* Don't grow, don't shrink, use width */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.1s ease;
+}
+
+/* Preview container */
+.preview-container {
+  flex: 1; /* Take remaining space */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.1s ease;
+}
+
+/* Resize handle */
+.resize-handle {
+  width: 8px;
+  background-color: var(--border-color);
+  cursor: col-resize;
+  position: relative;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+  flex: 0 0 8px; /* Don't grow, don't shrink, fixed width */
+}
+
+.resize-handle:hover,
+.resize-handle:focus {
+  background-color: var(--primary-light);
+}
+
+.resize-handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 30px;
+  background-color: var(--text-light);
+  border-radius: 1px;
+}
+
+.resize-handle:hover::after,
+.resize-handle:focus::after {
+  background-color: var(--primary-color);
+}
+
+/* Resizing state */
+body.resizing {
+  cursor: col-resize;
+  user-select: none;
+}
+
+body.resizing iframe {
+  pointer-events: none;
+}
+
+body.resizing .editor-container,
+body.resizing .preview-container {
+  transition: none; /* Disable transitions during resize */
+}
+
+/* Component delete button */
+.component-delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  opacity: 0.5;
+}
+
+.component-delete-btn:hover {
+  background-color: rgba(211, 47, 47, 0.1);
+  color: var(--error-color);
+  opacity: 1;
+}
+
+.component-list-link:hover .component-delete-btn {
+  opacity: 1;
+}
+
+/* Delete confirmation modal */
+.modal-danger .modal-header {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.modal-danger .modal-title {
+  color: white;
+}
+
+.text-danger {
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+.btn-danger {
+  background-color: var(--error-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(211, 47, 47, 0.2);
+}
+
+.btn-danger:hover {
+  background-color: #b71c1c;
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(211, 47, 47, 0.2);
+}

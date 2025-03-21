@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "connect-livereload": "^0.6.1",
+    "live-server": "^1.2.2",
     "livereload": "^0.9.3"
   }
 }

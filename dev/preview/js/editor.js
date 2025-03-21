@@ -9,6 +9,11 @@
  * - Iframe communication testing
  * - Accessibility checking
  * - Code validation
+ * 
+ * Enhanced in Phase 3 with:
+ * - Unified Component Registry integration
+ * - Support for components from all locations
+ * - Component filtering and search
  */
 
 class DevPreview {
@@ -17,11 +22,18 @@ class DevPreview {
     this.initState();
     this.initEditor();
     this.attachEventListeners();
-    this.loadComponentList();
+    
+    // Initialize component registry
+    this.initComponentRegistry().then(() => {
+      this.loadComponentList();
+    });
     
     // Initialize Phase 2 enhancements
     this.initRealTimePreview();
     this.initIframeCommunicationTester();
+    
+    // Initialize resizable layout
+    this.initResizableLayout();
   }
 
   /**
@@ -35,6 +47,10 @@ class DevPreview {
     this.editorTabs = document.querySelectorAll('.editor-tab');
     this.deviceButtons = document.querySelectorAll('.device-btn');
     this.sizeIndicator = document.getElementById('sizeIndicator');
+    
+    // Component filters and search
+    this.locationFilter = document.getElementById('locationFilter');
+    this.componentSearch = document.getElementById('componentSearch');
     
     // Buttons
     this.refreshListBtn = document.getElementById('refreshListBtn');
@@ -65,6 +81,13 @@ class DevPreview {
     this.courseSelectorGroup = document.getElementById('courseSelectorGroup');
     this.categorySelectorGroup = document.getElementById('categorySelectorGroup');
     
+    // Delete modal
+    this.deleteModal = document.getElementById('deleteModal');
+    this.closeDeleteModal = document.getElementById('closeDeleteModal');
+    this.cancelDelete = document.getElementById('cancelDelete');
+    this.confirmDelete = document.getElementById('confirmDelete');
+    this.deleteComponentName = document.getElementById('deleteComponentName');
+    
     // Toast notification
     this.toast = document.getElementById('toast');
     this.toastTitle = document.getElementById('toastTitle');
@@ -73,6 +96,177 @@ class DevPreview {
     this.toastClose = document.getElementById('toastClose');
   }
 
+  /**
+   * Initialize resizable layout
+   */
+  initResizableLayout() {
+    // Get elements
+    const container = document.querySelector('.editor-preview-container');
+    const leftPanel = document.getElementById('editorContainer');
+    const rightPanel = document.getElementById('previewContainer');
+    const handle = document.getElementById('resizeHandle');
+    
+    if (!container || !leftPanel || !rightPanel || !handle) {
+      console.warn('Resizable layout elements not found');
+      return;
+    }
+    
+    // Load saved state or set default
+    this.loadLayoutState();
+    
+    // Variables for resize operation
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+    
+    // Start resize
+    const startResize = (e) => {
+      isResizing = true;
+      startX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+      startWidth = leftPanel.offsetWidth;
+      document.body.classList.add('resizing');
+      e.preventDefault();
+    };
+    
+    // Resize function
+    const resize = (e) => {
+      if (!isResizing) return;
+      
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+      const deltaX = clientX - startX;
+      
+      // Calculate new width with constraints
+      const containerWidth = container.offsetWidth;
+      const minWidth = 200;
+      const maxWidth = containerWidth - minWidth - handle.offsetWidth;
+      const newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth + deltaX));
+      
+      // Apply new width
+      leftPanel.style.width = `${newWidth}px`;
+      
+      // Prevent default to avoid text selection
+      e.preventDefault();
+    };
+    
+    // Stop resize
+    const stopResize = () => {
+      if (isResizing) {
+        isResizing = false;
+        document.body.classList.remove('resizing');
+        this.saveLayoutState();
+      }
+    };
+    
+    // Mouse events
+    handle.addEventListener('mousedown', startResize);
+    document.addEventListener('mousemove', resize);
+    document.addEventListener('mouseup', stopResize);
+    
+    // Touch events
+    handle.addEventListener('touchstart', startResize, { passive: false });
+    document.addEventListener('touchmove', resize, { passive: false });
+    document.addEventListener('touchend', stopResize);
+    
+    // Window resize
+    window.addEventListener('resize', () => {
+      const containerWidth = container.offsetWidth;
+      const leftWidth = leftPanel.offsetWidth;
+      const minWidth = 200;
+      const maxWidth = containerWidth - minWidth - handle.offsetWidth;
+      
+      if (leftWidth > maxWidth) {
+        leftPanel.style.width = `${maxWidth}px`;
+      } else if (leftWidth < minWidth) {
+        leftPanel.style.width = `${minWidth}px`;
+      }
+    });
+    
+    // Keyboard support
+    handle.addEventListener('keydown', (e) => {
+      let newWidth = leftPanel.offsetWidth;
+      
+      if (e.key === 'ArrowLeft') {
+        newWidth -= 10;
+      } else if (e.key === 'ArrowRight') {
+        newWidth += 10;
+      } else {
+        return;
+      }
+      
+      const containerWidth = container.offsetWidth;
+      const minWidth = 200;
+      const maxWidth = containerWidth - minWidth - handle.offsetWidth;
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+      
+      leftPanel.style.width = `${newWidth}px`;
+      this.saveLayoutState();
+      e.preventDefault();
+    });
+    
+    // ARIA attributes
+    handle.setAttribute('role', 'separator');
+    handle.setAttribute('aria-orientation', 'vertical');
+    handle.setAttribute('aria-valuemin', 200);
+    handle.setAttribute('aria-valuemax', container.offsetWidth - 200 - handle.offsetWidth);
+    handle.setAttribute('aria-valuenow', leftPanel.offsetWidth);
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-label', 'Resize panels');
+  }
+  
+  /**
+   * Save layout state to localStorage
+   */
+  saveLayoutState() {
+    const leftPanel = document.getElementById('editorContainer');
+    
+    if (!leftPanel) return;
+    
+    const state = {
+      leftWidth: leftPanel.offsetWidth
+    };
+    
+    localStorage.setItem('resizable-layout-state', JSON.stringify(state));
+  }
+  
+  /**
+   * Load layout state from localStorage
+   */
+  loadLayoutState() {
+    const container = document.querySelector('.editor-preview-container');
+    const leftPanel = document.getElementById('editorContainer');
+    const handle = document.getElementById('resizeHandle');
+    
+    if (!container || !leftPanel || !handle) return;
+    
+    const savedState = localStorage.getItem('resizable-layout-state');
+    
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        const containerWidth = container.offsetWidth;
+        const handleWidth = handle.offsetWidth;
+        const minWidth = 200;
+        const maxWidth = containerWidth - minWidth - handleWidth;
+        
+        // Apply saved width with constraints
+        if (state.leftWidth) {
+          const validWidth = Math.max(minWidth, Math.min(maxWidth, state.leftWidth));
+          leftPanel.style.width = `${validWidth}px`;
+        } else {
+          // Default to 50/50 split
+          leftPanel.style.width = `${Math.floor(containerWidth / 2)}px`;
+        }
+      } catch (error) {
+        console.error('Error loading layout state:', error);
+        // Default to 50/50 split
+        leftPanel.style.width = `${Math.floor(container.offsetWidth / 2)}px`;
+      }
+    } else {
+      // Default to 50/50 split
+      leftPanel.style.width = `${Math.floor(container.offsetWidth / 2)}px`;
+    }
+  }
+  
   /**
    * Initialize state variables
    */
@@ -351,6 +545,34 @@ function sendMessageToParent(message, targetOrigin = '*') {
     // Phase 2 enhancements
     this.realTimePreview = null;
     this.communicationTester = null;
+    
+    // Phase 3 enhancements
+    this.allComponents = [];
+    this.filteredComponents = [];
+    this.componentToDelete = null;
+    this.deleteModalInitialized = false;
+  }
+
+  /**
+   * Initialize component registry
+   */
+  async initComponentRegistry() {
+    // Check if component registry client is available
+    if (window.componentRegistry) {
+      try {
+        // Initialize registry
+        await window.componentRegistry.initialize();
+        console.log('Component registry initialized');
+        return true;
+      } catch (error) {
+        console.error('Error initializing component registry:', error);
+        this.showToast('error', 'Error', 'Failed to initialize component registry');
+        return false;
+      }
+    } else {
+      console.warn('Component registry client not loaded');
+      return false;
+    }
   }
 
   /**
@@ -461,7 +683,8 @@ function sendMessageToParent(message, targetOrigin = '*') {
         const componentData = JSON.parse(lastComponent);
         this.currentComponent = {
           id: componentData.id,
-          name: componentData.name
+          name: componentData.name,
+          locationType: 'local'
         };
         
         this.htmlCode = componentData.html || this.htmlCode;
@@ -477,19 +700,6 @@ function sendMessageToParent(message, targetOrigin = '*') {
         // Reset dirty flag
         this.isEditorDirty = false;
         this.updateStatusMessage('Component loaded from local storage');
-        
-        // Update component list to show the active component
-        this.loadComponentList();
-        
-        // Highlight the active component in the list
-        setTimeout(() => {
-          const componentLinks = document.querySelectorAll('.component-list-link');
-          componentLinks.forEach(link => {
-            if (link.getAttribute('data-id') === this.currentComponent.id) {
-              link.classList.add('active');
-            }
-          });
-        }, 100);
         
         return true;
       } catch (error) {
@@ -589,8 +799,23 @@ function sendMessageToParent(message, targetOrigin = '*') {
       });
     });
     
+    // Component filters
+    this.locationFilter.addEventListener('change', () => {
+      this.filterComponents();
+    });
+    
+    // Component search
+    this.componentSearch.addEventListener('input', () => {
+      this.filterComponents();
+    });
+    
     // Refresh component list
-    this.refreshListBtn.addEventListener('click', () => this.loadComponentList());
+    this.refreshListBtn.addEventListener('click', () => {
+      // Reinitialize registry and reload component list
+      this.initComponentRegistry().then(() => {
+        this.loadComponentList();
+      });
+    });
     
     // Refresh preview frame
     this.refreshFrameBtn.addEventListener('click', () => this.updatePreview());
@@ -659,58 +884,114 @@ function sendMessageToParent(message, targetOrigin = '*') {
   }
   
   /**
-   * Load component list
+   * Load component list from registry
    */
   loadComponentList() {
     // Clear the list first
     this.componentList.innerHTML = '';
     
-    // Create components array
-    let components = [
-      { id: 'template', name: 'template.html', title: 'Template', source: 'server' },
-      { id: 'interactive-graph', name: 'interactive-graph.html', title: 'Interactive Graph', source: 'server' },
-      { id: 'default-template', name: 'default-template.html', title: 'Default Template', source: 'server' }
-    ];
+    // Get components from registry if available
+    this.allComponents = [];
     
-    // Add components from localStorage
-    const localProjects = this.loadProjectsFromLocalStorage();
-    
-    localProjects.forEach(project => {
-      // Check if project already exists in the list (server version)
-      const existingIndex = components.findIndex(c => c.id === project.id);
+    if (window.componentRegistry && window.componentRegistry.initialized) {
+      // Get components from registry
+      this.allComponents = window.componentRegistry.getAllComponents();
+    } else {
+      // Fallback to hardcoded components
+      this.allComponents = [
+        { id: 'template', name: 'template.html', title: 'Template', locationType: 'development' },
+        { id: 'interactive-graph', name: 'interactive-graph.html', title: 'Interactive Graph', locationType: 'development' },
+        { id: 'default-template', name: 'default-template.html', title: 'Default Template', locationType: 'development' }
+      ];
       
-      if (existingIndex >= 0) {
-        // Update existing component with localStorage version
-        components[existingIndex].source = 'local';
-        components[existingIndex].lastModified = project.lastModified;
-      } else {
-        // Add new component from localStorage
-        components.push({
+      // Add components from localStorage
+      const localProjects = this.loadProjectsFromLocalStorage();
+      
+      localProjects.forEach(project => {
+        this.allComponents.push({
           id: project.id,
           name: project.name,
           title: project.id.charAt(0).toUpperCase() + project.id.slice(1).replace(/-/g, ' '),
-          source: 'local',
+          locationType: 'local',
           lastModified: project.lastModified
         });
+      });
+    }
+    
+    // Apply filters
+    this.filterComponents();
+  }
+  
+  /**
+   * Filter components based on location and search
+   */
+  filterComponents() {
+    const locationFilter = this.locationFilter.value;
+    const searchTerm = this.componentSearch.value.toLowerCase();
+    
+    // Filter by location
+    this.filteredComponents = this.allComponents.filter(component => {
+      // Apply location filter
+      if (locationFilter !== 'all' && component.locationType !== locationFilter) {
+        return false;
       }
+      
+      // Apply search filter
+      if (searchTerm) {
+        return (
+          component.id.toLowerCase().includes(searchTerm) ||
+          component.title.toLowerCase().includes(searchTerm) ||
+          (component.description && component.description.toLowerCase().includes(searchTerm)) ||
+          (component.tags && component.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+        );
+      }
+      
+      return true;
     });
     
-    // Sort components by source (local first) and then by lastModified (newest first)
-    components.sort((a, b) => {
-      if (a.source === 'local' && b.source !== 'local') return -1;
-      if (a.source !== 'local' && b.source === 'local') return 1;
+    // Sort components by locationType and lastModified
+    this.filteredComponents.sort((a, b) => {
+      // Sort by locationType (local first, then development, then shared, then course)
+      const locationOrder = { local: 0, development: 1, shared: 2, course: 3 };
+      const locationDiff = locationOrder[a.locationType] - locationOrder[b.locationType];
       
-      // If both are local, sort by lastModified
-      if (a.source === 'local' && b.source === 'local') {
-        return new Date(b.lastModified || 0) - new Date(a.lastModified || 0);
+      if (locationDiff !== 0) return locationDiff;
+      
+      // If same locationType, sort by lastModified (newest first)
+      if (a.lastModified && b.lastModified) {
+        return new Date(b.lastModified) - new Date(a.lastModified);
       }
       
-      // If both are server, keep original order
+      // If no lastModified, keep original order
       return 0;
     });
     
+    // Render filtered components
+    this.renderComponentList();
+  }
+  
+  /**
+   * Render component list
+   */
+  renderComponentList() {
+    // Clear the list first
+    this.componentList.innerHTML = '';
+    
+    // Check if there are any components to display
+    if (this.filteredComponents.length === 0) {
+      // Show empty state
+      const emptyState = document.createElement('div');
+      emptyState.className = 'component-empty-state';
+      emptyState.innerHTML = `
+        <span class="material-icons">search_off</span>
+        <p>No components found</p>
+      `;
+      this.componentList.appendChild(emptyState);
+      return;
+    }
+    
     // Create component list items
-    components.forEach(component => {
+    this.filteredComponents.forEach(component => {
       const li = document.createElement('li');
       li.className = 'component-list-item';
       
@@ -719,24 +1000,54 @@ function sendMessageToParent(message, targetOrigin = '*') {
       a.className = 'component-list-link';
       a.setAttribute('data-id', component.id);
       a.setAttribute('data-name', component.name);
-      a.setAttribute('data-source', component.source);
+      a.setAttribute('data-location-type', component.locationType);
       
-      // Add icon based on source
-      const iconName = component.source === 'local' ? 'edit' : 'web_asset';
+      // Add icon based on locationType
+      let iconName = 'web_asset';
+      if (component.locationType === 'local') {
+        iconName = 'edit';
+      } else if (component.locationType === 'development') {
+        iconName = 'code';
+      } else if (component.locationType === 'shared') {
+        iconName = 'public';
+      } else if (component.locationType === 'course') {
+        iconName = 'school';
+      }
       
-      // Add date if it's a local component
+      // Add date if available
       const dateInfo = component.lastModified ?
         `<span class="component-date">${new Date(component.lastModified).toLocaleString()}</span>` : '';
+      
+      // Add location type badge
+      const locationBadge = `<span class="component-location-badge ${component.locationType}">${component.locationType}</span>`;
+      
+      // Add delete button
+      const deleteButton = `<button class="component-delete-btn" title="Delete component" data-id="${component.id}">
+        <span class="material-icons">delete</span>
+      </button>`;
       
       a.innerHTML = `
         <span class="material-icons component-icon">${iconName}</span>
         <div class="component-info">
           <span class="component-name">${component.title}</span>
+          ${locationBadge}
           ${dateInfo}
         </div>
+        ${deleteButton}
       `;
       
+      // Add click event for component
       a.addEventListener('click', (e) => {
+        // Check if delete button was clicked
+        const deleteBtn = e.target.closest('.component-delete-btn');
+        if (deleteBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.confirmDeleteComponent(component);
+          return;
+        }
+        
+        // Otherwise handle component selection
         e.preventDefault();
         
         if (this.isEditorDirty) {
@@ -753,12 +1064,8 @@ function sendMessageToParent(message, targetOrigin = '*') {
         // Add active class to clicked link
         a.classList.add('active');
         
-        // Load component
-        if (component.source === 'local') {
-          this.loadComponentFromLocalStorage(component.id);
-        } else {
-          this.loadComponent(component.id, component.name);
-        }
+        // Load component based on location type
+        this.loadComponentByType(component);
       });
       
       // Highlight current component if any
@@ -769,6 +1076,36 @@ function sendMessageToParent(message, targetOrigin = '*') {
       li.appendChild(a);
       this.componentList.appendChild(li);
     });
+  }
+  
+  /**
+   * Load component based on its location type
+   * @param {Object} component - Component data
+   */
+  loadComponentByType(component) {
+    this.currentComponent = {
+      id: component.id,
+      name: component.name,
+      locationType: component.locationType,
+      path: component.path
+    };
+    
+    // Load component based on location type
+    switch (component.locationType) {
+      case 'local':
+        this.loadComponentFromLocalStorage(component.id);
+        break;
+      case 'development':
+        this.loadComponent(`../components/${component.name}`);
+        break;
+      case 'shared':
+      case 'course':
+        // For shared and course-specific components, use the full path
+        this.loadComponent(`/${component.path}`);
+        break;
+      default:
+        this.loadComponent(`../components/${component.name}`);
+    }
   }
   
   /**
@@ -788,7 +1125,8 @@ function sendMessageToParent(message, targetOrigin = '*') {
       
       this.currentComponent = {
         id: data.id,
-        name: data.name
+        name: data.name,
+        locationType: 'local'
       };
       
       this.htmlCode = data.html || '';
@@ -812,16 +1150,18 @@ function sendMessageToParent(message, targetOrigin = '*') {
   }
 
   /**
-   * Load component
-   * @param {string} id - Component ID
-   * @param {string} name - Component filename
+   * Load component from URL
+   * @param {string} url - Component URL
    */
-  loadComponent(id, name) {
-    this.currentComponent = { id, name };
-    
+  loadComponent(url) {
     // Fetch component content
-    fetch(`../components/${name}`)
-      .then(response => response.text())
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to load component: ${response.status} ${response.statusText}`);
+        }
+        return response.text();
+      })
       .then(html => {
         // Parse HTML, CSS, and JS from the component
         const parser = new DOMParser();
@@ -853,11 +1193,11 @@ function sendMessageToParent(message, targetOrigin = '*') {
         
         // Reset dirty flag
         this.isEditorDirty = false;
-        this.updateStatusMessage('Component loaded');
+        this.updateStatusMessage(`Component loaded from ${this.currentComponent.locationType}`);
       })
       .catch(error => {
         console.error('Error loading component:', error);
-        this.showToast('error', 'Error', 'Failed to load component');
+        this.showToast('error', 'Error', `Failed to load component: ${error.message}`);
       });
   }
 
@@ -987,39 +1327,42 @@ ${this.jsCode}
 </body>
 </html>`;
     
-    // In a real implementation, this would save the file to the server
-    // For now, just show a success message
-    this.showToast('success', 'Saved', `Component ${this.currentComponent.name} saved successfully`);
-    this.isEditorDirty = false;
-    this.updateStatusMessage('Component saved');
-    
-    // In a full implementation, we would use fetch to save the file:
-    /*
-    fetch('/api/save-component', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.currentComponent.name,
-        content: combinedHTML
+    // Save to server based on location type
+    if (this.currentComponent.locationType === 'local' || this.currentComponent.locationType === 'development') {
+      // For local and development components, just show success message
+      this.showToast('success', 'Saved', `Component ${this.currentComponent.name} saved to localStorage`);
+      this.isEditorDirty = false;
+      this.updateStatusMessage('Component saved to localStorage');
+    } else {
+      // For shared and course-specific components, save to server
+      fetch('/api/save-component', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: this.currentComponent.id,
+          name: this.currentComponent.name,
+          locationType: this.currentComponent.locationType,
+          path: this.currentComponent.path,
+          content: combinedHTML
+        })
       })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        this.showToast('success', 'Saved', `Component ${this.currentComponent.name} saved successfully`);
-        this.isEditorDirty = false;
-        this.updateStatusMessage('Component saved');
-      } else {
-        this.showToast('error', 'Error', data.message || 'Failed to save component');
-      }
-    })
-    .catch(error => {
-      console.error('Error saving component:', error);
-      this.showToast('error', 'Error', 'Failed to save component');
-    });
-    */
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          this.showToast('success', 'Saved', `Component ${this.currentComponent.name} saved successfully`);
+          this.isEditorDirty = false;
+          this.updateStatusMessage('Component saved');
+        } else {
+          this.showToast('error', 'Error', data.message || 'Failed to save component');
+        }
+      })
+      .catch(error => {
+        console.error('Error saving component:', error);
+        this.showToast('error', 'Error', 'Failed to save component');
+      });
+    }
   }
   
   /**
@@ -1215,31 +1558,19 @@ ${this.jsCode}
     templateContent = templateContent.replace(/<title>.*?<\/title>/, `<title>${title}</title>`);
     templateContent = templateContent.replace(/<h1>.*?<\/h1>/, `<h1>${title}</h1>`);
     
-    // In a real implementation, this would create a new component file
-    // For now, just show a success message
-    this.showToast('success', 'Created', `Component ${fileName} created successfully`);
-    this.closeModal(this.newComponentModal);
-    
-    // Reset form
-    this.componentName.value = '';
-    this.componentTitle.value = '';
-    this.componentTemplate.value = 'default';
-    
-    // Refresh component list
-    this.loadComponentList();
-    
-    // In a full implementation, we would create the file and then load it:
-    /*
+    // Create component via API
     fetch('/api/create-component', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        id: name,
         name: fileName,
         title: title,
         template: template,
-        content: templateContent
+        content: templateContent,
+        locationType: 'development'
       })
     })
     .then(response => response.json())
@@ -1254,8 +1585,17 @@ ${this.jsCode}
         this.componentTemplate.value = 'default';
         
         // Refresh component list and load the new component
-        this.loadComponentList();
-        this.loadComponent(name, fileName);
+        this.initComponentRegistry().then(() => {
+          this.loadComponentList();
+          
+          // Load the new component
+          if (window.componentRegistry) {
+            const component = window.componentRegistry.getComponentById(name);
+            if (component) {
+              this.loadComponentByType(component);
+            }
+          }
+        });
       } else {
         this.showToast('error', 'Error', data.message || 'Failed to create component');
       }
@@ -1263,8 +1603,74 @@ ${this.jsCode}
     .catch(error => {
       console.error('Error creating component:', error);
       this.showToast('error', 'Error', 'Failed to create component');
+      
+      // Fallback to localStorage
+      this.createComponentInLocalStorage(name, fileName, title, templateContent);
     });
-    */
+  }
+  
+  /**
+   * Create component in localStorage (fallback)
+   */
+  createComponentInLocalStorage(id, name, title, content) {
+    try {
+      // Parse HTML, CSS, and JS from the template
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, 'text/html');
+      
+      // Extract HTML
+      const bodyContent = doc.body.innerHTML;
+      
+      // Remove script tags from HTML content
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = bodyContent;
+      const scripts = tempDiv.querySelectorAll('script');
+      scripts.forEach(script => script.remove());
+      const htmlCode = tempDiv.innerHTML;
+      
+      // Extract CSS
+      const styleTag = doc.querySelector('style');
+      const cssCode = styleTag ? styleTag.textContent : '';
+      
+      // Extract JS
+      const scriptTag = doc.querySelector('script');
+      const jsCode = scriptTag ? scriptTag.textContent : '';
+      
+      // Create component data
+      const componentData = {
+        id: id,
+        name: name,
+        title: title,
+        html: htmlCode,
+        css: cssCode,
+        js: jsCode,
+        lastModified: new Date().toISOString()
+      };
+      
+      // Save to localStorage
+      localStorage.setItem(`component_${id}`, JSON.stringify(componentData));
+      
+      // Update projects list
+      this.updateProjectsList(componentData);
+      
+      // Show success message
+      this.showToast('success', 'Created', `Component ${name} created in localStorage`);
+      this.closeModal(this.newComponentModal);
+      
+      // Reset form
+      this.componentName.value = '';
+      this.componentTitle.value = '';
+      this.componentTemplate.value = 'default';
+      
+      // Refresh component list
+      this.loadComponentList();
+      
+      // Load the new component
+      this.loadComponentFromLocalStorage(id);
+    } catch (error) {
+      console.error('Error creating component in localStorage:', error);
+      this.showToast('error', 'Error', 'Failed to create component in localStorage');
+    }
   }
 
   /**
@@ -1331,20 +1737,7 @@ ${this.jsCode}
 </body>
 </html>`;
     
-    // In a real implementation, this would promote the component to production
-    // For now, just show a success message
-    this.showToast('success', 'Promoted', `Component ${this.currentComponent.name} promoted to production`);
-    this.closeModal(this.promoteModal);
-    
-    // Reset form
-    document.getElementById('componentDescription').value = '';
-    document.getElementById('componentTags').value = '';
-    this.promoteType.value = 'shared';
-    document.getElementById('courseSelector').value = 'math-a151';
-    document.getElementById('categorySelector').value = 'general';
-    
-    // In a full implementation, we would use fetch to promote the component:
-    /*
+    // Promote component via API
     fetch('/api/promote-component', {
       method: 'POST',
       headers: {
@@ -1372,6 +1765,11 @@ ${this.jsCode}
         this.promoteType.value = 'shared';
         document.getElementById('courseSelector').value = 'math-a151';
         document.getElementById('categorySelector').value = 'general';
+        
+        // Refresh component list
+        this.initComponentRegistry().then(() => {
+          this.loadComponentList();
+        });
       } else {
         this.showToast('error', 'Error', data.message || 'Failed to promote component');
       }
@@ -1380,7 +1778,6 @@ ${this.jsCode}
       console.error('Error promoting component:', error);
       this.showToast('error', 'Error', 'Failed to promote component');
     });
-    */
   }
 
   /**
@@ -1430,6 +1827,131 @@ ${this.jsCode}
     modal.classList.remove('active');
   }
 
+  /**
+   * Confirm component deletion
+   * @param {Object} component - Component to delete
+   */
+  confirmDeleteComponent(component) {
+    // Get delete modal elements
+    const deleteModal = document.getElementById('deleteModal');
+    const deleteComponentName = document.getElementById('deleteComponentName');
+    
+    if (!deleteModal || !deleteComponentName) {
+      console.warn('Delete modal elements not found');
+      return;
+    }
+    
+    // Store component to delete
+    this.componentToDelete = component;
+    
+    // Set component name in modal
+    deleteComponentName.textContent = component.title || component.name || component.id;
+    
+    // Show modal
+    this.openModal(deleteModal);
+    
+    // Add event listeners if not already added
+    if (!this.deleteModalInitialized) {
+      const closeDeleteModal = document.getElementById('closeDeleteModal');
+      const cancelDelete = document.getElementById('cancelDelete');
+      const confirmDelete = document.getElementById('confirmDelete');
+      
+      if (closeDeleteModal) {
+        closeDeleteModal.addEventListener('click', () => {
+          this.closeModal(deleteModal);
+        });
+      }
+      
+      if (cancelDelete) {
+        cancelDelete.addEventListener('click', () => {
+          this.closeModal(deleteModal);
+        });
+      }
+      
+      if (confirmDelete) {
+        confirmDelete.addEventListener('click', () => {
+          this.deleteComponent(this.componentToDelete);
+          this.closeModal(deleteModal);
+        });
+      }
+      
+      this.deleteModalInitialized = true;
+    }
+  }
+  
+  /**
+   * Delete component
+   * @param {Object} component - Component to delete
+   */
+  deleteComponent(component) {
+    if (!component) return;
+    
+    try {
+      // For local components, remove from localStorage
+      if (component.locationType === 'local') {
+        localStorage.removeItem(`component_${component.id}`);
+        
+        // Update projects list
+        const storedProjects = localStorage.getItem('projectsList');
+        if (storedProjects) {
+          const projects = JSON.parse(storedProjects);
+          const updatedProjects = projects.filter(p => p.id !== component.id);
+          localStorage.setItem('projectsList', JSON.stringify(updatedProjects));
+        }
+        
+        // Show success message
+        this.showToast('success', 'Deleted', `Component ${component.title || component.name} deleted successfully`);
+        
+        // If the deleted component is the current component, clear editor
+        if (this.currentComponent && this.currentComponent.id === component.id) {
+          this.currentComponent = null;
+          this.htmlCode = '';
+          this.cssCode = '';
+          this.jsCode = '';
+          this.editor.setValue('');
+          this.updateStatusMessage('Component deleted');
+        }
+        
+        // Refresh component list
+        this.loadComponentList();
+        return;
+      }
+      
+      // For other components, call the API
+      fetch(`/api/components/${component.id}`, {
+        method: 'DELETE'
+      })
+      .then(response => {
+        if (response.ok) {
+          // Show success message
+          this.showToast('success', 'Deleted', `Component ${component.title || component.name} deleted successfully`);
+          
+          // If the deleted component is the current component, clear editor
+          if (this.currentComponent && this.currentComponent.id === component.id) {
+            this.currentComponent = null;
+            this.htmlCode = '';
+            this.cssCode = '';
+            this.jsCode = '';
+            this.editor.setValue('');
+            this.updateStatusMessage('Component deleted');
+          }
+          
+          // Refresh component list
+          this.loadComponentList();
+        } else {
+          this.showToast('error', 'Error', `Failed to delete component ${component.title || component.name}`);
+        }
+      })
+      .catch(error => {
+        console.error('Error deleting component:', error);
+        this.showToast('error', 'Error', `Error deleting component: ${error.message}`);
+      });
+    } catch (error) {
+      console.error('Error deleting component:', error);
+      this.showToast('error', 'Error', `Error deleting component: ${error.message}`);
+    }
+  }
+  
   /**
    * Update status message
    * @param {string} message - Status message

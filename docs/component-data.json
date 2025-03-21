@@ -7,7 +7,13 @@
     "description": "Interactive design tool demonstrating UI implementation principles for educational tools. Features canvas management, layering, measurement tools, and interactive controls.",
     "url": "/blackboard-content-hub/shared/components/design-tool-demo.html",
     "documentationUrl": "/blackboard-content-hub/docs/developer-guide/ui-design-implementation.html",
-    "tags": ["design", "UI/UX", "interactive", "canvas", "measurement"]
+    "tags": [
+      "design",
+      "UI/UX",
+      "interactive",
+      "canvas",
+      "measurement"
+    ]
   },
   {
     "id": "design-principles-demo",
@@ -17,7 +23,13 @@
     "description": "An interactive canvas tool demonstrating game design principles applied to educational tools. Create and manipulate shapes on the canvas using the controls.",
     "url": "/blackboard-content-hub/dev/components/design-principles-demo.html",
     "documentationUrl": "/blackboard-content-hub/docs/developer-guide/design-principles.html",
-    "tags": ["design", "UI/UX", "interactive", "canvas", "development"]
+    "tags": [
+      "design",
+      "UI/UX",
+      "interactive",
+      "canvas",
+      "development"
+    ]
   },
   {
     "id": "binary-search-visualization",
@@ -27,7 +39,11 @@
     "description": "Interactive visualization of the binary search algorithm with step-by-step execution and explanation.",
     "url": "/blackboard-content-hub/shared/components/binary-search-visualization.html",
     "documentationUrl": "/blackboard-content-hub/examples/binary-search-visualization.html",
-    "tags": ["algorithm", "visualization", "computer science"]
+    "tags": [
+      "algorithm",
+      "visualization",
+      "computer science"
+    ]
   },
   {
     "id": "molecule-viewer",
@@ -37,7 +53,11 @@
     "description": "Interactive 3D viewer for molecular structures with rotation, zoom, and different rendering modes.",
     "url": "/blackboard-content-hub/shared/components/molecule-viewer.html",
     "documentationUrl": "/blackboard-content-hub/examples/molecule-viewer.html",
-    "tags": ["chemistry", "3D", "visualization"]
+    "tags": [
+      "chemistry",
+      "3D",
+      "visualization"
+    ]
   },
   {
     "id": "statistical-hypothesis-testing",
@@ -47,7 +67,11 @@
     "description": "Interactive demonstration of statistical hypothesis testing with various test types and visualizations.",
     "url": "/blackboard-content-hub/shared/components/statistical-hypothesis-testing.html",
     "documentationUrl": "/blackboard-content-hub/examples/statistical-hypothesis-testing.html",
-    "tags": ["statistics", "data analysis", "visualization"]
+    "tags": [
+      "statistics",
+      "data analysis",
+      "visualization"
+    ]
   },
   {
     "id": "research-data-explorer",
@@ -57,7 +81,11 @@
     "description": "Tool for exploring and visualizing research datasets with filtering and statistical analysis capabilities.",
     "url": "/blackboard-content-hub/shared/components/research-data-explorer.html",
     "documentationUrl": "/blackboard-content-hub/examples/research-data-explorer.html",
-    "tags": ["research", "data analysis", "visualization"]
+    "tags": [
+      "research",
+      "data analysis",
+      "visualization"
+    ]
   },
   {
     "id": "calculus-derivative-explorer",
@@ -68,7 +96,11 @@
     "description": "Interactive tool for exploring derivatives of functions with visual representation and step-by-step solutions.",
     "url": "/blackboard-content-hub/courses/math-a251/calculus-derivative-explorer.html",
     "documentationUrl": "/blackboard-content-hub/examples/calculus-derivative-explorer.html",
-    "tags": ["mathematics", "calculus", "visualization"]
+    "tags": [
+      "mathematics",
+      "calculus",
+      "visualization"
+    ]
   },
   {
     "id": "integral-visualization",
@@ -79,7 +111,11 @@
     "description": "Visual exploration of definite and indefinite integrals with geometric interpretation.",
     "url": "/blackboard-content-hub/courses/math-a252/integral-visualization.html",
     "documentationUrl": "/blackboard-content-hub/examples/integral-visualization.html",
-    "tags": ["mathematics", "calculus", "visualization"]
+    "tags": [
+      "mathematics",
+      "calculus",
+      "visualization"
+    ]
   },
   {
     "id": "statistical-distributions",
@@ -90,7 +126,11 @@
     "description": "Interactive visualization of common statistical distributions with parameter adjustments.",
     "url": "/blackboard-content-hub/courses/stat-a253/statistical-distributions.html",
     "documentationUrl": "/blackboard-content-hub/examples/statistical-distributions.html",
-    "tags": ["statistics", "probability", "visualization"]
+    "tags": [
+      "statistics",
+      "probability",
+      "visualization"
+    ]
   },
   {
     "id": "regression-analysis",
@@ -101,7 +141,11 @@
     "description": "Interactive tool for performing and visualizing different types of regression analyses.",
     "url": "/blackboard-content-hub/courses/stat-a253/regression-analysis.html",
     "documentationUrl": "/blackboard-content-hub/examples/regression-analysis.html",
-    "tags": ["statistics", "data analysis", "regression"]
+    "tags": [
+      "statistics",
+      "data analysis",
+      "regression"
+    ]
   },
   {
     "id": "interactive-periodic-table",
@@ -111,7 +155,11 @@
     "description": "Comprehensive interactive periodic table with detailed element information and sorting capabilities.",
     "url": "/blackboard-content-hub/shared/components/interactive-periodic-table.html",
     "documentationUrl": "/blackboard-content-hub/examples/interactive-periodic-table.html",
-    "tags": ["chemistry", "reference", "visualization"]
+    "tags": [
+      "chemistry",
+      "reference",
+      "visualization"
+    ]
   },
   {
     "id": "citation-generator",
@@ -121,7 +169,11 @@
     "description": "Tool for generating properly formatted citations in various academic styles.",
     "url": "/blackboard-content-hub/shared/components/citation-generator.html",
     "documentationUrl": "/blackboard-content-hub/examples/citation-generator.html",
-    "tags": ["research", "writing", "academic"]
+    "tags": [
+      "research",
+      "writing",
+      "academic"
+    ]
   },
   {
     "id": "flatland-message",
@@ -131,6 +183,22 @@
     "description": "Interactive messaging component for the Flatland educational environment.",
     "url": "/blackboard-content-hub/shared/components/flatland-message.html",
     "documentationUrl": "/blackboard-content-hub/examples/flatland-message.html",
-    "tags": ["communication", "education", "interactive"]
+    "tags": [
+      "communication",
+      "education",
+      "interactive"
+    ]
+  },
+  {
+    "id": "the-message",
+    "title": "The Message",
+    "category": "general",
+    "type": "shared",
+    "description": "A visual tool for understanding how a point on a curve and its tangent line change at different points, and how to solve for the values that satisfy a specific constraint.",
+    "url": "/blackboard-content-hub/shared/components/the-message.html",
+    "documentationUrl": "/blackboard-content-hub/examples/the-message.html",
+    "tags": [
+      "comma-separated"
+    ]
   }
 ]

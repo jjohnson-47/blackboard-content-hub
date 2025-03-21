@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test: The Message</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    h1 {
+      color: #4a148c;
+      margin-top: 0;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 10px;
+    }
+    
+    .iframe-container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .controls {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .controls h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #4a148c;
+    }
+    
+    .controls p {
+      margin-bottom: 5px;
+    }
+    
+    .button-group {
+      margin-top: 15px;
+    }
+    
+    button {
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-right: 10px;
+    }
+    
+    button:hover {
+      background-color: #7b1fa2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Testing "The Message" Component</h1>
+  
+  <div class="iframe-container">
+    <iframe src="/dev/components/the-message.html" id="componentFrame"></iframe>
+  </div>
+  
+  <div class="controls">
+    <h2>Component Information</h2>
+    <p><strong>Name:</strong> The Message</p>
+    <p><strong>Path:</strong> /dev/components/the-message.html</p>
+    <p><strong>Description:</strong> Interactive Desmos calculator demonstrating derivatives and tangent lines through a space game mechanic.</p>
+    
+    <div class="button-group">
+      <button id="refreshBtn">Refresh Component</button>
+      <button id="openNewWindowBtn">Open in New Window</button>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Refresh button
+      document.getElementById('refreshBtn').addEventListener('click', function() {
+        const iframe = document.getElementById('componentFrame');
+        iframe.src = iframe.src;
+      });
+      
+      // Open in new window button
+      document.getElementById('openNewWindowBtn').addEventListener('click', function() {
+        window.open('/dev/components/the-message.html', '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
